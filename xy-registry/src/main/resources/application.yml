@@ -1,0 +1,17 @@
+server:
+  port: 10086
+spring:
+  application:
+    name: xy-registry  # 应用名称，会在Eureka中显示
+eureka:
+  client:
+    fetch-registry: false # 是否注册自己的信息到EurekaServer，默认是true
+    register-with-eureka: false # 是否拉取其它服务的信息，默认是true
+    service-url: # EurekaServer的地址，现在是自己的地址，如果是集群，需要加上其它Server的地址。
+      defaultZone: http://127.0.0.1:${server.port}/eureka
+  server:
+    enable-self-preservation: false # 关闭自我保护
+    eviction-interval-timer-in-ms: 5000 # 每隔5秒进行一次服务列表清理
+#  instance:
+#    prefer-ip-address: true
+#    ip-address: 127.0.0.1
