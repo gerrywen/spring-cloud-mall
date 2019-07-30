@@ -161,7 +161,7 @@ public class CategoryServiceImpl implements CategoryService {
      */
     @Override
     public List<Category> queryCategoryByIds(List<Long> ids) {
-        return this.categoryMapper.selectByIdList(ids);;
+        return this.categoryMapper.selectByIdList(ids);
 
     }
 
