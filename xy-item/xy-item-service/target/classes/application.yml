@@ -1,5 +1,5 @@
 server:
-  port: 8081
+  port: 8082
 spring:
   application:
     name: item-service
@@ -10,6 +10,25 @@ spring:
     hikari:
       maximum-pool-size: 30
       minimum-idle: 10
+
+  rabbitmq:
+    #rabbitmq连接参数
+    host: 127.0.0.1
+    username: xinya
+    password: xinya0102
+    virtual-host: xinya
+    port: 5672
+    #rabbitmq消息确认
+    publisher-confirms: true
+    publisher-returns: true
+    template:
+      retry:
+        enabled: true
+        multiplier: 2
+        initial-interval: 10000ms
+        max-interval: 210000ms
+      exchange: xinya.item.exchange
+
 eureka:
   client:
     service-url:
@@ -20,7 +39,3 @@ eureka:
     prefer-ip-address: true
     ip-address: 127.0.0.1
     instance-id: ${spring.application.name}:${server.port}
-
-
-
-

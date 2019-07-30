@@ -13,19 +13,33 @@
     <artifactId>xy-api-gateway</artifactId>
 
     <dependencies>
+
+        <!--公共配置-->
         <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-zuul</artifactId>
+            <groupId>com.xinya.common</groupId>
+            <artifactId>xy-common</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
         </dependency>
+        <!--公共配置-->
+
+        <!--spring cloud 配置-->
         <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+            <groupId>com.xinya.netflix.uitl</groupId>
+            <artifactId>xy-netflix-util</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
         </dependency>
-        <!--是springboot提供的微服务检测接口，默认对外提供几个接口：/info-->
+        <!--spring cloud 配置-->
+
+
+        <!--配置管理依赖-->
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
+            <groupId>com.xinya.config.util</groupId>
+            <artifactId>xy-config-util</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
         </dependency>
+        <!--配置管理依赖-->
+
+
     </dependencies>
 
 </project>

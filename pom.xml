@@ -16,6 +16,9 @@
         <module>xy-api-gateway</module>
         <module>xy-common</module>
         <module>xy-item</module>
+        <module>xy-config</module>
+        <module>xy-config-util</module>
+        <module>xy-netflix-util</module>
     </modules>
 
     <!--    继承spring-boot父版本号管理，这步和dependencyManagement 必须配置，否则子工程版本依赖会报错-->

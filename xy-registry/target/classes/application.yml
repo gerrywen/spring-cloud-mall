@@ -2,16 +2,33 @@ server:
   port: 10086
 spring:
   application:
-    name: xy-registry  # 应用名称，会在Eureka中显示
+    name: xy-registry
+  rabbitmq:
+    virtual-host: xinya
+    username: xinya
+    password: xinya0102
+    host: 127.0.0.1
+    port: 5672
 eureka:
   client:
-    fetch-registry: false # 是否注册自己的信息到EurekaServer，默认是true
-    register-with-eureka: false # 是否拉取其它服务的信息，默认是true
-    service-url: # EurekaServer的地址，现在是自己的地址，如果是集群，需要加上其它Server的地址。
-      defaultZone: http://127.0.0.1:${server.port}/eureka
+    fetch-registry: false
+    register-with-eureka: false
+    service-url:
+      defaultZone: http://127.0.0.1:10086/eureka
   server:
-    enable-self-preservation: false # 关闭自我保护
-    eviction-interval-timer-in-ms: 5000 # 每隔5秒进行一次服务列表清理
-#  instance:
-#    prefer-ip-address: true
-#    ip-address: 127.0.0.1
+    enable-self-preservation: false  #关闭自我保护
+    eviction-interval-timer-in-ms: 5000 #每隔5秒进行一次服务列表清理
+
+ribbon:
+  ConnectTimeout: 4000 # 连接超时时间(ms)
+  ReadTimeout: 2000 # 通信超时时间(ms)
+  OkToRetryOnAllOperations: true # 是否对所有操作重试
+  MaxAutoRetriesNextServer: 1 # 同一服务不同实例的重试次数
+  MaxAutoRetries: 1 # 同一实例的重试次数
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMillisecond: 10000 # 熔断超时时长：10000ms
