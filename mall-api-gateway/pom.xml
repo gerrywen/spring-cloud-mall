@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>mall</artifactId>
+        <groupId>com.mall.parent</groupId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.mall.gateway</groupId>
+    <artifactId>mall-api-gateway</artifactId>
+
+    <dependencies>
+
+        <!--公共配置-->
+        <dependency>
+            <groupId>com.mall.common</groupId>
+            <artifactId>mall-common</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+        <!--公共配置-->
+
+        <!--spring cloud 配置-->
+        <dependency>
+            <groupId>com.mall.netflix.uitl</groupId>
+            <artifactId>mall-netflix-util</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+        <!--spring cloud 配置-->
+
+
+        <!--配置管理依赖-->
+        <dependency>
+            <groupId>com.mall.config.util</groupId>
+            <artifactId>mall-config-util</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+        <!--配置管理依赖-->
+
+
+    </dependencies>
+
+    <build>
+        <finalName>${project.artifactId}</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+</project>
