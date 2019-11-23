@@ -18,6 +18,7 @@
         <module>mall-item</module>
         <module>mall-config</module>
         <module>mall-common-util</module>
+        <module>mall-authentication</module>
     </modules>
 
     <!--    继承spring-boot父版本号管理，这步和dependencyManagement 必须配置，否则子工程版本依赖会报错-->
@@ -51,6 +52,8 @@
         <javax.servlet.version>4.0.1</javax.servlet.version>
         <jaxb.impl.version>2.3.2</jaxb.impl.version>
         <annotations.version>18.0.0</annotations.version>
+        <joda.time.version>2.10.5</joda.time.version>
+        <jjwt.version>0.9.1</jjwt.version>
     </properties>
 
 
@@ -151,6 +154,21 @@
                 <artifactId>annotations</artifactId>
                 <version>${annotations.version}</version>
             </dependency>
+
+            <!-- authentication jwt权限-->
+            <!-- https://mvnrepository.com/artifact/joda-time/joda-time -->
+            <dependency>
+                <groupId>joda-time</groupId>
+                <artifactId>joda-time</artifactId>
+                <version>${joda.time.version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt -->
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt</artifactId>
+                <version>${jjwt.version}</version>
+            </dependency>
+            <!-- authentication jwt权限-->
 
         </dependencies>
     </dependencyManagement>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>mall-authentication</artifactId>
+        <groupId>com.mall.authentication</groupId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.mall.authentication-service</groupId>
+    <artifactId>mall-authentication-service</artifactId>
+
+    <dependencies>
+        <!--Spring Cloud Eureka客户端-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </dependency>
+        <!--Spring Cloud Eureka客户端-->
+
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <!--权限公共文件-->
+        <dependency>
+            <groupId>com.mall.authentication.common</groupId>
+            <artifactId>mall-authentication-common</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+        <!--权限公共文件-->
+
+        <!--全局公共文件-->
+        <dependency>
+            <groupId>com.mall.common</groupId>
+            <artifactId>mall-common</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+        <!--全局公共文件-->
+
+        <!--配置管理依赖-->
+        <dependency>
+            <groupId>com.mall.config.util</groupId>
+            <artifactId>mall-config-util</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+        <!--配置管理依赖-->
+
+        <!--用户服务-->
+        <!--用户服务-->
+
+        <!--https://blog.csdn.net/fzbbw/article/details/101175595-->
+        <!--获取优雅配置文件-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <!--获取优雅配置文件-->
+
+        <!--Spring Boot test-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+        </dependency>
+        <!--Spring Boot test-->
+
+    </dependencies>
+
+</project>

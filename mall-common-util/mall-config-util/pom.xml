@@ -30,6 +30,7 @@
         </dependency>
 
         <!--actuator是监控系统健康情况的工具-->
+        <!--是springboot提供的微服务检测接口，默认对外提供几个接口-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
