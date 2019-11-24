@@ -4,7 +4,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.mall.item.dto.PageDto;
 import com.mall.item.mapper.BrandMapper;
-import com.mall.item.po.Brand;
+import com.mall.item.pojo.Brand;
 import com.mall.item.service.BrandService;
 import com.mall.item.vo.PageResultVo;
 import org.apache.commons.lang3.StringUtils;

@@ -9,14 +9,13 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.mall.common.util</groupId>
-    <artifactId>mall-common-util</artifactId>
+    <groupId>com.mall.user</groupId>
+    <artifactId>mall-user</artifactId>
+    <!--    打包方式为pom    -->
     <packaging>pom</packaging>
-    <!--    子工程模块 -->
     <modules>
-        <module>mall-config-util</module>
-        <module>mall-netflix-util</module>
-        <module>mall-service-uitl</module>
+        <module>mall-user-interface</module>
+        <module>mall-user-service</module>
     </modules>
 
 </project>

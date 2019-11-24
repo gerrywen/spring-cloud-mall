@@ -1,6 +1,6 @@
 package com.mall.item.mapper;
 
-import com.mall.item.po.Brand;
+import com.mall.item.pojo.Brand;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Param;

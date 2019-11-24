@@ -1,7 +1,7 @@
 package com.mall.item.service.impl;
 
 import com.mall.item.mapper.CategoryMapper;
-import com.mall.item.po.Category;
+import com.mall.item.pojo.Category;
 import com.mall.item.service.CategoryService;
 import com.mall.myexception.MyException;
 import com.mall.myexception.XyException;

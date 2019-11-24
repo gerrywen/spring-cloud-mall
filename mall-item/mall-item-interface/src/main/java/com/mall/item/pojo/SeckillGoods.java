@@ -1,4 +1,4 @@
-package com.mall.item.po;
+package com.mall.item.pojo;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;

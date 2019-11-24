@@ -1,7 +1,7 @@
 package com.mall.item.service;
 
 import com.mall.item.dto.PageDto;
-import com.mall.item.po.Brand;
+import com.mall.item.pojo.Brand;
 import com.mall.item.vo.PageResultVo;
 
 import java.util.List;

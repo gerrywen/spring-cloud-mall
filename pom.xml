@@ -19,6 +19,7 @@
         <module>mall-config</module>
         <module>mall-common-util</module>
         <module>mall-authentication</module>
+        <module>mall-user</module>
     </modules>
 
     <!--    继承spring-boot父版本号管理，这步和dependencyManagement 必须配置，否则子工程版本依赖会报错-->
@@ -54,6 +55,9 @@
         <annotations.version>18.0.0</annotations.version>
         <joda.time.version>2.10.5</joda.time.version>
         <jjwt.version>0.9.1</jjwt.version>
+        <fastjson.version>1.2.16</fastjson.version>
+        <spring.webmvc.version>5.1.8.RELEASE</spring.webmvc.version>
+        <redis.version>2.2.0.RELEASE</redis.version>
     </properties>
 
 
@@ -92,6 +96,14 @@
                 <groupId>mysql</groupId>
                 <artifactId>mysql-connector-java</artifactId>
                 <version>${mysql.version}</version>
+            </dependency>
+
+            <!-- redis-->
+            <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-redis -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-data-redis</artifactId>
+                <version>${redis.version}</version>
             </dependency>
 
             <!-- https://mvnrepository.com/artifact/org.csource/fastdfs-client-java -->
@@ -141,6 +153,11 @@
                 <artifactId>persistence-api</artifactId>
                 <version>${jpa.version}</version>
             </dependency>
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${fastjson.version}</version>
+            </dependency>
 
             <!-- https://mvnrepository.com/artifact/com.sun.xml.bind/jaxb-impl -->
             <dependency>
@@ -169,6 +186,19 @@
                 <version>${jjwt.version}</version>
             </dependency>
             <!-- authentication jwt权限-->
+
+            <!-- mall-user-->
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-webmvc</artifactId>
+                <version>${spring.webmvc.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-annotations</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+            <!-- mall-user-->
 
         </dependencies>
     </dependencyManagement>

@@ -1,7 +1,7 @@
-package com.mall.item.web;
+package com.mall.item.controller;
 
 import com.mall.item.dto.PageDto;
-import com.mall.item.po.Brand;
+import com.mall.item.pojo.Brand;
 import com.mall.item.service.BrandService;
 import com.mall.item.vo.PageResultVo;
 import org.springframework.beans.factory.annotation.Autowired;

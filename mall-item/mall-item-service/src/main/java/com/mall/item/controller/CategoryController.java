@@ -1,6 +1,6 @@
-package com.mall.item.web;
+package com.mall.item.controller;
 
-import com.mall.item.po.Category;
+import com.mall.item.pojo.Category;
 import com.mall.item.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

@@ -54,9 +54,6 @@
         </dependency>
         <!--配置管理依赖-->
 
-        <!--用户服务-->
-        <!--用户服务-->
-
         <!--https://blog.csdn.net/fzbbw/article/details/101175595-->
         <!--获取优雅配置文件-->
         <dependency>
@@ -72,6 +69,17 @@
             <artifactId>spring-boot-starter-test</artifactId>
         </dependency>
         <!--Spring Boot test-->
+
+
+        <!--服务消费模块-->
+        <!--用户服务接口-->
+        <dependency>
+            <groupId>com.mall.user.interface</groupId>
+            <artifactId>mall-user-interface</artifactId>
+            <version>${mall.latest.version}</version>
+        </dependency>
+        <!--用户服务接口-->
+        <!--服务消费模块-->
 
     </dependencies>
 

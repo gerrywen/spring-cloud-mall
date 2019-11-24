@@ -82,6 +82,19 @@
         </dependency>
         <!-- swagger cloud end -->
 
+        <!--feign-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
+        <!--feign-->
+        <!--fastjson-->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+        </dependency>
+        <!--fastjson-->
+
     </dependencies>
 
 </project>
