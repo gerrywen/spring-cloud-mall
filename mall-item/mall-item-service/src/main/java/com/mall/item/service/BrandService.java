@@ -1,8 +1,8 @@
 package com.mall.item.service;
 
+import com.mall.common.pojo.PageResult;
 import com.mall.item.dto.PageDto;
 import com.mall.item.pojo.Brand;
-import com.mall.item.vo.PageResultVo;
 
 import java.util.List;
 
@@ -15,7 +15,7 @@ public interface BrandService {
      * @param pageDto
      * @return
      */
-        PageResultVo<Brand> queryBrandByPage(PageDto pageDto);
+    PageResult<Brand> queryBrandByPage(PageDto pageDto);
 
 
     /**

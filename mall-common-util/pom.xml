@@ -17,6 +17,7 @@
         <module>mall-config-util</module>
         <module>mall-netflix-util</module>
         <module>mall-service-uitl</module>
+        <module>mall-swagger-util</module>
     </modules>
 
 </project>

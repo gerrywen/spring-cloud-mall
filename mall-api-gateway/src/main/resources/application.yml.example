@@ -9,20 +9,44 @@ spring:
     password: mall0102
     host: 127.0.0.1
     port: 5672
+    #rabbitmq消息确认
+    publisher-confirms: true
+    publisher-returns: true
+    template:
+      retry:
+        enabled: true
+        multiplier: 2
+        initial-interval: 10000ms
+        max-interval: 210000ms
+  #      exchange: xinya.item.exchange
 eureka:
   client:
     service-url:
       defaultZone: http://127.0.0.1:10086/eureka
-    registry-fetch-interval-seconds: 5
   instance:
+    lease-renewal-interval-in-seconds: 5 # 每隔5秒发送一次心跳
+    lease-expiration-duration-in-seconds: 10 # 10秒不发送就过期
     prefer-ip-address: true
     ip-address: 127.0.0.1
     instance-id: ${spring.application.name}:${server.port}
+
 zuul:
   prefix: /api # 添加路由前缀
   retryable: true
   routes:
-    item-service: /item/** # 将商品微服务映射到/item/**
+    item-service: /item/**  #商品微服务
+    search-service: /search/**  #搜索微服务
+    user-service: /user/**  #用户微服务
+    auth-service: /auth/** #授权中心微服务
+    cart-service: /cart/** #购物车微服务
+    order-service: /** #订单微服务
+    seckill-service: /seckill/** #秒杀微服务
+    comments-service: /review/** #评论微服务
+  ignored-services:
+    - upload-service # 忽略upload-service服务
+  add-host-header: true #携带请求本身的head头信息
+  sensitive-headers: #匹配禁止使用的头信息，这里设置为null，否则set-cookie无效
+
 ribbon:
   ConnectTimeout: 4000 # 连接超时时间(ms)
   ReadTimeout: 2000 # 通信超时时间(ms)
@@ -36,3 +60,20 @@ hystrix:
         isolation:
           thread:
             timeoutInMillisecond: 10000 # 熔断超时时长：10000ms
+
+mall:
+  jwt:
+    token-header: Authorization #JWT存储的请求头
+    secret: leyou@Login(Auth}*^31)&heiMa% # 登录校验的密钥
+    expiration: 604800 #JWT的超期限时间(60*60*24)
+    token-head: Bearer  #JWT负载中拿到开头
+    cookieName: MALL_TOKEN
+    cookieMaxAge: 30
+  filter:
+    allowPaths:
+      /api/auth
+      /api/search
+      /api/user/register
+      /api/user/check
+      /api/user/code
+      /api/item

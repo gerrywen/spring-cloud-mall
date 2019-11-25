@@ -1,9 +1,9 @@
 package com.mall.item.controller;
 
+import com.mall.common.pojo.PageResult;
 import com.mall.item.dto.PageDto;
 import com.mall.item.pojo.Brand;
 import com.mall.item.service.BrandService;
-import com.mall.item.vo.PageResultVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,7 +27,7 @@ public class BrandController {
      * @return
      */
     @GetMapping("page")
-    public ResponseEntity<PageResultVo<Brand>> queryBrandByPage(
+    public ResponseEntity<PageResult<Brand>> queryBrandByPage(
             @RequestParam(value = "page", defaultValue = "1") Integer page,
             @RequestParam(value = "rows", defaultValue = "5") Integer rows,
             @RequestParam(value = "sortBy", required = false) String sortBy,
@@ -35,7 +35,7 @@ public class BrandController {
             @RequestParam(value = "key", required = false) String key)
     {
         PageDto queryByPageAo = new PageDto(page,rows,sortBy,desc,key);
-        PageResultVo<Brand> result = this.brandService.queryBrandByPage(queryByPageAo);
+        PageResult<Brand> result = this.brandService.queryBrandByPage(queryByPageAo);
         if(result == null){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
         }

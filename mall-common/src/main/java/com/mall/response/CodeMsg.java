@@ -11,11 +11,14 @@ public class CodeMsg {
     private int code;
     private String msg;
 
+    public static CodeMsg SUCCESS = new CodeMsg(0, "success");
 
     /**
      * 通用的错误码
      */
-    public static CodeMsg SUCCESS = new CodeMsg(0, "success");
+    public static CodeMsg UNAUTHORIZED = new CodeMsg(401, "未授权");
+    public static CodeMsg FORBIDDEN = new CodeMsg(403, "Forbidden");
+
     public static CodeMsg SERVER_ERROR = new CodeMsg(500100, "服务端异常");
     public static CodeMsg BIND_ERROR = new CodeMsg(500101, "参数校验异常：%s");
     public static CodeMsg REQUEST_ILLEGAL = new CodeMsg(500102, "请求非法");

@@ -1,7 +1,9 @@
 package com.mall.auth.service.impl;
 
 import com.mall.auth.client.UserClient;
+import com.mall.auth.entity.UserInfo;
 import com.mall.auth.service.AuthService;
+import com.mall.auth.utils.JwtUtils;
 import com.mall.user.pojo.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,7 +30,7 @@ public class AuthServiceImpl implements AuthService {
                 return null;
             }
             //3.查询结果不为空，则生成token
-            return "token,带继续完善";
+            return JwtUtils.generateToken(new UserInfo(user.getId(), user.getUsername()));
 
         }catch (Exception e){
             e.printStackTrace();

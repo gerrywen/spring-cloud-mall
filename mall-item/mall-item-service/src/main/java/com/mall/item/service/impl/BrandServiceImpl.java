@@ -2,11 +2,11 @@ package com.mall.item.service.impl;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.mall.common.pojo.PageResult;
 import com.mall.item.dto.PageDto;
 import com.mall.item.mapper.BrandMapper;
 import com.mall.item.pojo.Brand;
 import com.mall.item.service.BrandService;
-import com.mall.item.vo.PageResultVo;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,7 +23,7 @@ public class BrandServiceImpl implements BrandService {
     private BrandMapper brandMapper;
 
     @Override
-    public PageResultVo<Brand> queryBrandByPage(PageDto pageDto) {
+    public PageResult<Brand> queryBrandByPage(PageDto pageDto) {
         /**
          * 1.分页
          */
@@ -52,7 +52,7 @@ public class BrandServiceImpl implements BrandService {
         /**
          * 5.返回分页结果
          */
-        return new PageResultVo<>(pageInfo.getTotal(),pageInfo.getPages(),pageInfo.getList());
+        return new PageResult<>(pageInfo.getTotal(),pageInfo.getPages(),pageInfo.getList());
     }
 
     /**

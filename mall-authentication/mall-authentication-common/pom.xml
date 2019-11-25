@@ -15,6 +15,14 @@
     <packaging>jar</packaging>
 
     <dependencies>
+        <!-- swagger cloud start -->
+        <dependency>
+            <groupId>com.mall.swagger.util</groupId>
+            <artifactId>mall-swagger-util</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+        <!-- swagger cloud end -->
+
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
@@ -23,6 +31,17 @@
         <dependency>
             <groupId>io.jsonwebtoken</groupId>
             <artifactId>jjwt</artifactId>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.auth0/java-jwt -->
+        <dependency>
+            <groupId>com.auth0</groupId>
+            <artifactId>java-jwt</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
         </dependency>
 
         <!-- https://blog.csdn.net/backbug/article/details/78646152 -->

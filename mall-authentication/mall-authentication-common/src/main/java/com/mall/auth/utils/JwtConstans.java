@@ -7,6 +7,7 @@ package com.mall.auth.utils;
  * created: 2019-11-23 11:44
  **/
 public abstract class JwtConstans {
-    public static final String JWT_KEY_ID = "id";
-    public static final String JWT_KEY_USER_NAME = "username";
+    static final String JWT_KEY_ID = "id";
+    static final String JWT_KEY_USER_NAME = "username";
+    static final String JWT_KEY_CREATED = "created";
 }
