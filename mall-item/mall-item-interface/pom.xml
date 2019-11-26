@@ -38,6 +38,14 @@
             <version>1.0.0-SNAPSHOT</version>
         </dependency>
         <!--swagger cloud 配置-->
+
+        <!--redis配置-->
+        <dependency>
+            <groupId>com.mall.common.redis</groupId>
+            <artifactId>mall-redis</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+        <!--redis配置-->
     </dependencies>
 
 </project>

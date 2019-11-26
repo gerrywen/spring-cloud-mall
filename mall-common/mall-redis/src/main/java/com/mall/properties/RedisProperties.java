@@ -1,8 +1,5 @@
 package com.mall.properties;
 
-import lombok.Data;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
 /**
@@ -12,42 +9,115 @@ import org.springframework.stereotype.Component;
  * created: 2019-11-26 12:45
  **/
 @Component
-@ConfigurationProperties(prefix = "spring.redis")
-@Data
 public class RedisProperties {
-    //   主机地址
-    @Value("${spring.redis.host}")
     public String host;
-    //端口
-    @Value("${spring.redis.port}")
+
     public int port;
-    //密码没有不填写
-    @Value("${spring.redis.password}")
+
     public String password;
-    // Redis数据库索引（默认为0）
-    @Value("${spring.redis.database}")
+
     public int database;
-    //连接超时时间（毫秒）
-    @Value("${spring.redis.timeout}")
+
     public String timeOut;
 
 
-    //最大活跃连接
-    @Value("${spring.redis.lettuce.pool.max-active}")
     public int maxActive;
-    //连接池最大阻塞等待时间（使用负值表示没有限制）
-    @Value("${spring.redis.lettuce.pool.max-wait}")
+
     public String maxWait;
-    //连接池中的最大空闲连接
-    @Value("${spring.redis.lettuce.pool.max-idle}")
+
     public int maxIdle;
-    //连接池中的最小空闲连接
-    @Value("${spring.redis.lettuce.pool.min-idle}")
+
     public int minIdle;
 
-
-    @Value("${spring.redis.cluster.nodes}")
     public String nodes;
-    @Value("${spring.redis.cluster.maxRedirects}")
+
     public String maxRedirects;
+
+    public String getHost() {
+        return host;
+    }
+
+    public void setHost(String host) {
+        this.host = RedisEnv.host;
+    }
+
+    public int getPort() {
+        return port;
+    }
+
+    public void setPort(int port) {
+        this.port = RedisEnv.port;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = RedisEnv.password;
+    }
+
+    public int getDatabase() {
+        return database;
+    }
+
+    public void setDatabase(int database) {
+        this.database = RedisEnv.database;
+    }
+
+    public String getTimeOut() {
+        return timeOut;
+    }
+
+    public void setTimeOut(String timeOut) {
+        this.timeOut = RedisEnv.timeOut;
+    }
+
+    public int getMaxActive() {
+        return maxActive;
+    }
+
+    public void setMaxActive(int maxActive) {
+        this.maxActive = RedisEnv.maxActive;
+    }
+
+    public String getMaxWait() {
+        return maxWait;
+    }
+
+    public void setMaxWait(String maxWait) {
+        this.maxWait = RedisEnv.maxWait;
+    }
+
+    public int getMaxIdle() {
+        return maxIdle;
+    }
+
+    public void setMaxIdle(int maxIdle) {
+        this.maxIdle = RedisEnv.maxIdle;
+    }
+
+    public int getMinIdle() {
+        return minIdle;
+    }
+
+    public void setMinIdle(int minIdle) {
+        this.minIdle = RedisEnv.minIdle;
+    }
+
+    public String getNodes() {
+        return nodes;
+    }
+
+    public void setNodes(String nodes) {
+        this.nodes = RedisEnv.nodes;
+    }
+
+    public String getMaxRedirects() {
+        return maxRedirects;
+    }
+
+    public void setMaxRedirects(String maxRedirects) {
+        this.maxRedirects = RedisEnv.maxRedirects;
+    }
 }
