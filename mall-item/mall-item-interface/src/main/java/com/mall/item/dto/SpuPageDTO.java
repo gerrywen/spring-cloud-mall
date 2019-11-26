@@ -1,12 +1,14 @@
-package com.mall.parameter.pojo;
+package com.mall.item.dto;
+
+import com.mall.parameter.pojo.QueryByPageParameter;
+import io.swagger.annotations.ApiModel;
 
 /**
- * program: spring-cloud-mall->SpuQueryByPageParameter
- * description: Spu分页查询
- * author: gerry
- * created: 2019-11-23 10:46
- **/
-public class SpuQueryByPageParameter extends BrandQueryByPageParameter{
+ * @author wenguoli
+ * @date 2019/11/26 10:30
+ */
+@ApiModel(value="SpuPageDTO",description="Spu分页DTO")
+public class SpuPageDTO extends QueryByPageParameter {
     /**
      *         - page：当前页，int
      *         - rows：每页大小，int
@@ -25,12 +27,12 @@ public class SpuQueryByPageParameter extends BrandQueryByPageParameter{
         this.saleable = saleable;
     }
 
-    public SpuQueryByPageParameter(Integer page, Integer rows, String sortBy, Boolean desc, String key, Boolean saleable) {
+    public SpuPageDTO(Integer page, Integer rows, String sortBy, Boolean desc, String key, Boolean saleable) {
         super(page, rows, sortBy, desc, key);
         this.saleable = saleable;
     }
 
-    public SpuQueryByPageParameter(Boolean saleable) {
+    public SpuPageDTO(Boolean saleable) {
         this.saleable = saleable;
     }
 

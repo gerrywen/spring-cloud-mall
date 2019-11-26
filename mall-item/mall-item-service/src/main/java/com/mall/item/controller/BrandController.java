@@ -1,9 +1,12 @@
 package com.mall.item.controller;
 
 import com.mall.common.pojo.PageResult;
-import com.mall.item.dto.PageDto;
+import com.mall.item.dto.PageDTO;
 import com.mall.item.pojo.Brand;
 import com.mall.item.service.BrandService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("brand")
+@Api(value = "BrandController", tags = "品牌")
 public class BrandController {
 
     @Autowired
@@ -19,23 +23,15 @@ public class BrandController {
 
     /**
      * 分页查询品牌
-     * @param page
-     * @param rows
-     * @param sortBy
-     * @param desc
-     * @param key
+     * @param pageDTO 分页
      * @return
      */
     @GetMapping("page")
-    public ResponseEntity<PageResult<Brand>> queryBrandByPage(
-            @RequestParam(value = "page", defaultValue = "1") Integer page,
-            @RequestParam(value = "rows", defaultValue = "5") Integer rows,
-            @RequestParam(value = "sortBy", required = false) String sortBy,
-            @RequestParam(value = "desc", defaultValue = "false") Boolean desc,
-            @RequestParam(value = "key", required = false) String key)
-    {
-        PageDto queryByPageAo = new PageDto(page,rows,sortBy,desc,key);
-        PageResult<Brand> result = this.brandService.queryBrandByPage(queryByPageAo);
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "Authorization", value = "Bearer token", required = false, dataType = "string", paramType = "header"),
+    })
+    public ResponseEntity<PageResult<Brand>> queryBrandByPage(PageDTO pageDTO){
+        PageResult<Brand> result = this.brandService.queryBrandByPage(pageDTO);
         if(result == null){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
         }

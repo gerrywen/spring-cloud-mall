@@ -30,6 +30,14 @@
             <artifactId>mall-common</artifactId>
             <version>1.0.0-SNAPSHOT</version>
         </dependency>
+
+        <!--swagger cloud 配置-->
+        <dependency>
+            <groupId>com.mall.swagger.util</groupId>
+            <artifactId>mall-swagger-util</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+        <!--swagger cloud 配置-->
     </dependencies>
 
 </project>

@@ -3,7 +3,7 @@ package com.mall.item.service.impl;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.mall.common.pojo.PageResult;
-import com.mall.item.dto.PageDto;
+import com.mall.item.dto.PageDTO;
 import com.mall.item.mapper.BrandMapper;
 import com.mall.item.pojo.Brand;
 import com.mall.item.service.BrandService;
@@ -23,7 +23,7 @@ public class BrandServiceImpl implements BrandService {
     private BrandMapper brandMapper;
 
     @Override
-    public PageResult<Brand> queryBrandByPage(PageDto pageDto) {
+    public PageResult<Brand> queryBrandByPage(PageDTO pageDto) {
         /**
          * 1.分页
          */
