@@ -1,4 +1,4 @@
-package com.mall.utils;
+package com.mall.common.base.utils;
 
 import java.lang.management.ManagementFactory;
 import java.net.InetAddress;

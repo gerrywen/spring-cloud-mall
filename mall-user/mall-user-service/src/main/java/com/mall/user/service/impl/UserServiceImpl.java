@@ -1,11 +1,11 @@
 package com.mall.user.service.impl;
 
-import com.mall.constant.RedisKey;
+import com.mall.common.base.constant.RedisKey;
 import com.mall.user.mapper.UserMapper;
 import com.mall.user.pojo.User;
 import com.mall.user.service.UserService;
-import com.mall.utils.CodecUtils;
-import com.mall.utils.JsonUtils;
+import com.mall.common.base.utils.CodecUtils;
+import com.mall.common.base.utils.JsonUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.factory.annotation.Autowired;

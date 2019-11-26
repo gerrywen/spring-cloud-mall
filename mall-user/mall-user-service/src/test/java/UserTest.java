@@ -1,7 +1,7 @@
 import com.mall.user.UserServiceApplication;
 import com.mall.user.mapper.UserMapper;
 import com.mall.user.pojo.User;
-import com.mall.utils.CodecUtils;
+import com.mall.common.base.utils.CodecUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

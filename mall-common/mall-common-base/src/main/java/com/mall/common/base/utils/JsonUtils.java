@@ -1,4 +1,4 @@
-package com.mall.utils;
+package com.mall.common.base.utils;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;

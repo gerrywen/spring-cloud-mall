@@ -1,6 +1,6 @@
 package com.mall.item.controller;
 
-import com.mall.pojo.PageResult;
+import com.mall.common.base.pojo.PageResult;
 import com.mall.item.dto.PageDTO;
 import com.mall.item.pojo.Brand;
 import com.mall.item.service.BrandService;

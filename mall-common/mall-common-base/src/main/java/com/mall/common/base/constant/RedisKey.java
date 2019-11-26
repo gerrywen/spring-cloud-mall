@@ -1,4 +1,4 @@
-package com.mall.constant;
+package com.mall.common.base.constant;
 
 /**
  * program: spring-cloud-mall->RedisKey

@@ -1,4 +1,4 @@
-package com.mall.controller;
+package com.mall.common.base.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

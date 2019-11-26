@@ -1,6 +1,6 @@
 package com.mall.item.dto;
 
-import com.mall.pojo.QueryByPageParameter;
+import com.mall.common.base.pojo.QueryByPageParameter;
 import io.swagger.annotations.ApiModel;
 
 @ApiModel(value="PageDTO",description="分页DTO")

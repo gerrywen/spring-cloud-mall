@@ -1,4 +1,4 @@
-package com.mall.config;
+package com.mall.common.base.config;
 
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.alibaba.fastjson.support.config.FastJsonConfig;

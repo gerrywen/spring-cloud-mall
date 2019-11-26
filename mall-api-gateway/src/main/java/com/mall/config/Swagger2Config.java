@@ -23,8 +23,8 @@ import java.util.List;
  * author: gerry
  * created: 2019-11-26 00:27
  **/
-//@Configuration
-//@EnableSwagger2
+@Configuration
+@EnableSwagger2
 public class Swagger2Config {
     /**
      * 获取配置文件数据

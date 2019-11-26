@@ -3,8 +3,6 @@ package com.mall.filter;
 import com.mall.auth.properties.JwtProperties;
 import com.mall.auth.utils.JwtUtils;
 import com.mall.config.FilterProperties;
-import com.mall.response.CodeMsg;
-import com.mall.response.Result;
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
 import com.netflix.zuul.exception.ZuulException;
@@ -14,10 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 
-import javax.servlet.FilterConfig;
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.util.*;
 
 /**

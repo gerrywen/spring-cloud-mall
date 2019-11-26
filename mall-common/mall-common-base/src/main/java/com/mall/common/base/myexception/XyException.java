@@ -1,4 +1,4 @@
-package com.mall.myexception;
+package com.mall.common.base.myexception;
 
 public enum  XyException {
     /**

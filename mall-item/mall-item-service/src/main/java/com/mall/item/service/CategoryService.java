@@ -1,7 +1,7 @@
 package com.mall.item.service;
 
 import com.mall.item.pojo.Category;
-import com.mall.myexception.MyException;
+import com.mall.common.base.myexception.MyException;
 
 import java.util.List;
 

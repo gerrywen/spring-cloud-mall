@@ -1,4 +1,4 @@
-package com.mall.pojo;
+package com.mall.common.base.pojo;
 
 import java.util.List;
 

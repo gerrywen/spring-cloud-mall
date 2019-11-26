@@ -1,4 +1,4 @@
-package com.mall.enums;
+package com.mall.common.base.enums;
 
 /**
  * program: chengjie-ts->ResultCode

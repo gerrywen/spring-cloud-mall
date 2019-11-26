@@ -1,4 +1,4 @@
-package com.mall.response;
+package com.mall.common.base.response;
 
 /**
  * program: spring-cloud-mall->Result

@@ -1,6 +1,6 @@
 package com.mall.user.api;
 
-import com.mall.config.FeignConfig;
+import com.mall.common.base.config.FeignConfig;
 import com.mall.user.api.hystrix.UserApiHystrix;
 import com.mall.user.pojo.User;
 import org.springframework.cloud.openfeign.FeignClient;

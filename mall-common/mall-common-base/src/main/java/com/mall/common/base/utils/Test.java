@@ -1,4 +1,4 @@
-package com.mall.utils;
+package com.mall.common.base.utils;
 
 import java.util.Arrays;
 import java.util.List;

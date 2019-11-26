@@ -1,6 +1,6 @@
 package com.mall.item.api;
 
-import com.mall.config.FeignConfig;
+import com.mall.common.base.config.FeignConfig;
 import com.mall.item.api.hystrix.BrandApiHystrix;
 import com.mall.item.pojo.Brand;
 import org.springframework.cloud.openfeign.FeignClient;
