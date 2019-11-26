@@ -15,13 +15,26 @@
 
     <dependencies>
 
-        <!--公共文件-->
+        <!--公共配置-->
         <dependency>
             <groupId>com.mall.common.base</groupId>
             <artifactId>mall-common-base</artifactId>
             <version>1.0.0-SNAPSHOT</version>
         </dependency>
-        <!--公共文件-->
+        <dependency>
+            <groupId>com.mall.common.redis</groupId>
+            <artifactId>mall-common-redis</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+        <!--公共配置-->
+
+        <!--配置管理依赖-->
+        <dependency>
+            <groupId>com.mall.config.util</groupId>
+            <artifactId>mall-config-util</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+        <!--配置管理依赖-->
 
         <dependency>
             <groupId>org.hibernate.validator</groupId>

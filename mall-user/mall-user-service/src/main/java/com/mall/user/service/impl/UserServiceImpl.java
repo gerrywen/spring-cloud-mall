@@ -1,6 +1,6 @@
 package com.mall.user.service.impl;
 
-import com.mall.common.base.constant.RedisKey;
+import com.mall.common.redis.constant.RedisKey;
 import com.mall.user.mapper.UserMapper;
 import com.mall.user.pojo.User;
 import com.mall.user.service.UserService;
