@@ -2,7 +2,7 @@ package com.mall.item.service.impl;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.mall.common.pojo.PageResult;
+import com.mall.pojo.PageResult;
 import com.mall.item.dto.PageDTO;
 import com.mall.item.mapper.BrandMapper;
 import com.mall.item.pojo.Brand;

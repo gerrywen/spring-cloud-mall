@@ -1,6 +1,6 @@
 package com.mall.item.service;
 
-import com.mall.common.pojo.PageResult;
+import com.mall.pojo.PageResult;
 import com.mall.item.dto.PageDTO;
 import com.mall.item.pojo.Brand;
 

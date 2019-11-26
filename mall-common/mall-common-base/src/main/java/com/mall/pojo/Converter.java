@@ -1,4 +1,4 @@
-package com.mall.parameter.pojo;
+package com.mall.pojo;
 
 import java.util.Collection;
 import java.util.List;

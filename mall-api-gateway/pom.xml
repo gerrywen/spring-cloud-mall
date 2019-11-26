@@ -34,8 +34,8 @@
 
         <!--公共配置-->
         <dependency>
-            <groupId>com.mall.common</groupId>
-            <artifactId>mall-common</artifactId>
+            <groupId>com.mall.common.base</groupId>
+            <artifactId>mall-common-base</artifactId>
             <version>1.0.0-SNAPSHOT</version>
         </dependency>
         <!--公共配置-->
