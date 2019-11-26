@@ -15,6 +15,7 @@
     <!--    子工程模块 -->
     <modules>
         <module>mall-common-base</module>
+        <module>mall-common-redis</module>
     </modules>
 
 </project>

@@ -1,6 +1,9 @@
 package com.mall.item.controller;
 
 import com.mall.common.base.pojo.PageResult;
+import com.mall.common.redis.constant.RedisKey;
+import com.mall.common.redis.enums.CtimsModelEnum;
+import com.mall.common.redis.utils.CommonRedisUtils;
 import com.mall.item.dto.PageDTO;
 import com.mall.item.pojo.Brand;
 import com.mall.item.service.BrandService;
@@ -20,6 +23,8 @@ public class BrandController {
     @Autowired
     private BrandService brandService;
 
+    @Autowired
+    private CommonRedisUtils redisUtils;
 
     /**
      * 分页查询品牌
@@ -40,7 +45,13 @@ public class BrandController {
 
     @GetMapping("/index")
     public String index() {
-        return "brand index";
+        // 存储数据
+        String key = RedisKey.STRING_ACCESS_TOKEN;
+        redisUtils.set(CtimsModelEnum.CTIMS_COMM_CAP, key, "value1value1value1value1value1", 7200);
+        // 获取数据
+        String val =  redisUtils.get(CtimsModelEnum.CTIMS_COMM_CAP, key);
+        System.out.println("val = " + val);
+        return "brand index：" + val;
     }
 
     @GetMapping("/info")
