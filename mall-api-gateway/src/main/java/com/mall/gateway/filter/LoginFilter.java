@@ -1,8 +1,8 @@
-package com.mall.filter;
+package com.mall.gateway.filter;
 
 import com.mall.auth.properties.JwtProperties;
 import com.mall.auth.utils.JwtUtils;
-import com.mall.config.FilterProperties;
+import com.mall.gateway.config.FilterProperties;
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
 import com.netflix.zuul.exception.ZuulException;
@@ -30,12 +30,6 @@ public class LoginFilter extends ZuulFilter {
 
     @Autowired
     private FilterProperties filterProperties;
-
-    private List<String> exclusions = new LinkedList<>();
-
-    private String tokenHeader;
-
-    private String tokenHead;
 
     @Override
     public String filterType() {
@@ -97,8 +91,9 @@ public class LoginFilter extends ZuulFilter {
 
     @Override
     public Object run() throws ZuulException {
-        tokenHeader = jwtProperties.getTokenHeader();
-        tokenHead = jwtProperties.getTokenHead();
+        String tokenHeader = jwtProperties.getTokenHeader();
+        String tokenHead = jwtProperties.getTokenHead();
+        String secret = jwtProperties.getSecret();
 
         //1.获取上下文
         RequestContext context = RequestContext.getCurrentContext();
@@ -106,14 +101,14 @@ public class LoginFilter extends ZuulFilter {
         HttpServletRequest httpRequest = context.getRequest();
         HttpServletRequest requestWrapper = new BodyReaderHttpServletRequestWrapper(httpRequest);
         // JWT存储的请求头
-        String authHeader = requestWrapper.getHeader(this.tokenHeader);
+        String authHeader = requestWrapper.getHeader(tokenHeader);
         // 过滤逻辑：判断是否有值，前缀是否正确
-        if (authHeader != null && authHeader.startsWith(this.tokenHead)) {
-            String authToken = authHeader.substring(this.tokenHead.length());// The part after "Bearer "
+        if (authHeader != null && authHeader.startsWith(tokenHead)) {
+            String authToken = authHeader.substring(tokenHead.length());// The part after "Bearer "
             //4.校验
             try{
                 //4.1 校验通过，放行
-                JwtUtils.getUserInfoFromToken(authToken);
+                JwtUtils.getUserInfoFromToken(authToken, secret);
             }catch (Exception e){
                 //4.2 校验不通过，返回403
                 context.setSendZuulResponse(false);

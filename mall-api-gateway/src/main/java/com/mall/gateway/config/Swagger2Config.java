@@ -1,4 +1,4 @@
-package com.mall.config;
+package com.mall.gateway.config;
 
 import com.mall.auth.properties.JwtProperties;
 import org.springframework.context.annotation.Bean;

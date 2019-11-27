@@ -1,4 +1,4 @@
-package com.mall.filter;
+package com.mall.gateway.filter;
 
 import javax.servlet.ReadListener;
 import javax.servlet.ServletInputStream;

@@ -1,4 +1,4 @@
-package com.mall.filter;
+package com.mall.gateway.filter;
 
 /**
  * program: spring-cloud-mall->SessionContants
