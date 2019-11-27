@@ -20,6 +20,7 @@
         <module>mall-common-util</module>
         <module>mall-authentication</module>
         <module>mall-user</module>
+        <module>mall-upload</module>
     </modules>
 
     <!--    继承spring-boot父版本号管理，这步和dependencyManagement 必须配置，否则子工程版本依赖会报错-->
@@ -43,7 +44,7 @@
         <pageHelper.starter.version>1.2.3</pageHelper.starter.version>
         <lombok.version>1.18.8</lombok.version>
         <mall.latest.version>1.0.0-SNAPSHOT</mall.latest.version>
-        <fastDFS.client.version>1.27-SNAPSHOT</fastDFS.client.version>
+        <fastDFS.client.version>1.26.7</fastDFS.client.version>
         <jpa.version>1.0</jpa.version>
         <springfox.version>2.9.2</springfox.version>
         <swagger.version>1.5.21</swagger.version>
@@ -100,6 +101,13 @@
                 <version>${mysql.version}</version>
             </dependency>
 
+            <!--FastDFS客户端-->
+            <dependency>
+                <groupId>com.github.tobato</groupId>
+                <artifactId>fastdfs-client</artifactId>
+                <version>${fastDFS.client.version}</version>
+            </dependency>
+
             <!-- redis-->
             <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-data-redis -->
             <dependency>
@@ -108,12 +116,12 @@
                 <version>${redis.version}</version>
             </dependency>
 
-            <!-- https://mvnrepository.com/artifact/org.csource/fastdfs-client-java -->
-            <dependency>
-                <groupId>org.csource</groupId>
-                <artifactId>fastdfs-client-java</artifactId>
-                <version>${fastDFS.client.version}</version>
-            </dependency>
+<!--            &lt;!&ndash; https://mvnrepository.com/artifact/org.csource/fastdfs-client-java &ndash;&gt;-->
+<!--            <dependency>-->
+<!--                <groupId>org.csource</groupId>-->
+<!--                <artifactId>fastdfs-client-java</artifactId>-->
+<!--                <version>${fastDFS.client.version}</version>-->
+<!--            </dependency>-->
 
             <!-- swagger文档 -->
             <!-- swagger cloud start -->
