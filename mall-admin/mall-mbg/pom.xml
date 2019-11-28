@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>mall-admin</artifactId>
+        <groupId>com.mall.admin</groupId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.mall.admin.mbg</groupId>
+    <artifactId>mall-mbg</artifactId>
+    <packaging>jar</packaging>
+
+    <dependencies>
+        <!-- MyBatis 生成器 -->
+        <!-- 可直接生成实体类、dao、mapper.xml文件 -->
+        <!-- https://blog.csdn.net/nishino_shou/article/details/81109740 -->
+        <dependency>
+            <groupId>org.mybatis.generator</groupId>
+            <artifactId>mybatis-generator-core</artifactId>
+        </dependency>
+        <!-- MyBatis-->
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis</artifactId>
+        </dependency>
+        <!--Mysql数据库驱动-->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+        </dependency>
+
+        <!-- swagger cloud start -->
+        <dependency>
+            <groupId>com.mall.swagger.util</groupId>
+            <artifactId>mall-swagger-util</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+        <!-- swagger cloud end -->
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.mybatis.generator</groupId>
+                <artifactId>mybatis-generator-maven-plugin</artifactId>
+                <version>1.3.7</version>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

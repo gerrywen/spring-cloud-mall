@@ -1,0 +1,133 @@
+server:
+  port: 8888
+spring:
+  application:
+    name: mall-admin
+  main:
+    allow-bean-definition-overriding: true # 当遇到相同的名字的时候，是否允许覆盖注册
+  # 数据库配置
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/leyou?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+    username: root
+    password: root
+    hikari:
+      maximum-pool-size: 20
+      minimum-idle: 10
+    druid:
+      initial-size: 5 #连接池初始化大小
+      min-idle: 10 #最小空闲连接数
+      max-active: 20 #最大连接数
+      web-stat-filter:
+        exclusions: "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*" #不统计这些请求数据
+      stat-view-servlet: #访问监控网页的登录用户名和密码
+        login-username: druid
+        login-password: druid
+  # 安全配置
+  security:
+    user:
+      name: admin
+      password: admin0102
+  # reids 配置, 目前配置在代码里面
+  redis:
+    #  redis-cli -h 47.98.184.122 -p 63791
+    host: 47.98.184.122
+    port: 63791
+    password:
+    database: 8
+    timeout: 20000ms # 超时
+    lettuce:
+      pool:
+        max-idle: 8
+        min-idle: 0
+        max-active: 8
+        max-wait: -1ms
+    cluster:
+      nodes: 127.0.0.1:6379
+      maxRedirects: 6
+  # rabbitmq 配置中心
+  rabbitmq:
+    #rabbitmq连接参数
+    #virtual-host: com.mall
+    username: admin
+    password: admin
+    host: 47.98.184.122
+    port: 5672
+    template:
+      retry:
+        enabled: true
+        max-interval: 210000ms
+        initial-interval: 10000ms
+        multiplier: 2
+    publisher-confirms: true
+# Eureka服务注册中心
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:10086/eureka
+    registry-fetch-interval-seconds: 5
+  instance:
+    instance-id: ${spring.application.name}:${server.port}
+    prefer-ip-address: true  #当你获取host时，返回的不是主机名，而是ip
+    ip-address: 127.0.0.1
+    lease-renewal-interval-in-seconds: 5
+    lease-expiration-duration-in-seconds: 15
+# Ribbon负载均衡
+ribbon:
+  ConnectTimeout: 4000 # 连接超时时间(ms)
+  ReadTimeout: 2000 # 通信超时时间(ms)
+  OkToRetryOnAllOperations: true # 是否对所有操作重试
+  MaxAutoRetriesNextServer: 1 # 同一服务不同实例的重试次数
+  MaxAutoRetries: 1 # 同一实例的重试次数
+# hystrix熔断器
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMillisecond: 10000 # 熔断超时时长：10000ms
+# 商城配置
+mall:
+  jwt:
+    token-header: Authorization #JWT存储的请求头
+    secret: JO6HN3GLE585G2FIG8V7VD6CK9B6T2Z5 #JWT加解密使用的密钥
+    expiration: 604800 #JWT的超期限时间(60*60*24)
+    token-head: Bearer  #JWT负载中拿到开头
+    #忽略JWT过滤器的请求
+    ignore-uri:
+      - /swagger-ui.html
+      - /swagger-resources
+      - /favicon.ico
+      - /v2/api-docs
+      - /webjars/springfox-swagger-ui
+      - /csrf
+# 日志
+logging:
+  level:
+    root: INFO #日志配置DEBUG,INFO,WARN,ERROR
+    com.mall.admin: debug
+#  file: demo_log.log #配置日志生成路径
+#  path: /var/logs #配置日志文件名称
+
+# 指定POJO/DAO扫描包来让mybatis自动扫描到自定义POJO/DAO
+mybatis:
+  type-aliases-package: com.mall.admin.*.dao
+  configuration:
+    map-underscore-to-camel-case: true # 整合mybatis开启驼峰法命名转换
+  mapper-locations:
+    - classpath:dao/*.xml
+    - classpath*:com/**/mapper/*.xml
+
+# 阿里云oss上传
+aliyun:
+  oss:
+    endpoint: oss-cn-shenzhen.aliyuncs.com # oss对外服务的访问域名
+    accessKeyId: test # 访问身份验证中用到用户标识
+    accessKeySecret: test # 用户用于加密签名字符串和oss用来验证签名字符串的密钥
+    bucketName: macro-oss # oss的存储空间
+    policy:
+      expire: 300 # 签名有效期(S)
+    maxSize: 10 # 上传文件大小(M)
+    callback: http://39.98.190.128:8080/aliyun/oss/callback # 文件上传成功后的回调地址
+    dir:
+      prefix: mall/images/ # 上传文件夹路径前缀

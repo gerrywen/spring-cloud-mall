@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>mall-admin</artifactId>
+        <groupId>com.mall.admin</groupId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.mall.admin.base</groupId>
+    <artifactId>mall-base</artifactId>
+    <packaging>jar</packaging>
+    <dependencies>
+        <!-- 安全配置 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+        <!-- 安全配置 -->
+
+        <!--JWT(Json Web Token)登录支持-->
+        <!-- https://blog.csdn.net/vbirdbest/article/details/83999188 -->
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt</artifactId>
+        </dependency>
+
+        <!--Hutool Java工具包-->
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+        </dependency>
+
+        <!--集成logstash-->
+        <dependency>
+            <groupId>net.logstash.logback</groupId>
+            <artifactId>logstash-logback-encoder</artifactId>
+        </dependency>
+
+        <!--公共基础模块-->
+        <dependency>
+            <groupId>com.mall.common.base</groupId>
+            <artifactId>mall-common-base</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+        <!--公共基础模块-->
+
+        <!--swagger-->
+        <dependency>
+            <groupId>com.mall.swagger.util</groupId>
+            <artifactId>mall-swagger-util</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+        <!--swagger-->
+    </dependencies>
+
+</project>

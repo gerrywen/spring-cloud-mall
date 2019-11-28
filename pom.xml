@@ -21,6 +21,7 @@
         <module>mall-authentication</module>
         <module>mall-user</module>
         <module>mall-upload</module>
+        <module>mall-admin</module>
     </modules>
 
     <!--    继承spring-boot父版本号管理，这步和dependencyManagement 必须配置，否则子工程版本依赖会报错-->
@@ -40,6 +41,8 @@
         <spring-cloud.version>Greenwich.RELEASE</spring-cloud.version>
         <mybatis.starter.version>2.1.0</mybatis.starter.version>
         <mapper.starter.version>2.1.5</mapper.starter.version>
+        <mybatis.core.version>1.3.7</mybatis.core.version>
+        <mybatis.version>3.4.6</mybatis.version>
         <mysql.version>8.0.16</mysql.version>
         <pageHelper.starter.version>1.2.3</pageHelper.starter.version>
         <lombok.version>1.18.8</lombok.version>
@@ -60,6 +63,8 @@
         <fastjson.version>1.2.62</fastjson.version>
         <spring.webmvc.version>5.1.8.RELEASE</spring.webmvc.version>
         <redis.version>2.2.0.RELEASE</redis.version>
+        <hutool.version>4.5.7</hutool.version>
+        <logstash.logback.version>5.3</logstash.logback.version>
         <pagehelper.version>5.1.8</pagehelper.version>
     </properties>
 
@@ -94,6 +99,17 @@
                 <artifactId>pagehelper-spring-boot-starter</artifactId>
                 <version>${pageHelper.starter.version}</version>
             </dependency>
+            <dependency>
+                <groupId>org.mybatis.generator</groupId>
+                <artifactId>mybatis-generator-core</artifactId>
+                <version>${mybatis.core.version}</version>
+            </dependency>
+            <!-- MyBatis-->
+            <dependency>
+                <groupId>org.mybatis</groupId>
+                <artifactId>mybatis</artifactId>
+                <version>${mybatis.version}</version>
+            </dependency>
             <!-- mysql驱动 -->
             <dependency>
                 <groupId>mysql</groupId>
@@ -122,6 +138,20 @@
 <!--                <artifactId>fastdfs-client-java</artifactId>-->
 <!--                <version>${fastDFS.client.version}</version>-->
 <!--            </dependency>-->
+
+            <!--Hutool Java工具包-->
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-all</artifactId>
+                <version>${hutool.version}</version>
+            </dependency>
+
+            <!--集成logstash-->
+            <dependency>
+                <groupId>net.logstash.logback</groupId>
+                <artifactId>logstash-logback-encoder</artifactId>
+                <version>${logstash.logback.version}</version>
+            </dependency>
 
             <!-- swagger文档 -->
             <!-- swagger cloud start -->
@@ -227,6 +257,12 @@
                 <version>2.1.5.RELEASE</version>
             </dependency>
             <!-- 分页-->
+            <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-math3 -->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-math3</artifactId>
+                <version>3.6.1</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 

@@ -1,0 +1,5 @@
+jdbc.driverLocation=D:/apache/apache-maven-3.6.1/repository/mysql/mysql-connector-java/8.0.16/mysql-connector-java-8.0.16.jar
+jdbc.driverClass=com.mysql.cj.jdbc.Driver
+jdbc.connectionURL=jdbc:mysql://47.98.184.122:33061/cj_ts?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+jdbc.userId=ts
+jdbc.password=ts112233

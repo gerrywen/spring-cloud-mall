@@ -1,0 +1,777 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mall.admin.mapper.UmsUserMapper">
+  <resultMap id="BaseResultMap" type="com.mall.admin.model.UmsUser">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="create_user" jdbcType="VARCHAR" property="createUser" />
+    <result column="resource_id" jdbcType="VARCHAR" property="resourceId" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="update_user" jdbcType="VARCHAR" property="updateUser" />
+    <result column="verify_status" jdbcType="BIT" property="verifyStatus" />
+    <result column="version" jdbcType="INTEGER" property="version" />
+    <result column="user_type" jdbcType="BIT" property="userType" />
+    <result column="account" jdbcType="VARCHAR" property="account" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="nickname" jdbcType="VARCHAR" property="nickname" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="salt" jdbcType="VARCHAR" property="salt" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="entry_time" jdbcType="DATE" property="entryTime" />
+    <result column="birthday" jdbcType="DATE" property="birthday" />
+    <result column="gender" jdbcType="BIT" property="gender" />
+    <result column="mobile" jdbcType="VARCHAR" property="mobile" />
+    <result column="avatar" jdbcType="VARCHAR" property="avatar" />
+    <result column="level" jdbcType="BIT" property="level" />
+    <result column="money" jdbcType="DECIMAL" property="money" />
+    <result column="score" jdbcType="INTEGER" property="score" />
+    <result column="lasted_time" jdbcType="TIMESTAMP" property="lastedTime" />
+    <result column="login_time" jdbcType="TIMESTAMP" property="loginTime" />
+    <result column="login_count" jdbcType="INTEGER" property="loginCount" />
+    <result column="login_ip" jdbcType="VARCHAR" property="loginIp" />
+    <result column="lockout_time" jdbcType="TIMESTAMP" property="lockoutTime" />
+    <result column="login_failure" jdbcType="BIT" property="loginFailure" />
+    <result column="changed_time" jdbcType="TIMESTAMP" property="changedTime" />
+    <result column="change_account" jdbcType="BIT" property="changeAccount" />
+    <result column="company" jdbcType="VARCHAR" property="company" />
+    <result column="card_type" jdbcType="BIT" property="cardType" />
+    <result column="card_no" jdbcType="VARCHAR" property="cardNo" />
+    <result column="card_url" jdbcType="VARCHAR" property="cardUrl" />
+    <result column="card_back_url" jdbcType="VARCHAR" property="cardBackUrl" />
+    <result column="token" jdbcType="VARCHAR" property="token" />
+    <result column="memo" jdbcType="VARCHAR" property="memo" />
+    <result column="status" jdbcType="BIT" property="status" />
+    <result column="is_locked_out" jdbcType="BIT" property="isLockedOut" />
+    <result column="is_expert" jdbcType="BIT" property="isExpert" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, create_time, create_user, resource_id, update_time, update_user, verify_status, 
+    version, user_type, account, username, nickname, password, salt, email, entry_time, 
+    birthday, gender, mobile, avatar, level, money, score, lasted_time, login_time, login_count, 
+    login_ip, lockout_time, login_failure, changed_time, change_account, company, card_type, 
+    card_no, card_url, card_back_url, token, memo, status, is_locked_out, is_expert
+  </sql>
+  <select id="selectByExample" parameterType="com.mall.admin.model.UmsUserExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from ums_user
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ums_user
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from ums_user
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.mall.admin.model.UmsUserExample">
+    delete from ums_user
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.mall.admin.model.UmsUser">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into ums_user (create_time, create_user, resource_id, 
+      update_time, update_user, verify_status, 
+      version, user_type, account, 
+      username, nickname, password, 
+      salt, email, entry_time, 
+      birthday, gender, mobile, 
+      avatar, level, money, score, 
+      lasted_time, login_time, login_count, 
+      login_ip, lockout_time, login_failure, 
+      changed_time, change_account, company, 
+      card_type, card_no, card_url, 
+      card_back_url, token, memo, 
+      status, is_locked_out, is_expert)
+    values (#{createTime,jdbcType=TIMESTAMP}, #{createUser,jdbcType=VARCHAR}, #{resourceId,jdbcType=VARCHAR}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{updateUser,jdbcType=VARCHAR}, #{verifyStatus,jdbcType=BIT}, 
+      #{version,jdbcType=INTEGER}, #{userType,jdbcType=BIT}, #{account,jdbcType=VARCHAR}, 
+      #{username,jdbcType=VARCHAR}, #{nickname,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{salt,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{entryTime,jdbcType=DATE}, 
+      #{birthday,jdbcType=DATE}, #{gender,jdbcType=BIT}, #{mobile,jdbcType=VARCHAR}, 
+      #{avatar,jdbcType=VARCHAR}, #{level,jdbcType=BIT}, #{money,jdbcType=DECIMAL}, #{score,jdbcType=INTEGER}, 
+      #{lastedTime,jdbcType=TIMESTAMP}, #{loginTime,jdbcType=TIMESTAMP}, #{loginCount,jdbcType=INTEGER}, 
+      #{loginIp,jdbcType=VARCHAR}, #{lockoutTime,jdbcType=TIMESTAMP}, #{loginFailure,jdbcType=BIT}, 
+      #{changedTime,jdbcType=TIMESTAMP}, #{changeAccount,jdbcType=BIT}, #{company,jdbcType=VARCHAR}, 
+      #{cardType,jdbcType=BIT}, #{cardNo,jdbcType=VARCHAR}, #{cardUrl,jdbcType=VARCHAR}, 
+      #{cardBackUrl,jdbcType=VARCHAR}, #{token,jdbcType=VARCHAR}, #{memo,jdbcType=VARCHAR}, 
+      #{status,jdbcType=BIT}, #{isLockedOut,jdbcType=BIT}, #{isExpert,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mall.admin.model.UmsUser">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Integer">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into ums_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="createUser != null">
+        create_user,
+      </if>
+      <if test="resourceId != null">
+        resource_id,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="updateUser != null">
+        update_user,
+      </if>
+      <if test="verifyStatus != null">
+        verify_status,
+      </if>
+      <if test="version != null">
+        version,
+      </if>
+      <if test="userType != null">
+        user_type,
+      </if>
+      <if test="account != null">
+        account,
+      </if>
+      <if test="username != null">
+        username,
+      </if>
+      <if test="nickname != null">
+        nickname,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+      <if test="salt != null">
+        salt,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="entryTime != null">
+        entry_time,
+      </if>
+      <if test="birthday != null">
+        birthday,
+      </if>
+      <if test="gender != null">
+        gender,
+      </if>
+      <if test="mobile != null">
+        mobile,
+      </if>
+      <if test="avatar != null">
+        avatar,
+      </if>
+      <if test="level != null">
+        level,
+      </if>
+      <if test="money != null">
+        money,
+      </if>
+      <if test="score != null">
+        score,
+      </if>
+      <if test="lastedTime != null">
+        lasted_time,
+      </if>
+      <if test="loginTime != null">
+        login_time,
+      </if>
+      <if test="loginCount != null">
+        login_count,
+      </if>
+      <if test="loginIp != null">
+        login_ip,
+      </if>
+      <if test="lockoutTime != null">
+        lockout_time,
+      </if>
+      <if test="loginFailure != null">
+        login_failure,
+      </if>
+      <if test="changedTime != null">
+        changed_time,
+      </if>
+      <if test="changeAccount != null">
+        change_account,
+      </if>
+      <if test="company != null">
+        company,
+      </if>
+      <if test="cardType != null">
+        card_type,
+      </if>
+      <if test="cardNo != null">
+        card_no,
+      </if>
+      <if test="cardUrl != null">
+        card_url,
+      </if>
+      <if test="cardBackUrl != null">
+        card_back_url,
+      </if>
+      <if test="token != null">
+        token,
+      </if>
+      <if test="memo != null">
+        memo,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="isLockedOut != null">
+        is_locked_out,
+      </if>
+      <if test="isExpert != null">
+        is_expert,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createUser != null">
+        #{createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="resourceId != null">
+        #{resourceId,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUser != null">
+        #{updateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="verifyStatus != null">
+        #{verifyStatus,jdbcType=BIT},
+      </if>
+      <if test="version != null">
+        #{version,jdbcType=INTEGER},
+      </if>
+      <if test="userType != null">
+        #{userType,jdbcType=BIT},
+      </if>
+      <if test="account != null">
+        #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="nickname != null">
+        #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="salt != null">
+        #{salt,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="entryTime != null">
+        #{entryTime,jdbcType=DATE},
+      </if>
+      <if test="birthday != null">
+        #{birthday,jdbcType=DATE},
+      </if>
+      <if test="gender != null">
+        #{gender,jdbcType=BIT},
+      </if>
+      <if test="mobile != null">
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="avatar != null">
+        #{avatar,jdbcType=VARCHAR},
+      </if>
+      <if test="level != null">
+        #{level,jdbcType=BIT},
+      </if>
+      <if test="money != null">
+        #{money,jdbcType=DECIMAL},
+      </if>
+      <if test="score != null">
+        #{score,jdbcType=INTEGER},
+      </if>
+      <if test="lastedTime != null">
+        #{lastedTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="loginTime != null">
+        #{loginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="loginCount != null">
+        #{loginCount,jdbcType=INTEGER},
+      </if>
+      <if test="loginIp != null">
+        #{loginIp,jdbcType=VARCHAR},
+      </if>
+      <if test="lockoutTime != null">
+        #{lockoutTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="loginFailure != null">
+        #{loginFailure,jdbcType=BIT},
+      </if>
+      <if test="changedTime != null">
+        #{changedTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="changeAccount != null">
+        #{changeAccount,jdbcType=BIT},
+      </if>
+      <if test="company != null">
+        #{company,jdbcType=VARCHAR},
+      </if>
+      <if test="cardType != null">
+        #{cardType,jdbcType=BIT},
+      </if>
+      <if test="cardNo != null">
+        #{cardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="cardUrl != null">
+        #{cardUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="cardBackUrl != null">
+        #{cardBackUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="token != null">
+        #{token,jdbcType=VARCHAR},
+      </if>
+      <if test="memo != null">
+        #{memo,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=BIT},
+      </if>
+      <if test="isLockedOut != null">
+        #{isLockedOut,jdbcType=BIT},
+      </if>
+      <if test="isExpert != null">
+        #{isExpert,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.mall.admin.model.UmsUserExample" resultType="java.lang.Long">
+    select count(*) from ums_user
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update ums_user
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.createTime != null">
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.createUser != null">
+        create_user = #{record.createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="record.resourceId != null">
+        resource_id = #{record.resourceId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.updateTime != null">
+        update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updateUser != null">
+        update_user = #{record.updateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="record.verifyStatus != null">
+        verify_status = #{record.verifyStatus,jdbcType=BIT},
+      </if>
+      <if test="record.version != null">
+        version = #{record.version,jdbcType=INTEGER},
+      </if>
+      <if test="record.userType != null">
+        user_type = #{record.userType,jdbcType=BIT},
+      </if>
+      <if test="record.account != null">
+        account = #{record.account,jdbcType=VARCHAR},
+      </if>
+      <if test="record.username != null">
+        username = #{record.username,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nickname != null">
+        nickname = #{record.nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.password != null">
+        password = #{record.password,jdbcType=VARCHAR},
+      </if>
+      <if test="record.salt != null">
+        salt = #{record.salt,jdbcType=VARCHAR},
+      </if>
+      <if test="record.email != null">
+        email = #{record.email,jdbcType=VARCHAR},
+      </if>
+      <if test="record.entryTime != null">
+        entry_time = #{record.entryTime,jdbcType=DATE},
+      </if>
+      <if test="record.birthday != null">
+        birthday = #{record.birthday,jdbcType=DATE},
+      </if>
+      <if test="record.gender != null">
+        gender = #{record.gender,jdbcType=BIT},
+      </if>
+      <if test="record.mobile != null">
+        mobile = #{record.mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="record.avatar != null">
+        avatar = #{record.avatar,jdbcType=VARCHAR},
+      </if>
+      <if test="record.level != null">
+        level = #{record.level,jdbcType=BIT},
+      </if>
+      <if test="record.money != null">
+        money = #{record.money,jdbcType=DECIMAL},
+      </if>
+      <if test="record.score != null">
+        score = #{record.score,jdbcType=INTEGER},
+      </if>
+      <if test="record.lastedTime != null">
+        lasted_time = #{record.lastedTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.loginTime != null">
+        login_time = #{record.loginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.loginCount != null">
+        login_count = #{record.loginCount,jdbcType=INTEGER},
+      </if>
+      <if test="record.loginIp != null">
+        login_ip = #{record.loginIp,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lockoutTime != null">
+        lockout_time = #{record.lockoutTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.loginFailure != null">
+        login_failure = #{record.loginFailure,jdbcType=BIT},
+      </if>
+      <if test="record.changedTime != null">
+        changed_time = #{record.changedTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.changeAccount != null">
+        change_account = #{record.changeAccount,jdbcType=BIT},
+      </if>
+      <if test="record.company != null">
+        company = #{record.company,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cardType != null">
+        card_type = #{record.cardType,jdbcType=BIT},
+      </if>
+      <if test="record.cardNo != null">
+        card_no = #{record.cardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cardUrl != null">
+        card_url = #{record.cardUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cardBackUrl != null">
+        card_back_url = #{record.cardBackUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.token != null">
+        token = #{record.token,jdbcType=VARCHAR},
+      </if>
+      <if test="record.memo != null">
+        memo = #{record.memo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.status != null">
+        status = #{record.status,jdbcType=BIT},
+      </if>
+      <if test="record.isLockedOut != null">
+        is_locked_out = #{record.isLockedOut,jdbcType=BIT},
+      </if>
+      <if test="record.isExpert != null">
+        is_expert = #{record.isExpert,jdbcType=BIT},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update ums_user
+    set id = #{record.id,jdbcType=INTEGER},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      create_user = #{record.createUser,jdbcType=VARCHAR},
+      resource_id = #{record.resourceId,jdbcType=VARCHAR},
+      update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      update_user = #{record.updateUser,jdbcType=VARCHAR},
+      verify_status = #{record.verifyStatus,jdbcType=BIT},
+      version = #{record.version,jdbcType=INTEGER},
+      user_type = #{record.userType,jdbcType=BIT},
+      account = #{record.account,jdbcType=VARCHAR},
+      username = #{record.username,jdbcType=VARCHAR},
+      nickname = #{record.nickname,jdbcType=VARCHAR},
+      password = #{record.password,jdbcType=VARCHAR},
+      salt = #{record.salt,jdbcType=VARCHAR},
+      email = #{record.email,jdbcType=VARCHAR},
+      entry_time = #{record.entryTime,jdbcType=DATE},
+      birthday = #{record.birthday,jdbcType=DATE},
+      gender = #{record.gender,jdbcType=BIT},
+      mobile = #{record.mobile,jdbcType=VARCHAR},
+      avatar = #{record.avatar,jdbcType=VARCHAR},
+      level = #{record.level,jdbcType=BIT},
+      money = #{record.money,jdbcType=DECIMAL},
+      score = #{record.score,jdbcType=INTEGER},
+      lasted_time = #{record.lastedTime,jdbcType=TIMESTAMP},
+      login_time = #{record.loginTime,jdbcType=TIMESTAMP},
+      login_count = #{record.loginCount,jdbcType=INTEGER},
+      login_ip = #{record.loginIp,jdbcType=VARCHAR},
+      lockout_time = #{record.lockoutTime,jdbcType=TIMESTAMP},
+      login_failure = #{record.loginFailure,jdbcType=BIT},
+      changed_time = #{record.changedTime,jdbcType=TIMESTAMP},
+      change_account = #{record.changeAccount,jdbcType=BIT},
+      company = #{record.company,jdbcType=VARCHAR},
+      card_type = #{record.cardType,jdbcType=BIT},
+      card_no = #{record.cardNo,jdbcType=VARCHAR},
+      card_url = #{record.cardUrl,jdbcType=VARCHAR},
+      card_back_url = #{record.cardBackUrl,jdbcType=VARCHAR},
+      token = #{record.token,jdbcType=VARCHAR},
+      memo = #{record.memo,jdbcType=VARCHAR},
+      status = #{record.status,jdbcType=BIT},
+      is_locked_out = #{record.isLockedOut,jdbcType=BIT},
+      is_expert = #{record.isExpert,jdbcType=BIT}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mall.admin.model.UmsUser">
+    update ums_user
+    <set>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createUser != null">
+        create_user = #{createUser,jdbcType=VARCHAR},
+      </if>
+      <if test="resourceId != null">
+        resource_id = #{resourceId,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUser != null">
+        update_user = #{updateUser,jdbcType=VARCHAR},
+      </if>
+      <if test="verifyStatus != null">
+        verify_status = #{verifyStatus,jdbcType=BIT},
+      </if>
+      <if test="version != null">
+        version = #{version,jdbcType=INTEGER},
+      </if>
+      <if test="userType != null">
+        user_type = #{userType,jdbcType=BIT},
+      </if>
+      <if test="account != null">
+        account = #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null">
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="nickname != null">
+        nickname = #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="salt != null">
+        salt = #{salt,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="entryTime != null">
+        entry_time = #{entryTime,jdbcType=DATE},
+      </if>
+      <if test="birthday != null">
+        birthday = #{birthday,jdbcType=DATE},
+      </if>
+      <if test="gender != null">
+        gender = #{gender,jdbcType=BIT},
+      </if>
+      <if test="mobile != null">
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="avatar != null">
+        avatar = #{avatar,jdbcType=VARCHAR},
+      </if>
+      <if test="level != null">
+        level = #{level,jdbcType=BIT},
+      </if>
+      <if test="money != null">
+        money = #{money,jdbcType=DECIMAL},
+      </if>
+      <if test="score != null">
+        score = #{score,jdbcType=INTEGER},
+      </if>
+      <if test="lastedTime != null">
+        lasted_time = #{lastedTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="loginTime != null">
+        login_time = #{loginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="loginCount != null">
+        login_count = #{loginCount,jdbcType=INTEGER},
+      </if>
+      <if test="loginIp != null">
+        login_ip = #{loginIp,jdbcType=VARCHAR},
+      </if>
+      <if test="lockoutTime != null">
+        lockout_time = #{lockoutTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="loginFailure != null">
+        login_failure = #{loginFailure,jdbcType=BIT},
+      </if>
+      <if test="changedTime != null">
+        changed_time = #{changedTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="changeAccount != null">
+        change_account = #{changeAccount,jdbcType=BIT},
+      </if>
+      <if test="company != null">
+        company = #{company,jdbcType=VARCHAR},
+      </if>
+      <if test="cardType != null">
+        card_type = #{cardType,jdbcType=BIT},
+      </if>
+      <if test="cardNo != null">
+        card_no = #{cardNo,jdbcType=VARCHAR},
+      </if>
+      <if test="cardUrl != null">
+        card_url = #{cardUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="cardBackUrl != null">
+        card_back_url = #{cardBackUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="token != null">
+        token = #{token,jdbcType=VARCHAR},
+      </if>
+      <if test="memo != null">
+        memo = #{memo,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=BIT},
+      </if>
+      <if test="isLockedOut != null">
+        is_locked_out = #{isLockedOut,jdbcType=BIT},
+      </if>
+      <if test="isExpert != null">
+        is_expert = #{isExpert,jdbcType=BIT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mall.admin.model.UmsUser">
+    update ums_user
+    set create_time = #{createTime,jdbcType=TIMESTAMP},
+      create_user = #{createUser,jdbcType=VARCHAR},
+      resource_id = #{resourceId,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      update_user = #{updateUser,jdbcType=VARCHAR},
+      verify_status = #{verifyStatus,jdbcType=BIT},
+      version = #{version,jdbcType=INTEGER},
+      user_type = #{userType,jdbcType=BIT},
+      account = #{account,jdbcType=VARCHAR},
+      username = #{username,jdbcType=VARCHAR},
+      nickname = #{nickname,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      salt = #{salt,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      entry_time = #{entryTime,jdbcType=DATE},
+      birthday = #{birthday,jdbcType=DATE},
+      gender = #{gender,jdbcType=BIT},
+      mobile = #{mobile,jdbcType=VARCHAR},
+      avatar = #{avatar,jdbcType=VARCHAR},
+      level = #{level,jdbcType=BIT},
+      money = #{money,jdbcType=DECIMAL},
+      score = #{score,jdbcType=INTEGER},
+      lasted_time = #{lastedTime,jdbcType=TIMESTAMP},
+      login_time = #{loginTime,jdbcType=TIMESTAMP},
+      login_count = #{loginCount,jdbcType=INTEGER},
+      login_ip = #{loginIp,jdbcType=VARCHAR},
+      lockout_time = #{lockoutTime,jdbcType=TIMESTAMP},
+      login_failure = #{loginFailure,jdbcType=BIT},
+      changed_time = #{changedTime,jdbcType=TIMESTAMP},
+      change_account = #{changeAccount,jdbcType=BIT},
+      company = #{company,jdbcType=VARCHAR},
+      card_type = #{cardType,jdbcType=BIT},
+      card_no = #{cardNo,jdbcType=VARCHAR},
+      card_url = #{cardUrl,jdbcType=VARCHAR},
+      card_back_url = #{cardBackUrl,jdbcType=VARCHAR},
+      token = #{token,jdbcType=VARCHAR},
+      memo = #{memo,jdbcType=VARCHAR},
+      status = #{status,jdbcType=BIT},
+      is_locked_out = #{isLockedOut,jdbcType=BIT},
+      is_expert = #{isExpert,jdbcType=BIT}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
