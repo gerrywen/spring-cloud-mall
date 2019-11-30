@@ -19,7 +19,7 @@ import java.util.List;
  * created: 2019-08-14 17:04
  **/
 @RestController
-@Api(tags = "UmsRoleController", value = "后台用户角色管理")
+@Api(value = "UmsRoleController", tags = "auth-后台用户角色管理")
 @RequestMapping("/role")
 public class UmsRoleController {
     @Autowired

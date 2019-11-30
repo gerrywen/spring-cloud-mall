@@ -22,7 +22,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @RestController
-@Api(tags = "UmsAdminController", value = "auth-后台用户管理")
+@Api(value = "UmsAdminController", tags = "auth-后台用户管理")
 @RequestMapping("/admin")
 public class UmsAdminController {
 

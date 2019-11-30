@@ -19,7 +19,7 @@ import java.util.List;
  * created: 2019-08-14 17:04
  **/
 @RestController
-@Api(tags = "UmsPermissionController",value = "auth-后台用户权限管理")
+@Api(value = "UmsPermissionController",tags = "auth-后台用户权限管理")
 @RequestMapping("/permission")
 public class UmsPermissionController {
     @Autowired
