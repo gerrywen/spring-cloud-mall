@@ -60,8 +60,8 @@ public class Swagger2Config {
         return new ApiInfoBuilder()
                 .title("开源商城系统后台系统")
                 .description("开源商城系统后台")
-                .contact("ts")
-                .version("1.0")
+                .contact("mall")
+                .version("1.0.0")
                 .build();
     }
 
