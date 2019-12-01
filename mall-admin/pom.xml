@@ -18,6 +18,8 @@
         <module>mall-auth-interface</module>
         <module>mall-base</module>
         <module>mall-mbg</module>
+        <module>mall-product-interface</module>
+        <module>mall-product-service</module>
     </modules>
 
 
