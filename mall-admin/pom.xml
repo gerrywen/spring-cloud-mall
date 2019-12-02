@@ -20,6 +20,8 @@
         <module>mall-mbg</module>
         <module>mall-product-interface</module>
         <module>mall-product-service</module>
+        <module>mall-subject-interface</module>
+        <module>mall-subject-service</module>
     </modules>
 
 
