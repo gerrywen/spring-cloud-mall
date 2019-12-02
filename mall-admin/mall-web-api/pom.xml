@@ -39,6 +39,14 @@
         </dependency>
         <!--管理员权限模块-->
 
+        <!--商品模块-->
+        <dependency>
+            <groupId>com.mall.admin.product.service</groupId>
+            <artifactId>mall-product-service</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+        <!--商品模块-->
+
         <!--配置管理依赖-->
         <dependency>
             <groupId>com.mall.config.util</groupId>

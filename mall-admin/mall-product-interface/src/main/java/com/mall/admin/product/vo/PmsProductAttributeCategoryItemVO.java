@@ -1,4 +1,4 @@
-package com.mall.admin.product.dto;
+package com.mall.admin.product.vo;
 
 
 import com.mall.admin.model.PmsProductAttribute;
@@ -10,7 +10,7 @@ import java.util.List;
  * 包含有分类下属性的dto
  * Created by macro on 2018/5/24.
  */
-public class PmsProductAttributeCategoryItemDTO extends PmsProductAttributeCategory {
+public class PmsProductAttributeCategoryItemVO extends PmsProductAttributeCategory {
     private List<PmsProductAttribute> productAttributeList;
 
     public List<PmsProductAttribute> getProductAttributeList() {
