@@ -55,6 +55,13 @@
         </dependency>
         <!--专题模块-->
 
+        <!--专题模块-->
+        <dependency>
+            <groupId>com.mall.admin.marketing.service</groupId>
+            <artifactId>mall-marketing-service</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+        <!--专题模块-->
 
         <!--配置管理依赖-->
         <dependency>

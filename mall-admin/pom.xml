@@ -22,6 +22,8 @@
         <module>mall-product-service</module>
         <module>mall-subject-interface</module>
         <module>mall-subject-service</module>
+        <module>mall-marketing-interface</module>
+        <module>mall-marketing-service</module>
     </modules>
 
 
