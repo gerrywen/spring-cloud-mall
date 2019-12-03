@@ -3,6 +3,8 @@ package com.mall.admin.subject.service.impl;
 import com.mall.admin.mapper.CmsPrefrenceAreaMapper;
 import com.mall.admin.model.CmsPrefrenceArea;
 import com.mall.admin.model.CmsPrefrenceAreaExample;
+import com.mall.admin.model.CmsPrefrenceAreaProductRelation;
+import com.mall.admin.subject.dao.CmsPrefrenceAreaProductRelationDao;
 import com.mall.admin.subject.service.CmsPrefrenceAreaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,8 +20,16 @@ public class CmsPrefrenceAreaServiceImpl implements CmsPrefrenceAreaService {
     @Autowired
     private CmsPrefrenceAreaMapper prefrenceAreaMapper;
 
+    @Autowired
+    private CmsPrefrenceAreaProductRelationDao prefrenceAreaProductRelationDao;
+
     @Override
     public List<CmsPrefrenceArea> listAll() {
         return prefrenceAreaMapper.selectByExample(new CmsPrefrenceAreaExample());
+    }
+
+    @Override
+    public int insertList(List<CmsPrefrenceAreaProductRelation> prefrenceAreaProductRelationList) {
+        return prefrenceAreaProductRelationDao.insertList(prefrenceAreaProductRelationList);
     }
 }

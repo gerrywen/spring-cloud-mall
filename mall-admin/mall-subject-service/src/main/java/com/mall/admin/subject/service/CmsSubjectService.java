@@ -1,6 +1,7 @@
 package com.mall.admin.subject.service;
 
 import com.mall.admin.model.CmsSubject;
+import com.mall.admin.model.CmsSubjectProductRelation;
 
 import java.util.List;
 
@@ -18,4 +19,11 @@ public interface CmsSubjectService {
      * 分页查询专题
      */
     List<CmsSubject> list(String keyword, Integer pageNum, Integer pageSize);
+
+    /**
+     * 插入专题商品
+     * @param subjectProductRelationList
+     * @return
+     */
+    int insertList(List<CmsSubjectProductRelation> subjectProductRelationList);
 }

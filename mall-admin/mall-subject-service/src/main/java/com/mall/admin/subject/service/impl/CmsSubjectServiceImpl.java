@@ -4,6 +4,8 @@ import com.github.pagehelper.PageHelper;
 import com.mall.admin.mapper.CmsSubjectMapper;
 import com.mall.admin.model.CmsSubject;
 import com.mall.admin.model.CmsSubjectExample;
+import com.mall.admin.model.CmsSubjectProductRelation;
+import com.mall.admin.subject.dao.CmsSubjectProductRelationDao;
 import com.mall.admin.subject.service.CmsSubjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,6 +22,9 @@ public class CmsSubjectServiceImpl implements CmsSubjectService {
     @Autowired
     private CmsSubjectMapper subjectMapper;
 
+    @Autowired
+    private CmsSubjectProductRelationDao subjectProductRelationDao;
+
     @Override
     public List<CmsSubject> listAll() {
         return subjectMapper.selectByExample(new CmsSubjectExample());
@@ -34,5 +39,10 @@ public class CmsSubjectServiceImpl implements CmsSubjectService {
             criteria.andTitleLike("%" + keyword + "%");
         }
         return subjectMapper.selectByExample(example);
+    }
+
+    @Override
+    public int insertList(List<CmsSubjectProductRelation> subjectProductRelationList) {
+        return subjectProductRelationDao.insertList(subjectProductRelationList);
     }
 }

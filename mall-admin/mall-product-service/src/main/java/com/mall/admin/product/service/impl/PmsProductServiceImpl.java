@@ -8,6 +8,8 @@ import com.mall.admin.product.dto.PmsProductDTO;
 import com.mall.admin.product.dto.PmsProductQueryDTO;
 import com.mall.admin.product.service.PmsProductService;
 import com.mall.admin.product.vo.PmsProductVO;
+import com.mall.admin.subject.dao.CmsPrefrenceAreaProductRelationDao;
+import com.mall.admin.subject.dao.CmsSubjectProductRelationDao;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,12 +52,12 @@ public class PmsProductServiceImpl implements PmsProductService {
     private PmsProductAttributeValueDao productAttributeValueDao;
     @Autowired
     private PmsProductAttributeValueMapper productAttributeValueMapper;
-//    @Autowired
-//    private CmsSubjectProductRelationDao subjectProductRelationDao;
+    @Autowired
+    private CmsSubjectProductRelationDao subjectProductRelationDao;
     @Autowired
     private CmsSubjectProductRelationMapper subjectProductRelationMapper;
-//    @Autowired
-//    private CmsPrefrenceAreaProductRelationDao prefrenceAreaProductRelationDao;
+    @Autowired
+    private CmsPrefrenceAreaProductRelationDao prefrenceAreaProductRelationDao;
     @Autowired
     private CmsPrefrenceAreaProductRelationMapper prefrenceAreaProductRelationMapper;
     @Autowired
@@ -85,9 +87,9 @@ public class PmsProductServiceImpl implements PmsProductService {
         //添加商品参数,添加自定义商品规格
         relateAndInsertList(productAttributeValueDao, productParam.getProductAttributeValueList(), productId);
         //关联专题
-//        relateAndInsertList(subjectProductRelationDao, productParam.getSubjectProductRelationList(), productId);
+        relateAndInsertList(subjectProductRelationDao, productParam.getSubjectProductRelationList(), productId);
         //关联优选
-//        relateAndInsertList(prefrenceAreaProductRelationDao, productParam.getPrefrenceAreaProductRelationList(), productId);
+        relateAndInsertList(prefrenceAreaProductRelationDao, productParam.getPrefrenceAreaProductRelationList(), productId);
         count = 1;
         return count;
     }
@@ -152,12 +154,12 @@ public class PmsProductServiceImpl implements PmsProductService {
         CmsSubjectProductRelationExample subjectProductRelationExample = new CmsSubjectProductRelationExample();
         subjectProductRelationExample.createCriteria().andProductIdEqualTo(id);
         subjectProductRelationMapper.deleteByExample(subjectProductRelationExample);
-//        relateAndInsertList(subjectProductRelationDao, productParam.getSubjectProductRelationList(), id);
+        relateAndInsertList(subjectProductRelationDao, productParam.getSubjectProductRelationList(), id);
         //关联优选
         CmsPrefrenceAreaProductRelationExample prefrenceAreaExample = new CmsPrefrenceAreaProductRelationExample();
         prefrenceAreaExample.createCriteria().andProductIdEqualTo(id);
         prefrenceAreaProductRelationMapper.deleteByExample(prefrenceAreaExample);
-//        relateAndInsertList(prefrenceAreaProductRelationDao, productParam.getPrefrenceAreaProductRelationList(), id);
+        relateAndInsertList(prefrenceAreaProductRelationDao, productParam.getPrefrenceAreaProductRelationList(), id);
         count = 1;
         return count;
     }
@@ -316,9 +318,9 @@ public class PmsProductServiceImpl implements PmsProductService {
             productAttributeValueDao.insertList(productAttributeValueList);
         }
         //关联专题
-//        relateAndInsertList(subjectProductRelationDao, productParam.getSubjectProductRelationList(), productId);
+        relateAndInsertList(subjectProductRelationDao, productParam.getSubjectProductRelationList(), productId);
         //关联优选
-//        relateAndInsertList(prefrenceAreaProductRelationDao, productParam.getPrefrenceAreaProductRelationList(), productId);
+        relateAndInsertList(prefrenceAreaProductRelationDao, productParam.getPrefrenceAreaProductRelationList(), productId);
         count = 1;
         return count;
     }

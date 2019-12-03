@@ -21,13 +21,21 @@
         </dependency>
         <!--数据库等服务依赖-->
 
-        <!--管理员服务接口-->
+        <!--商品服务接口-->
         <dependency>
             <groupId>com.mall.admin.product.interface</groupId>
             <artifactId>mall-product-interface</artifactId>
             <version>${mall.latest.version}</version>
         </dependency>
-        <!--管理员服务接口-->
+        <!--商品服务接口-->
+
+        <!--专题服务接口-->
+        <dependency>
+            <groupId>com.mall.admin.subject.service</groupId>
+            <artifactId>mall-subject-service</artifactId>
+            <version>${mall.latest.version}</version>
+        </dependency>
+        <!--专题服务接口-->
 
     </dependencies>
 
