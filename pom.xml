@@ -66,6 +66,7 @@
         <hutool.version>4.5.7</hutool.version>
         <logstash.logback.version>5.3</logstash.logback.version>
         <pagehelper.version>5.1.8</pagehelper.version>
+        <aliyun-oss.version>2.5.0</aliyun-oss.version>
     </properties>
 
 
@@ -267,6 +268,12 @@
                 <groupId>com.google.guava</groupId>
                 <artifactId>guava</artifactId>
                 <version>26.0-jre</version>
+            </dependency>
+            <!-- 阿里云OSS -->
+            <dependency>
+                <groupId>com.aliyun.oss</groupId>
+                <artifactId>aliyun-sdk-oss</artifactId>
+                <version>${aliyun-oss.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

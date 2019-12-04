@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
  * Created by macro on 2018/10/16.
  */
 @RestController
-@Api(value = "OmsOrderSettingController", tags = "marketing-订单设置管理")
+@Api(value = "OmsOrderSettingController", tags = "order-订单设置管理")
 @RequestMapping("/orderSetting")
 public class OmsOrderSettingController {
     @Autowired

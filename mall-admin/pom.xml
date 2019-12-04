@@ -26,6 +26,7 @@
         <module>mall-marketing-service</module>
         <module>mall-order-interface</module>
         <module>mall-order-service</module>
+        <module>mall-oss-service</module>
     </modules>
 
 

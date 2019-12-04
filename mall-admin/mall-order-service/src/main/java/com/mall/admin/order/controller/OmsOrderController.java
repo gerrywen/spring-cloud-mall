@@ -21,7 +21,7 @@ import java.util.List;
  * Created by macro on 2018/10/11.
  */
 @RestController
-@Api(value = "OmsOrderController", tags = "marketing-订单管理")
+@Api(value = "OmsOrderController", tags = "order-订单管理")
 @RequestMapping("/order")
 public class OmsOrderController {
     @Autowired
