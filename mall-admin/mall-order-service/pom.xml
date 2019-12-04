@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>mall-admin</artifactId>
+        <groupId>com.mall.admin</groupId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.mall.admin.order.service</groupId>
+    <artifactId>mall-order-service</artifactId>
+
+    <dependencies>
+
+        <!--数据库等服务依赖-->
+        <dependency>
+            <groupId>com.mall.service.util</groupId>
+            <artifactId>mall-service-uitl</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+        <!--数据库等服务依赖-->
+
+        <!--订单服务接口-->
+        <dependency>
+            <groupId>com.mall.admin.order.interface</groupId>
+            <artifactId>mall-order-interface</artifactId>
+            <version>${mall.latest.version}</version>
+        </dependency>
+        <!--订单服务接口-->
+
+    </dependencies>
+
+</project>

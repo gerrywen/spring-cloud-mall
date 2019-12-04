@@ -3,3 +3,4 @@ application.yml
 application-prod.yml
 application-local.yml
 application-test.yml
+bootstrap.yml
