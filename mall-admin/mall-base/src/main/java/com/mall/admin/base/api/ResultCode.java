@@ -20,19 +20,19 @@ public enum ResultCode implements IErrorCode {
     VALIDATE_FAILED(422, "参数验证失败"), //  [POST/PUT/PATCH] 当创建一个对象时，发生一个验证错误。
     FAILED(500, "操作失败,内部错误"); // [*]：服务器发生错误，用户将无法判断发出的请求是否成功。
 
-    private long status;
+    private long code;
     private String message;
 
-    private ResultCode(long status, String message) {
-        this.status = status;
+    private ResultCode(long code, String message) {
+        this.code = code;
         this.message = message;
     }
 
-    public long getStatus() {
-        return this.status;
+    public long getCode() {
+        return code;
     }
 
     public String getMessage() {
-        return this.message;
+        return message;
     }
 }

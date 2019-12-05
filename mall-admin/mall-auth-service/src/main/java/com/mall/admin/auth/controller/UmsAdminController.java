@@ -125,6 +125,22 @@ public class UmsAdminController {
     }
 
     /**
+     * 获取当前登录用户信息
+     *
+     * @return 用户信息
+     */
+    @ApiOperation(value = "获取当前登录用户信息")
+    @GetMapping("/info")
+    public CommonResult<UmsAdminInfoVO> getAdminInfo() {
+        UmsAdmin umsAdmin = adminService.getAdminByUsername("admin");
+        UmsAdminInfoVO umsAdminInfoVO = new UmsAdminInfoVO();
+        umsAdminInfoVO.setUsername(umsAdmin.getUsername());
+        umsAdminInfoVO.setRoles(new String[]{"TEST"});
+        umsAdminInfoVO.setIcon(umsAdmin.getIcon());
+        return CommonResult.success(umsAdminInfoVO);
+    }
+
+    /**
      * 登出功能
      *
      * @return 成功
