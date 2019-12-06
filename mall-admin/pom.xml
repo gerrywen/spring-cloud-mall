@@ -27,6 +27,7 @@
         <module>mall-order-interface</module>
         <module>mall-order-service</module>
         <module>mall-oss-service</module>
+        <module>mall-elk-search</module>
     </modules>
 
 

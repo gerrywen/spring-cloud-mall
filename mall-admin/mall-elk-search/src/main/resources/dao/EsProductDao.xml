@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mall.admin.elk.search.dao.EsProductDao">
+    <resultMap id="esProductListMap" type="com.mall.admin.elk.search.domain.EsProduct" autoMapping="true">
+        <id column="id" jdbcType="BIGINT" property="id" />
+        <collection property="attrValueList" columnPrefix="attr_" ofType="com.mall.admin.elk.search.domain.EsProductAttributeValue">
+            <id column="id" property="id" jdbcType="BIGINT"/>
+            <result column="product_attribute_id" property="productAttributeId" jdbcType="BIGINT"/>
+            <result column="value" property="value" jdbcType="VARCHAR"/>
+            <result column="type" property="type"/>
+            <result column="name" property="name"/>
+        </collection>
+    </resultMap>
+    <select id="getAllEsProductList" resultMap="esProductListMap">
+        SELECT
+            p.id id,
+            p.product_sn productSn,
+            p.brand_id brandId,
+            p.brand_name brandName,
+            p.product_category_id productCategoryId,
+            p.product_category_name productCategoryName,
+            p.pic pic,
+            p.NAME NAME,
+            p.sub_title subTitle,
+            p.price price,
+            p.sale sale,
+            p.new_status newStatus,
+            p.recommand_status recommandStatus,
+            p.stock stock,
+            p.promotion_type promotionType,
+            p.keywords keywords,
+            p.sort sort,
+            pav.id attr_id,
+            pav.
+            VALUE
+            attr_value,
+            pav.product_attribute_id attr_product_attribute_id,
+            pa.type attr_type,
+            pa.NAME attr_name
+        FROM
+            pms_product p
+        LEFT JOIN pms_product_attribute_value pav ON p.id = pav.product_id
+        LEFT JOIN pms_product_attribute pa ON pav.product_attribute_id = pa.id
+        WHERE
+            delete_status = 0
+        AND publish_status = 1
+        <if test="id!=null">
+            AND p.id=#{id}
+        </if>
+    </select>
+</mapper>
