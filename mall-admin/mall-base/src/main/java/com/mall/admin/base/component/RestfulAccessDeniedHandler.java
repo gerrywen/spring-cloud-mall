@@ -2,8 +2,7 @@ package com.mall.admin.base.component;
 
 
 import cn.hutool.json.JSONUtil;
-import com.mall.common.base.response.CodeMsg;
-import com.mall.common.base.response.Result;
+import com.mall.admin.base.api.CommonResult;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.stereotype.Component;
@@ -27,8 +26,7 @@ public class RestfulAccessDeniedHandler implements AccessDeniedHandler{
                        AccessDeniedException e) throws IOException, ServletException {
         response.setCharacterEncoding("UTF-8");
         response.setContentType("application/json");
-
-        response.getWriter().println(JSONUtil.parse(Result.error(new CodeMsg(401,e.getMessage()))));
+        response.getWriter().println(JSONUtil.parse(CommonResult.forbidden(e.getMessage())));
         response.getWriter().flush();
     }
 }

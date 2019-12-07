@@ -1,8 +1,7 @@
 package com.mall.admin.base.component;
 
 import cn.hutool.json.JSONUtil;
-import com.mall.common.base.response.CodeMsg;
-import com.mall.common.base.response.Result;
+import com.mall.admin.base.api.CommonResult;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.stereotype.Component;
@@ -26,7 +25,7 @@ public class RestAuthenticationEntryPoint implements AuthenticationEntryPoint {
                          AuthenticationException authException) throws IOException, ServletException {
         response.setCharacterEncoding("UTF-8");
         response.setContentType("application/json");
-        response.getWriter().println(JSONUtil.parse(Result.error(new CodeMsg(403,authException.getMessage()))));
+        response.getWriter().println(JSONUtil.parse(CommonResult.unauthorized(authException.getMessage())));
         response.getWriter().flush(); // 刷新(flush)缓冲的输出流，其实flush()也是通过out.write()将数据写入底层输出流的。
     }
 }
