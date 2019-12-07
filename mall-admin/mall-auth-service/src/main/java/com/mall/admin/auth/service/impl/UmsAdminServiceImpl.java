@@ -168,7 +168,7 @@ public class UmsAdminServiceImpl implements UmsAdminService {
             UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
             SecurityContextHolder.getContext().setAuthentication(authentication);
             token = jwtTokenUtil.generateToken(userDetails);
-//            updateLoginTimeByUsername(username);
+            updateLoginTimeByUsername(username);
             insertLoginLog(username);
         } catch (AuthenticationException e) {
             log.warn("登录异常:{}", e.getMessage());
@@ -212,6 +212,17 @@ public class UmsAdminServiceImpl implements UmsAdminService {
         String token = oldToken.substring(tokenHead.length());
         if (jwtTokenUtil.canRefresh(token)) {
             return jwtTokenUtil.refreshToken(token);
+        }
+        return null;
+    }
+
+    @Override
+    public String getUserNameFromToken(String token) {
+        token = token.substring(tokenHead.length());
+        String username = jwtTokenUtil.getUserNameFromToken(token);
+        UserDetails userDetails = userDetailsService.loadUserByUsername(username);
+        if (jwtTokenUtil.validateToken(token, userDetails)) {
+            return username;
         }
         return null;
     }

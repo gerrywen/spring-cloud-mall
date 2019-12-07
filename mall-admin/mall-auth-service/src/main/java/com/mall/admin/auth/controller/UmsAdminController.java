@@ -131,8 +131,10 @@ public class UmsAdminController {
      */
     @ApiOperation(value = "获取当前登录用户信息")
     @GetMapping("/info")
-    public CommonResult<UmsAdminInfoVO> getAdminInfo() {
-        UmsAdmin umsAdmin = adminService.getAdminByUsername("admin");
+    public CommonResult<UmsAdminInfoVO> getAdminInfo(HttpServletRequest request) {
+        String token = request.getHeader(tokenHeader);
+        String userName = adminService.getUserNameFromToken(token);
+        UmsAdmin umsAdmin = adminService.getAdminByUsername(userName);
         UmsAdminInfoVO umsAdminInfoVO = new UmsAdminInfoVO();
         umsAdminInfoVO.setUsername(umsAdmin.getUsername());
         umsAdminInfoVO.setRoles(new String[]{"TEST"});

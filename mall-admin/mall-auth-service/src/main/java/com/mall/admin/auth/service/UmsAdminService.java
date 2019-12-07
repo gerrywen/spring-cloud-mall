@@ -45,6 +45,12 @@ public interface UmsAdminService {
     String refreshToken(String oldToken);
 
     /**
+     * 获取用户登录名称
+     * @param token
+     * @return
+     */
+    String getUserNameFromToken(String token);
+    /**
      * 根据用户id获取用户
      * @param id 管理员ID
      * @return 管理员信息
