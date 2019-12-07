@@ -28,6 +28,8 @@
         <module>mall-order-service</module>
         <module>mall-oss-service</module>
         <module>mall-elk-search</module>
+        <module>mall-member-interface</module>
+        <module>mall-member-service</module>
     </modules>
 
 
