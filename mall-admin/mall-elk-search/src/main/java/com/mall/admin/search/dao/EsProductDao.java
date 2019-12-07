@@ -1,6 +1,6 @@
-package com.mall.admin.elk.search.dao;
+package com.mall.admin.search.dao;
 
-import com.mall.admin.elk.search.domain.EsProduct;
+import com.mall.admin.search.domain.EsProduct;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

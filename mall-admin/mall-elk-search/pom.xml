@@ -29,52 +29,17 @@
             <version>1.0.0-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
+        <dependency>
+            <groupId>com.mall.common.redis</groupId>
+            <artifactId>mall-common-redis</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
         <!--公共配置-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-elasticsearch</artifactId>
-            <exclusions>
-                <!-- https://mvnrepository.com/artifact/org.elasticsearch.client/transport -->
-                <exclusion>
-                    <groupId>org.elasticsearch.client</groupId>
-                    <artifactId>transport</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.elasticsearch.plugin</groupId>
-                    <artifactId>transport-netty4-client</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.elasticsearch/elasticsearch -->
-        <dependency>
-            <groupId>org.elasticsearch</groupId>
-            <artifactId>elasticsearch</artifactId>
-            <version>7.4.0</version>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/org.elasticsearch.client/elasticsearch-rest-high-level-client -->
-        <dependency>
-            <groupId>org.elasticsearch.client</groupId>
-            <artifactId>elasticsearch-rest-high-level-client</artifactId>
-            <version>7.4.0</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.elasticsearch</groupId>
-                    <artifactId>elasticsearch</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>org.elasticsearch.client</groupId>
-                    <artifactId>elasticsearch-rest-client</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-
-        <!-- https://mvnrepository.com/artifact/org.elasticsearch.client/elasticsearch-rest-client -->
-        <dependency>
-            <groupId>org.elasticsearch.client</groupId>
-            <artifactId>elasticsearch-rest-client</artifactId>
-            <version>7.4.0</version>
-        </dependency>
-
 
     </dependencies>
 </project>

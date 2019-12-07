@@ -1,4 +1,4 @@
-package com.mall.admin.elk.search.domain;
+package com.mall.admin.search.domain;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;

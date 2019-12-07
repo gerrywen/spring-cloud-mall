@@ -16,6 +16,7 @@ import tk.mybatis.spring.annotation.MapperScan;
 @MapperScan(basePackages = {"com.mall.admin.mapper","com.mall.admin.*.dao"})
 public class RunAdminApplication {
     public static void main(String[] args) {
+        System.setProperty("es.set.netty.runtime.available.processors", "false");
         SpringApplication.run(RunAdminApplication.class, args);
     }
 }

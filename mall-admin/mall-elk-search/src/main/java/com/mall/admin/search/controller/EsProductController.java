@@ -1,10 +1,10 @@
-package com.mall.admin.elk.search.controller;
+package com.mall.admin.search.controller;
 
 import com.mall.admin.base.api.CommonPage;
 import com.mall.admin.base.api.CommonResult;
-import com.mall.admin.elk.search.domain.EsProduct;
-import com.mall.admin.elk.search.domain.EsProductRelatedInfo;
-import com.mall.admin.elk.search.service.EsProductService;
+import com.mall.admin.search.domain.EsProduct;
+import com.mall.admin.search.domain.EsProductRelatedInfo;
+import com.mall.admin.search.service.EsProductService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;

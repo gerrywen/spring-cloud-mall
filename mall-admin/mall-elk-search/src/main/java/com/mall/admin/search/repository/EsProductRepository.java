@@ -1,6 +1,6 @@
-package com.mall.admin.elk.search.repository;
+package com.mall.admin.search.repository;
 
-import com.mall.admin.elk.search.domain.EsProduct;
+import com.mall.admin.search.domain.EsProduct;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;

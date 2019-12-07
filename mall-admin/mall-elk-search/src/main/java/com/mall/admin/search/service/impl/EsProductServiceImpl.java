@@ -1,11 +1,11 @@
-package com.mall.admin.elk.search.service.impl;
+package com.mall.admin.search.service.impl;
 
-import com.mall.admin.elk.search.dao.EsProductDao;
-import com.mall.admin.elk.search.domain.EsProduct;
-import com.mall.admin.elk.search.domain.EsProductRelatedInfo;
-import com.mall.admin.elk.search.domain.ProductAttr;
-import com.mall.admin.elk.search.repository.EsProductRepository;
-import com.mall.admin.elk.search.service.EsProductService;
+import com.mall.admin.search.dao.EsProductDao;
+import com.mall.admin.search.domain.EsProduct;
+import com.mall.admin.search.domain.EsProductRelatedInfo;
+import com.mall.admin.search.domain.ProductAttr;
+import com.mall.admin.search.repository.EsProductRepository;
+import com.mall.admin.search.service.EsProductService;
 import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.common.lucene.search.function.FunctionScoreQuery;
 import org.elasticsearch.index.query.BoolQueryBuilder;

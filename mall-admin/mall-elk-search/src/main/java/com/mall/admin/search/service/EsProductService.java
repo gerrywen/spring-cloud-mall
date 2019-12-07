@@ -1,7 +1,7 @@
-package com.mall.admin.elk.search.service;
+package com.mall.admin.search.service;
 
-import com.mall.admin.elk.search.domain.EsProduct;
-import com.mall.admin.elk.search.domain.EsProductRelatedInfo;
+import com.mall.admin.search.domain.EsProduct;
+import com.mall.admin.search.domain.EsProductRelatedInfo;
 import org.springframework.data.domain.Page;
 
 import java.util.List;
