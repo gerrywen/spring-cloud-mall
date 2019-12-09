@@ -18,6 +18,7 @@
         <module>mall-netflix-util</module>
         <module>mall-service-uitl</module>
         <module>mall-swagger-util</module>
+        <module>mall-zipkin-uitl</module>
     </modules>
 
 </project>

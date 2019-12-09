@@ -14,6 +14,14 @@
 
     <dependencies>
 
+        <!--zipkin日志收集-->
+        <dependency>
+            <groupId>com.mall.zipkin.util</groupId>
+            <artifactId>mall-zipkin-uitl</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+        <!--zipkin日志收集-->
+
         <!--数据库等服务依赖-->
         <dependency>
             <groupId>com.mall.service.util</groupId>

@@ -21,6 +21,14 @@
         </dependency>
         <!--Spring Cloud Eureka客户端-->
 
+        <!--zipkin日志收集-->
+        <dependency>
+            <groupId>com.mall.zipkin.util</groupId>
+            <artifactId>mall-zipkin-uitl</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+        <!--zipkin日志收集-->
+
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-openfeign</artifactId>
