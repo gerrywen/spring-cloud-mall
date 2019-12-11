@@ -13,6 +13,14 @@
     <artifactId>mall-authentication-service</artifactId>
 
     <dependencies>
+        <!--monitor admin 监控-->
+        <dependency>
+            <groupId>de.codecentric</groupId>
+            <artifactId>spring-boot-admin-starter-client</artifactId>
+            <version>${de.codecentric.version}</version>
+        </dependency>
+        <!--monitor admin 监控-->
+
         <!--zipkin日志收集-->
         <dependency>
             <groupId>com.mall.zipkin.util</groupId>

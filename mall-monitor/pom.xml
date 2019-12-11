@@ -3,49 +3,48 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>mall-item</artifactId>
-        <groupId>com.mall.item</groupId>
+        <artifactId>mall</artifactId>
+        <groupId>com.mall.parent</groupId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.mall.item.service</groupId>
-    <artifactId>mall-item-service</artifactId>
+    <groupId>com.mall.monitor</groupId>
+    <artifactId>mall-monitor</artifactId>
+
 
     <dependencies>
 
-        <!--monitor admin 监控-->
+        <!--Spring Cloud Eureka客户端-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </dependency>
+        <!--Spring Cloud Eureka客户端-->
+
+        <!--添加安全认证-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+        <!--添加安全认证-->
+
+        <!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-netflix-eureka-server -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
         <dependency>
             <groupId>de.codecentric</groupId>
-            <artifactId>spring-boot-admin-starter-client</artifactId>
+            <artifactId>spring-boot-admin-starter-server</artifactId>
             <version>${de.codecentric.version}</version>
         </dependency>
-        <!--monitor admin 监控-->
 
-        <!--zipkin日志收集-->
         <dependency>
-            <groupId>com.mall.zipkin.util</groupId>
-            <artifactId>mall-zipkin-uitl</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
+            <groupId>de.codecentric</groupId>
+            <artifactId>spring-boot-admin-server-ui</artifactId>
+            <version>${de.codecentric.version}</version>
         </dependency>
-        <!--zipkin日志收集-->
-
-        <!--数据库等服务依赖-->
-        <dependency>
-            <groupId>com.mall.service.util</groupId>
-            <artifactId>mall-service-uitl</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
-        </dependency>
-        <!--数据库等服务依赖-->
-
-        <!--商品接口-->
-        <dependency>
-            <groupId>com.mall.item.interface</groupId>
-            <artifactId>mall-item-interface</artifactId>
-            <version>${mall.latest.version}</version>
-        </dependency>
-        <!--商品接口-->
-
 
         <!--配置管理依赖-->
         <dependency>
@@ -54,8 +53,8 @@
             <version>1.0.0-SNAPSHOT</version>
         </dependency>
         <!--配置管理依赖-->
-    </dependencies>
 
+    </dependencies>
     <build>
         <finalName>${project.artifactId}</finalName>
         <plugins>
@@ -95,4 +94,5 @@
             </plugin>
         </plugins>
     </build>
+
 </project>

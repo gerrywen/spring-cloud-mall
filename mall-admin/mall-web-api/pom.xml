@@ -13,6 +13,13 @@
     <artifactId>mall-web-api</artifactId>
 
     <dependencies>
+        <!--monitor admin 监控-->
+        <dependency>
+            <groupId>de.codecentric</groupId>
+            <artifactId>spring-boot-admin-starter-client</artifactId>
+            <version>${de.codecentric.version}</version>
+        </dependency>
+        <!--monitor admin 监控-->
 
         <!--Spring Cloud Eureka客户端-->
         <dependency>

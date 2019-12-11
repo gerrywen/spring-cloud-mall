@@ -1,0 +1,13 @@
+spring:
+  cloud:
+    config:
+      name: monitor
+      profile: dev
+      label: master
+      uri: http://127.0.0.1:10011
+      username: config
+      password: config@@123456
+
+
+
+
