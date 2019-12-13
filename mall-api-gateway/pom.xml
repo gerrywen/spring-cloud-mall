@@ -54,8 +54,8 @@
 
         <!--引入jwt相关配置-->
         <dependency>
-            <groupId>com.mall.authentication-service</groupId>
-            <artifactId>mall-authentication-service</artifactId>
+            <groupId>com.mall.authentication.common</groupId>
+            <artifactId>mall-authentication-common</artifactId>
             <version>1.0.0-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>

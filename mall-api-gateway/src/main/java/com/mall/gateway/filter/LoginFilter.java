@@ -1,8 +1,8 @@
 package com.mall.gateway.filter;
 
-import com.mall.auth.properties.JwtProperties;
 import com.mall.auth.utils.JwtUtils;
-import com.mall.gateway.config.FilterProperties;
+import com.mall.gateway.properties.FilterProperties;
+import com.mall.gateway.properties.JwtProperties;
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
 import com.netflix.zuul.exception.ZuulException;
