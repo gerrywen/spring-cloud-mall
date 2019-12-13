@@ -3,14 +3,14 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>mall-item</artifactId>
-        <groupId>com.mall.item</groupId>
+        <artifactId>mall-subject</artifactId>
+        <groupId>com.mall.subject</groupId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.mall.item.interface</groupId>
-    <artifactId>mall-item-interface</artifactId>
+    <groupId>com.mall.cms.interface</groupId>
+    <artifactId>mall-cms-interface</artifactId>
     <packaging>jar</packaging>
 
     <dependencies>
