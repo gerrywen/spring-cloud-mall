@@ -53,6 +53,10 @@ public class CommonRedisUtils {
         return (T) redisTemplate.boundHashOps(formatKey(modelEnum, key)).get(field);
     }
 
+    public <T> T getMap(CtimsModelEnum modelEnum, String key) {
+        return (T) redisTemplate.boundHashOps(formatKey(modelEnum, key));
+    }
+
     public Set<String> getAllKeys(CtimsModelEnum modelEnum, String regKey) {
         return redisTemplate.keys(formatKey(modelEnum, regKey));
     }

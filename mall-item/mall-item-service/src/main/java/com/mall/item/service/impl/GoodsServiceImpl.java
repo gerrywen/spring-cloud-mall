@@ -3,6 +3,9 @@ package com.mall.item.service.impl;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.mall.common.base.pojo.PageResult;
+import com.mall.common.redis.constant.RedisKey;
+import com.mall.common.redis.enums.CtimsModelEnum;
+import com.mall.common.redis.utils.CommonRedisUtils;
 import com.mall.item.bo.SeckillParameter;
 import com.mall.item.bo.SpuBo;
 import com.mall.item.dto.SpuPageDTO;
@@ -38,6 +41,8 @@ import java.util.stream.Collectors;
 @Service
 public class GoodsServiceImpl implements GoodsService {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(GoodsServiceImpl.class);
+
     @Autowired
     private BrandMapper brandMapper;
 
@@ -63,11 +68,7 @@ public class GoodsServiceImpl implements GoodsService {
     private SeckillMapper seckillMapper;
 
     @Autowired
-    private StringRedisTemplate stringRedisTemplate;
-
-    private static final String KEY_PREFIX = "leyou:seckill:stock";
-
-    private static final Logger LOGGER = LoggerFactory.getLogger(GoodsServiceImpl.class);
+    private CommonRedisUtils redisUtils;
 
     /**
      * 分页查询
@@ -505,9 +506,9 @@ public class GoodsServiceImpl implements GoodsService {
         if (seckillGoods == null || seckillGoods.size() == 0){
             return;
         }
-        BoundHashOperations<String, Object, Object> hashOperations = this.stringRedisTemplate.boundHashOps(KEY_PREFIX);
-        if (hashOperations.hasKey(KEY_PREFIX)){
-            hashOperations.delete(KEY_PREFIX);
+        BoundHashOperations<String,Object,Object> hashOperations = redisUtils.getMap(CtimsModelEnum.CTIMS_SECKILL_CAP, RedisKey.SECKILL_INTEGER_STOCK);
+        if (hashOperations.hasKey(RedisKey.SECKILL_INTEGER_STOCK)){
+            hashOperations.delete(RedisKey.SECKILL_INTEGER_STOCK);
         }
         seckillGoods.forEach(goods -> hashOperations.put(goods.getSkuId().toString(),goods.getStock().toString()));
     }

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>mall-seckill</artifactId>
+        <groupId>com.mall.seckill</groupId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.mall.seckill.interface</groupId>
+    <artifactId>mall-seckill-interface</artifactId>
+    <dependencies>
+
+
+        <!--权限公共接口-->
+        <dependency>
+            <groupId>com.mall.authentication.common</groupId>
+            <artifactId>mall-authentication-common</artifactId>
+            <version>${mall.latest.version}</version>
+        </dependency>
+        <!--权限公共接口-->
+
+        <!--商品接口-->
+        <dependency>
+            <groupId>com.mall.item.interface</groupId>
+            <artifactId>mall-item-interface</artifactId>
+            <version>${mall.latest.version}</version>
+        </dependency>
+        <!--商品接口-->
+
+        <!--订单接口-->
+        <dependency>
+            <groupId>com.mall.oms.interface</groupId>
+            <artifactId>mall-oms-interface</artifactId>
+            <version>${mall.latest.version}</version>
+        </dependency>
+        <!--订单接口-->
+
+        <dependency>
+            <groupId>javax.persistence</groupId>
+            <artifactId>persistence-api</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+        </dependency>
+
+        <!--公共配置-->
+        <dependency>
+            <groupId>com.mall.common.base</groupId>
+            <artifactId>mall-common-base</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.mall.common.redis</groupId>
+            <artifactId>mall-common-redis</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.mall.admin.mbg</groupId>
+            <artifactId>mall-mbg</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+        <!--公共配置-->
+
+        <!--swagger cloud 配置-->
+        <dependency>
+            <groupId>com.mall.swagger.util</groupId>
+            <artifactId>mall-swagger-util</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+        <!--swagger cloud 配置-->
+    </dependencies>
+
+</project>

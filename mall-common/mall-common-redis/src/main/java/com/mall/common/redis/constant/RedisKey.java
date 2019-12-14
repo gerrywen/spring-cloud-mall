@@ -27,4 +27,16 @@ public class RedisKey {
      * 订单pay
      */
     public static final String ORDER_STRING_PAY_URL = "mall.order.pay.url.";
+
+
+    /**
+     * 秒杀地址
+     */
+    public static final String SECKILL_STRING_PATH = "mall:seckill:path";
+
+    /**
+     * 库存数量
+     */
+    public static final String SECKILL_INTEGER_STOCK = "mall:seckill:stock";
+
 }

@@ -26,6 +26,7 @@
         <module>mall-marketing</module>
         <module>mall-order</module>
         <module>mall-subject</module>
+        <module>mall-seckill</module>
     </modules>
 
     <!--    继承spring-boot父版本号管理，这步和dependencyManagement 必须配置，否则子工程版本依赖会报错-->

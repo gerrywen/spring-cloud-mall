@@ -101,7 +101,7 @@ public class PayHelper {
                 String url = result.get("code_url");
                 // 将付款地址缓存，时间为10分钟
                 try {
-                    redisUtils.set(CtimsModelEnum.CTIMS_ORDER_CAP, key, url, 60 * 10);
+                    redisUtils.set(CtimsModelEnum.CTIMS_ORDER_CAP, key, url,  10);
                 } catch (Exception e) {
                     logger.error("缓存付款链接异常,订单编号：{}", orderId, e);
                 }
