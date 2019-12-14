@@ -18,6 +18,7 @@ public class CodeMsg {
      */
     public static CodeMsg UNAUTHORIZED = new CodeMsg(401, "未授权");
     public static CodeMsg FORBIDDEN = new CodeMsg(403, "Forbidden");
+    public static CodeMsg NOT_FOUND = new CodeMsg(404, "Not Found");
 
     public static CodeMsg SERVER_ERROR = new CodeMsg(500100, "服务端异常");
     public static CodeMsg BIND_ERROR = new CodeMsg(500101, "参数校验异常：%s");
@@ -35,8 +36,10 @@ public class CodeMsg {
     public static CodeMsg PASSWORD_ERROR = new CodeMsg(500215, "密码错误");
 
 
-    //商品模块 5003XX
-
+    /**
+     * 商品模块 5003XX
+     */
+    public static CodeMsg BRAND_NOT_EXIST = new CodeMsg(500300, "品牌不存在");
 
     /**
      * 订单模块 5004XX
