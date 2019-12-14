@@ -21,4 +21,10 @@ public class RedisKey {
      * 用户信息
      */
     public static final String USER_INFO_KEY_PREFIX = "mall:user:info";
+
+
+    /**
+     * 订单pay
+     */
+    public static final String ORDER_STRING_PAY_URL = "mall.order.pay.url.";
 }

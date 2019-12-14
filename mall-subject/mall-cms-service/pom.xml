@@ -12,5 +12,88 @@
     <groupId>com.mall.cms.service</groupId>
     <artifactId>mall-cms-service</artifactId>
 
+    <dependencies>
 
+        <!--monitor admin 监控-->
+        <dependency>
+            <groupId>de.codecentric</groupId>
+            <artifactId>spring-boot-admin-starter-client</artifactId>
+            <version>${de.codecentric.version}</version>
+        </dependency>
+        <!--monitor admin 监控-->
+
+        <!--zipkin日志收集-->
+        <dependency>
+            <groupId>com.mall.zipkin.util</groupId>
+            <artifactId>mall-zipkin-uitl</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+        <!--zipkin日志收集-->
+
+        <!--数据库等服务依赖-->
+        <dependency>
+            <groupId>com.mall.service.util</groupId>
+            <artifactId>mall-service-uitl</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+        <!--数据库等服务依赖-->
+
+        <!--专题接口-->
+        <dependency>
+            <groupId>com.mall.cms.interface</groupId>
+            <artifactId>mall-cms-interface</artifactId>
+            <version>${mall.latest.version}</version>
+        </dependency>
+        <!--专题接口-->
+
+
+        <!--配置管理依赖-->
+        <dependency>
+            <groupId>com.mall.config.util</groupId>
+            <artifactId>mall-config-util</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+        <!--配置管理依赖-->
+
+    </dependencies>
+
+    <build>
+        <finalName>${project.artifactId}</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <jvmArguments>-Dfile.encoding=UTF-8</jvmArguments>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>build-info</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- 添加docker-maven插件 -->
+            <!-- docker的maven插件，官网 https://github.com/spotify/docker-maven-plugin -->
+            <plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
+                <version>1.0.0</version>
+                <configuration>
+                    <imageName>${project.artifactId}</imageName>
+                    <baseImage>java</baseImage>
+                    <entryPoint>["java", "-Xms700m", "-Xmx700m" , "-jar", "/${project.build.finalName}.jar"]
+                    </entryPoint>
+                    <resources>
+                        <resource>
+                            <targetPath>/</targetPath>
+                            <directory>${project.build.directory}</directory>
+                            <include>${project.build.finalName}.jar</include>
+                        </resource>
+                    </resources>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>
