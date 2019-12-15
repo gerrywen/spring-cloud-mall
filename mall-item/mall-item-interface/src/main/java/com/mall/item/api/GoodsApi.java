@@ -24,7 +24,6 @@ import java.util.List;
  * created: 2019-12-14 08:02
  **/
 @FeignClient(value = "mall-item", fallback = GoodsApiHystrix.class, configuration = FeignConfig.class)
-@RequestMapping("goods")
 public interface GoodsApi {
 
     /**
@@ -37,7 +36,7 @@ public interface GoodsApi {
      * @param saleable
      * @return
      */
-    @GetMapping("/spu/page")
+    @GetMapping("goods/spu/page")
     PageResult<SpuBo> querySpuByPage(
             @RequestParam(value = "page", defaultValue = "1") Integer page,
             @RequestParam(value = "rows", defaultValue = "5") Integer rows,
@@ -50,7 +49,7 @@ public interface GoodsApi {
      * @param id
      * @return
      */
-    @GetMapping("/spu/detail/{id}")
+    @GetMapping("goods/spu/detail/{id}")
     SpuDetail querySpuDetailBySpuId(@PathVariable("id") Long id);
 
     /**
@@ -58,7 +57,7 @@ public interface GoodsApi {
      * @param id
      * @return
      */
-    @GetMapping("sku/list/{id}")
+    @GetMapping("goods/sku/list/{id}")
     List<Sku> querySkuBySpuId(@PathVariable("id") Long id);
 
     /**
@@ -66,7 +65,7 @@ public interface GoodsApi {
      * @param id
      * @return
      */
-    @GetMapping("/spu/{id}")
+    @GetMapping("goods/spu/{id}")
     SpuBo queryGoodsById(@PathVariable("id") Long id);
 
     /**
@@ -74,7 +73,7 @@ public interface GoodsApi {
      * @param id
      * @return
      */
-    @GetMapping("/sku/{id}")
+    @GetMapping("goods/sku/{id}")
     Sku querySkuById(@PathVariable("id") Long id);
 
 
@@ -82,7 +81,7 @@ public interface GoodsApi {
      * 查询秒杀商品
      * @return
      */
-    @GetMapping("/seckill/list")
+    @GetMapping("goods/seckill/list")
     ResponseEntity<List<SeckillGoods>> querySeckillGoods();
 
 }

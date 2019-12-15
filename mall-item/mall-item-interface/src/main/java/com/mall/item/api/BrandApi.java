@@ -17,13 +17,12 @@ import java.util.List;
  * created: 2019-11-24 23:11
  **/
 @FeignClient(value = "mall-item", fallback = BrandApiHystrix.class, configuration = FeignConfig.class)
-@RequestMapping("brand")
 public interface BrandApi {
     /**
      * 根据品牌id集合，查询品牌信息
      * @param ids
      * @return
      */
-    @GetMapping("list")
+    @GetMapping("brand/list")
     List<Brand> queryBrandByIds(@RequestParam("ids") List<Long> ids);
 }

@@ -15,13 +15,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * created: 2019-12-14 20:36
  **/
 @FeignClient(value = "mall-item", fallback = SpecApiHystrix.class, configuration = FeignConfig.class)
-@RequestMapping("spec")
 public interface SpecApi {
     /**
      * 查询商品分类对应的规格参数模板
      * @param id
      * @return
      */
-    @GetMapping("{id}")
+    @GetMapping("spec/{id}")
     ResponseEntity<String> querySpecificationByCategoryId(@PathVariable("id") Long id);
 }

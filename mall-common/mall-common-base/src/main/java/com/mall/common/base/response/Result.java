@@ -22,6 +22,32 @@ public class Result<T> {
     }
 
     /**
+     * 成功返回结果
+     *
+     * @param  message 提示信息
+     */
+    public static <T> Result<T> success(String message) {
+        return new Result<T>(CodeMsg.SUCCESS.getCode(), message);
+    }
+
+    /**
+     * 成功返回结果
+     *
+     * @param data 获取的数据
+     * @param  message 提示信息
+     */
+    public static <T> Result<T> success(T data, String message) {
+        return new Result<T>(data,CodeMsg.SUCCESS.getCode(), message);
+    }
+
+    /**
+     *  成功时候的调用
+     * */
+    public static  <T> Result<T> success(CodeMsg codeMsg){
+        return new Result<T>(codeMsg);
+    }
+
+    /**
      *  失败时候的调用
      * */
     public static  <T> Result<T> error(CodeMsg codeMsg){
@@ -33,6 +59,12 @@ public class Result<T> {
     }
 
     private Result(int code, String msg) {
+        this.code = code;
+        this.msg = msg;
+    }
+
+    private Result(T data, int code, String msg) {
+        this.data = data;
         this.code = code;
         this.msg = msg;
     }

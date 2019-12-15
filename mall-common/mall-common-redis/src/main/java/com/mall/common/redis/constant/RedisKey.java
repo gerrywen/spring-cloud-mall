@@ -22,6 +22,15 @@ public class RedisKey {
      */
     public static final String USER_INFO_KEY_PREFIX = "mall:user:info";
 
+    /**
+     * 短信code
+     */
+    public static final String AUTH_CODE_STRING_KEY_PREFIX = "mall:auth:code.";
+    /**
+     * 有效时间
+     */
+    public static final Integer AUTH_CODE_EXPIRE_SECONDS = 90;
+
 
     /**
      * 订单pay

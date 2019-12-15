@@ -11,7 +11,7 @@ import tk.mybatis.spring.annotation.MapperScan;
 @EnableDiscoveryClient
 @EnableTransactionManagement // 启注解事务管理，等同于xml配置方式的 <tx:annotation-driven />
 @ComponentScan(basePackages = {"com.mall"})
-@MapperScan("com.mall.item.mapper") // 扫描mapper包
+@MapperScan(basePackages = {"com.mall.admin.mapper","com.mall.item.mapper"})// 扫描mapper包
 public class ItemServiceApplication {
     public static void main(String[] args) {
         SpringApplication.run(ItemServiceApplication.class, args);

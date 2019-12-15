@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RequestParam;
  * created: 2019-12-14 20:37
  **/
 @FeignClient(value = "mall-item", fallback = SpuApiHystrix.class, configuration = FeignConfig.class)
-@RequestMapping("spu")
 public interface SpuApi {
     /**
      * 分页查询
@@ -28,7 +27,7 @@ public interface SpuApi {
      * @param saleable
      * @return
      */
-    @GetMapping("page")
+    @GetMapping("spu/page")
     Result<PageResult<SpuBo>> querySpuByPage(
             @RequestParam(value = "page", defaultValue = "1") Integer page,
             @RequestParam(value = "rows", defaultValue = "5") Integer rows,

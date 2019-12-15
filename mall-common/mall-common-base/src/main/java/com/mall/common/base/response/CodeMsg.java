@@ -28,6 +28,12 @@ public class CodeMsg {
     /**
      * 登录模块 5002XX
      */
+    public static CodeMsg REGISTER_SUCCESS = new CodeMsg(0, "注册成功");
+    public static CodeMsg VERIFY_CODE_SUCCESS = new CodeMsg(0, "获取验证码成功");
+    public static CodeMsg CHANGE_PASSWORD_SUCCESS = new CodeMsg(0, "密码修改成功");
+
+    public static CodeMsg LOGIN_VERIFY_ERROR = new CodeMsg(500200, "验证码错误");
+    public static CodeMsg LOGIN_USER_EXIST = new CodeMsg(500201, "该用户已经存在");
     public static CodeMsg LOGIN_ERROR = new CodeMsg(500210, "用户未登录");
     public static CodeMsg PASSWORD_EMPTY = new CodeMsg(500211, "登录密码不能为空");
     public static CodeMsg MOBILE_EMPTY = new CodeMsg(500212, "手机号不能为空");
@@ -52,6 +58,17 @@ public class CodeMsg {
     public static CodeMsg MIAO_SHA_OVER = new CodeMsg(500500, "商品已经秒杀完毕");
     public static CodeMsg REPEATE_MIAOSHA = new CodeMsg(500501, "不能重复秒杀");
     public static CodeMsg MIAOSHA_FAIL = new CodeMsg(500502, "秒杀失败");
+
+    /**
+     * 优惠券模块 5006XX
+     */
+    public static CodeMsg COUPON_RECEIVE_SUCCESS= new CodeMsg(0, "领取成功");
+    public static CodeMsg COUPON_NOT_EXIST = new CodeMsg(500600, "优惠券不存在");
+    public static CodeMsg COUPON_OVER = new CodeMsg(500601, "优惠券已经领完了");
+    public static CodeMsg COUPON_NOT_START_TIME = new CodeMsg(500602, "优惠券还没到领取时间");
+    public static CodeMsg COUPON_ALREADY_RECEIVE = new CodeMsg(500603, "您已经领取过该优惠券");
+
+
 
 
     private CodeMsg( ) {
