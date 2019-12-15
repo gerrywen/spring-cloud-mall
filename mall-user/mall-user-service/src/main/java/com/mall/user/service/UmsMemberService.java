@@ -16,7 +16,7 @@ public interface UmsMemberService {
      * @param password
      * @return
      */
-    public String authentication(String username, String password);
+    String authentication(String username, String password);
 
     /**
      * 用户验证
@@ -72,4 +72,10 @@ public interface UmsMemberService {
      * 根据会员id修改会员积分
      */
     void updateIntegration(Long id, Integer integration);
+
+
+    /**
+     * 刷新token
+     */
+    String refreshToken(String token);
 }

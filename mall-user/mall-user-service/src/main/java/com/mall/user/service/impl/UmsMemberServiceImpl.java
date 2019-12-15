@@ -52,18 +52,18 @@ public class UmsMemberServiceImpl implements UmsMemberService {
 
     @Override
     public String authentication(String username, String password) {
-        try{
+        try {
             //1.调用微服务查询用户信息
-            UmsMember user = queryUser(username,password);
+            UmsMember user = queryUser(username, password);
             //2.查询结果为空，则直接返回null
-            if (user == null){
+            if (user == null) {
                 return null;
             }
             //3.查询结果不为空，则生成token
             return JwtUtils.generateToken(new UserInfo(user.getId(), user.getUsername()),
                     jwtProperties.getExpiration(), jwtProperties.getSecret());
 
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
@@ -80,7 +80,7 @@ public class UmsMemberServiceImpl implements UmsMemberService {
         if (org.apache.commons.lang3.StringUtils.isEmpty(userStr)) {
             //在缓存中没有查到，去数据库查,查到放入缓存当中
             umsMember = getByUsername(username);
-            redisUtils.addMap(CtimsModelEnum.CTIMS_USER_CAP, RedisKey.USER_INFO_KEY_PREFIX,JsonUtils.serialize(umsMember),RedisKey.USER_INFO_KEY_SECONDS);
+            redisUtils.addMap(CtimsModelEnum.CTIMS_USER_CAP, RedisKey.USER_INFO_KEY_PREFIX, JsonUtils.serialize(umsMember), RedisKey.USER_INFO_KEY_SECONDS);
 
         } else {
             umsMember = JsonUtils.parse(userStr, UmsMember.class);
@@ -136,6 +136,7 @@ public class UmsMemberServiceImpl implements UmsMemberService {
         umsMember.setPhone(telephone);
         //密码加密
         String encodePassword = CodecUtils.passwordBcryptEncode(umsMember.getUsername().trim(), password.trim());
+        umsMember.setPassword(encodePassword);
         umsMember.setCreateTime(new Date());
         umsMember.setStatus(1);
         //获取默认会员等级并设置
@@ -146,7 +147,6 @@ public class UmsMemberServiceImpl implements UmsMemberService {
             umsMember.setMemberLevelId(memberLevelList.get(0).getId());
         }
         memberMapper.insert(umsMember);
-        umsMember.setPassword(null);
         return Result.error(CodeMsg.REGISTER_SUCCESS);
     }
 
@@ -201,7 +201,7 @@ public class UmsMemberServiceImpl implements UmsMemberService {
         record.setPassword(encodePassword);
         memberMapper.updateByPrimaryKeySelective(record);
         //3.处理缓存中的信息
-        redisUtils.deleteMapField(CtimsModelEnum.CTIMS_USER_CAP,RedisKey.USER_CODE_PHONE_KEY_PREFIX + username, username);
+        redisUtils.deleteMapField(CtimsModelEnum.CTIMS_USER_CAP, RedisKey.USER_CODE_PHONE_KEY_PREFIX + username, username);
         return true;
     }
 
@@ -218,6 +218,11 @@ public class UmsMemberServiceImpl implements UmsMemberService {
         record.setId(id);
         record.setIntegration(integration);
         memberMapper.updateByPrimaryKeySelective(record);
+    }
+
+    @Override
+    public String refreshToken(String token) {
+        return JwtUtils.refreshToken(token, jwtProperties.getExpiration(), jwtProperties.getSecret());
     }
 
     //对输入的验证码进行校验

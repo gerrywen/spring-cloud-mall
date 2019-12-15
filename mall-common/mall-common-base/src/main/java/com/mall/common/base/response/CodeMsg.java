@@ -19,6 +19,7 @@ public class CodeMsg {
     public static CodeMsg BAD_REQUEST = new CodeMsg(400, "Bad Request");
     public static CodeMsg UNAUTHORIZED = new CodeMsg(401, "未授权");
     public static CodeMsg FORBIDDEN = new CodeMsg(403, "Forbidden");
+    public static CodeMsg TOKEN_OVER = new CodeMsg(403, "Token已过期");
     public static CodeMsg NOT_FOUND = new CodeMsg(404, "Not Found");
 
     public static CodeMsg SERVER_ERROR = new CodeMsg(500100, "服务端异常");
