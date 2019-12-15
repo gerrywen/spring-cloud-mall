@@ -1,5 +1,7 @@
 package com.mall.common.base.utils;
 
+import org.springframework.stereotype.Component;
+
 import java.lang.management.ManagementFactory;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
@@ -22,6 +24,7 @@ import java.net.NetworkInterface;
  *
  * @author Polim
  */
+@Component
 public class IdWorker {
     /**
      *  时间起始标记点，作为基准，一般取系统的最近时间（一旦确定不能变动）

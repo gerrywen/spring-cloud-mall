@@ -15,9 +15,9 @@ import java.util.List;
  * author: gerry
  * created: 2019-12-15 20:47
  **/
-@FeignClient(value = "order-service", fallback = OmsCartItemApiHystrix.class, configuration = FeignConfig.class)
+@FeignClient(value = "mall-order", fallback = OmsCartItemApiHystrix.class, configuration = FeignConfig.class)
 public interface OmsCartItemApi {
 
-    @GetMapping("list/promotion")
+    @GetMapping("cart/list/promotion")
     Result<List<CartPromotionItem>> listPromotion();
 }

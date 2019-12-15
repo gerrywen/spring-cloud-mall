@@ -3,6 +3,7 @@ package com.mall.user.interceptor;
 import com.mall.auth.entity.UserInfo;
 import com.mall.auth.utils.JwtUtils;
 import com.mall.user.properties.JwtProperties;
+import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
@@ -16,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
  * author: gerry
  * created: 2019-12-14 08:39
  **/
+@Order(2)
 public class LoginInterceptor extends HandlerInterceptorAdapter {
 
     private JwtProperties jwtProperties;
@@ -61,6 +63,11 @@ public class LoginInterceptor extends HandlerInterceptorAdapter {
             try{
                 //4.解析成功，说明已经登录
                 UserInfo userInfo = JwtUtils.getUserInfoFromToken(authToken, secret);
+                if (userInfo == null) {
+                    //6.抛出异常，证明未登录，返回401
+                    response.setStatus(HttpStatus.UNAUTHORIZED.value());
+                    return false;
+                }
                 //5.放入线程域
                 t1.set(userInfo);
                 return true;

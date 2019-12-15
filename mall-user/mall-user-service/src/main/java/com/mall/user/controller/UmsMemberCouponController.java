@@ -46,11 +46,11 @@ public class UmsMemberCouponController {
         return Result.success(couponHistoryList);
     }
 
-    @GetMapping("list/cart/{type}")
+    @GetMapping(value = "list/cart/{type}")
     @ApiOperation("获取登录会员购物车的相关优惠券")
-    @ApiImplicitParam(name = "type", value = "使用可用:0->不可用；1->可用",
-            defaultValue = "1", allowableValues = "0,1", paramType = "query", dataType = "integer")
-    public Result<List<SmsCouponHistoryDetailVO>> listCart(@PathVariable Integer type) {
+//    @ApiImplicitParam(name = "type", value = "使用可用:0->不可用；1->可用",
+//            defaultValue = "1", allowableValues = "0,1", paramType = "query", dataType = "integer")
+    public Result<List<SmsCouponHistoryDetailVO>> listCart(@PathVariable("type") Integer type) {
         Result<List<CartPromotionItem>> listResult = cartItemClient.listPromotion();
         //查询结果为空，则直接返回null
         if (listResult == null){

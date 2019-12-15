@@ -65,10 +65,14 @@ public class JwtUtils {
      */
     public static UserInfo getUserInfoFromToken(String token, String secret) throws Exception {
         Claims body = getClaimsFromToken(token, secret);
-        return new UserInfo(
-                ObjectUtils.toLong(body.get(JwtConstans.JWT_KEY_ID)),
-                ObjectUtils.toString(body.get(JwtConstans.JWT_KEY_USER_NAME))
-        );
+        try {
+            return new UserInfo(
+                    ObjectUtils.toLong(body.get(JwtConstans.JWT_KEY_ID)),
+                    ObjectUtils.toString(body.get(JwtConstans.JWT_KEY_USER_NAME))
+            );
+        }catch (Exception e){
+            return null;
+        }
     }
 
     /**
@@ -132,6 +136,7 @@ public class JwtUtils {
                     .getBody();
         } catch (Exception e) {
             LOGGER.info("JWT格式验证失败:{}", token);
+            return null;
         }
         return claims;
     }

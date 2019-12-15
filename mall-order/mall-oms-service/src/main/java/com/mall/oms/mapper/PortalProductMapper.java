@@ -12,5 +12,6 @@ import java.util.List;
  */
 public interface PortalProductMapper {
     CartProductVO getCartProduct(@Param("id") Long id);
+
     List<PromotionProductVO> getPromotionProductList(@Param("ids") List<Long> ids);
 }

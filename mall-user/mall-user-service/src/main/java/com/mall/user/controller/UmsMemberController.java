@@ -24,7 +24,7 @@ import javax.servlet.http.HttpServletRequest;
  * created: 2019-11-25 00:37
  **/
 @RestController
-@Api(value = "UmsMemberController", tags = "UmsMember-会员等级管理")
+@Api(value = "UmsMemberController", tags = "UmsMember-会员管理")
 @RequestMapping("")
 public class UmsMemberController {
     @Autowired
