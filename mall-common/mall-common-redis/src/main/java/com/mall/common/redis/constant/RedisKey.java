@@ -21,6 +21,10 @@ public class RedisKey {
      * 用户信息
      */
     public static final String USER_INFO_KEY_PREFIX = "mall:user:info";
+    /**
+     * 有效时间
+     */
+    public static final Integer USER_INFO_KEY_SECONDS = 120;
 
     /**
      * 短信code

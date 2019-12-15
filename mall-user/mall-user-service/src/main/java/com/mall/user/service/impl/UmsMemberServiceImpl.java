@@ -6,12 +6,15 @@ import com.mall.admin.model.UmsMember;
 import com.mall.admin.model.UmsMemberExample;
 import com.mall.admin.model.UmsMemberLevel;
 import com.mall.admin.model.UmsMemberLevelExample;
+import com.mall.auth.entity.UserInfo;
 import com.mall.common.base.response.CodeMsg;
 import com.mall.common.base.response.Result;
 import com.mall.common.base.utils.CodecUtils;
+import com.mall.common.base.utils.JsonUtils;
 import com.mall.common.redis.constant.RedisKey;
 import com.mall.common.redis.enums.CtimsModelEnum;
 import com.mall.common.redis.utils.CommonRedisUtils;
+import com.mall.user.interceptor.LoginInterceptor;
 import com.mall.user.service.UmsMemberService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -38,6 +41,37 @@ public class UmsMemberServiceImpl implements UmsMemberService {
     private UmsMemberLevelMapper memberLevelMapper;
 
     private CommonRedisUtils redisUtils;
+
+    @Override
+    public UmsMember queryUser(String username, String password) {
+        /*
+         * 逻辑改变，先去缓存中查询用户数据，查到的话直接返回，查不到再去数据库中查询，然后放入到缓存当中
+         */
+        //1.缓存中查询
+        String userStr = redisUtils.getMapField(CtimsModelEnum.CTIMS_USER_CAP, RedisKey.USER_INFO_KEY_PREFIX, username);
+        UmsMember umsMember;
+        if (org.apache.commons.lang3.StringUtils.isEmpty(userStr)) {
+            //在缓存中没有查到，去数据库查,查到放入缓存当中
+            umsMember = getByUsername(username);
+            redisUtils.addMap(CtimsModelEnum.CTIMS_USER_CAP, RedisKey.USER_INFO_KEY_PREFIX,JsonUtils.serialize(umsMember),RedisKey.USER_INFO_KEY_SECONDS);
+
+        } else {
+            umsMember = JsonUtils.parse(userStr, UmsMember.class);
+        }
+
+        //2.校验用户名
+        if (umsMember == null) {
+            return null;
+        }
+        //3. 校验密码
+        boolean result = CodecUtils.passwordConfirm(username + password, umsMember.getPassword());
+        if (!result) {
+            return null;
+        }
+
+        //4.用户名密码都正确
+        return umsMember;
+    }
 
     @Override
     public UmsMember getByUsername(String username) {
@@ -119,6 +153,36 @@ public class UmsMemberServiceImpl implements UmsMemberService {
         umsMember.setPassword(encodePassword);
         memberMapper.updateByPrimaryKeySelective(umsMember);
         return Result.success(CodeMsg.CHANGE_PASSWORD_SUCCESS);
+    }
+
+    @Override
+    public boolean updateUsernamePassword(String username, String oldPassword, String newPassword) {
+        /*
+         * 这里面涉及到对缓存的操作：
+         * 先把数据存到数据库中，成功后，再让缓存失效。
+         */
+        //1.读取用户信息
+        UmsMember umsMember = this.queryUser(username, oldPassword);
+        if (umsMember == null) {
+            return false;
+        }
+        //2.更新数据库中的用户信息
+        UmsMember record = new UmsMember();
+        record.setId(umsMember.getId());
+        //2.1密码加密
+        String encodePassword = CodecUtils.passwordBcryptEncode(username.trim(), newPassword.trim());
+        record.setPassword(encodePassword);
+        memberMapper.updateByPrimaryKeySelective(record);
+        //3.处理缓存中的信息
+        redisUtils.deleteMapField(CtimsModelEnum.CTIMS_USER_CAP,RedisKey.USER_CODE_PHONE_KEY_PREFIX + username, username);
+        return true;
+    }
+
+    @Override
+    public UmsMember getCurrentMember() {
+        //获取登录的用户
+        UserInfo currentMember = LoginInterceptor.getLoginUser();
+        return getById(currentMember.getId());
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.mall.user.pojo;
 
+import com.mall.admin.model.UmsMember;
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;
 
@@ -16,9 +17,9 @@ import java.util.Date;
  * author: gerry
  * created: 2019-11-25 00:04
  **/
-@Table(name = "tb_user")
+@Table(name = "ums_member")
 @Data
-public class User {
+public class User extends UmsMember {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

@@ -9,6 +9,16 @@ import org.springframework.transaction.annotation.Transactional;
  * Created by macro on 2018/8/3.
  */
 public interface UmsMemberService {
+
+    /**
+     * 用户验证
+     * @param username
+     * @param password
+     * @return
+     */
+    UmsMember queryUser(String username, String password);
+
+
     /**
      * 根据用户名获取会员
      */
@@ -36,6 +46,19 @@ public interface UmsMemberService {
     @Transactional
     Result updatePassword(String telephone, String password, String authCode);
 
+
+    /**
+     * 根据用户名修改密码
+     * @param username
+     * @param newPassword
+     * @return
+     */
+    boolean updateUsernamePassword(String username,String oldPassword,String newPassword);
+
+    /**
+     * 获取当前登录会员
+     */
+    UmsMember getCurrentMember();
 
     /**
      * 根据会员id修改会员积分

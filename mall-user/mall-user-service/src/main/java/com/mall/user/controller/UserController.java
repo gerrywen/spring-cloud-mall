@@ -1,7 +1,7 @@
 package com.mall.user.controller;
 
-import com.mall.user.pojo.User;
-import com.mall.user.service.UserService;
+import com.mall.admin.model.UmsMember;
+import com.mall.user.service.UmsMemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("")
 public class UserController {
     @Autowired
-    private UserService userService;
+    private UmsMemberService userService;
 
     /**
      * 用户验证
@@ -29,11 +29,11 @@ public class UserController {
      * @return
      */
     @GetMapping("query")
-    public ResponseEntity<User> queryUser(@RequestParam("username")String username, @RequestParam("password")String password){
-        User user = this.userService.queryUser(username,password);
-        if (user == null){
+    public ResponseEntity<UmsMember> queryUser(@RequestParam("username")String username, @RequestParam("password")String password){
+        UmsMember umsMember = this.userService.queryUser(username, password);
+        if (umsMember == null){
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
-        return ResponseEntity.ok(user);
+        return ResponseEntity.ok(umsMember);
     }
 }

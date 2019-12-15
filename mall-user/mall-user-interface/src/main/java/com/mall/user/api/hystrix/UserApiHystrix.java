@@ -1,7 +1,7 @@
 package com.mall.user.api.hystrix;
 
+import com.mall.admin.model.UmsMember;
 import com.mall.user.api.UserApi;
-import com.mall.user.pojo.User;
 
 /**
  * program: spring-cloud-mall->UserApiHystrix
@@ -11,7 +11,7 @@ import com.mall.user.pojo.User;
  **/
 public class UserApiHystrix implements UserApi {
     @Override
-    public User queryUser(String username, String password) {
+    public UmsMember queryUser(String username, String password) {
         return null;
     }
 }

@@ -77,6 +77,10 @@ public class CommonRedisUtils {
         redisTemplate.boundHashOps(key).expire(time, TimeUnit.SECONDS);
     }
 
+    public void deleteMapField(CtimsModelEnum modelEnum, String key, String field) {
+        redisTemplate.boundHashOps(formatKey(modelEnum, key)).delete(field);
+    }
+
 
     //=============================common============================
 

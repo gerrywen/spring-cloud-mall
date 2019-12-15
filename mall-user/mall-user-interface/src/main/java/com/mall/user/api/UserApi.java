@@ -1,8 +1,8 @@
 package com.mall.user.api;
 
+import com.mall.admin.model.UmsMember;
 import com.mall.common.base.config.FeignConfig;
 import com.mall.user.api.hystrix.UserApiHystrix;
-import com.mall.user.pojo.User;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -22,5 +22,5 @@ public interface UserApi {
      * @return
      */
     @GetMapping("query")
-    User queryUser(@RequestParam("username")String username, @RequestParam("password")String password);
+    UmsMember queryUser(@RequestParam("username")String username, @RequestParam("password")String password);
 }
