@@ -36,6 +36,7 @@ public class CodeMsg {
 
     public static CodeMsg LOGIN_VERIFY_ERROR = new CodeMsg(500200, "验证码错误");
     public static CodeMsg LOGIN_USER_EXIST = new CodeMsg(500201, "该用户已经存在");
+
     public static CodeMsg LOGIN_ERROR = new CodeMsg(500210, "用户未登录");
     public static CodeMsg PASSWORD_EMPTY = new CodeMsg(500211, "登录密码不能为空");
     public static CodeMsg MOBILE_EMPTY = new CodeMsg(500212, "手机号不能为空");
@@ -50,9 +51,10 @@ public class CodeMsg {
     public static CodeMsg BRAND_NOT_EXIST = new CodeMsg(500300, "品牌不存在");
 
     /**
-     * 订单模块 5004XX
+     * 订单模块 5004XX 添加商品到购物车
      */
-    public static CodeMsg ORDER_NOT_EXIST = new CodeMsg(500400, "订单不存在");
+    public static CodeMsg CART_ADD_ERROR = new CodeMsg(500400, "添加购物车失败");
+    public static CodeMsg ORDER_NOT_EXIST = new CodeMsg(500410, "订单不存在");
 
     /**
      * 秒杀模块 5005XX
@@ -69,9 +71,22 @@ public class CodeMsg {
     public static CodeMsg COUPON_OVER = new CodeMsg(500601, "优惠券已经领完了");
     public static CodeMsg COUPON_NOT_START_TIME = new CodeMsg(500602, "优惠券还没到领取时间");
     public static CodeMsg COUPON_ALREADY_RECEIVE = new CodeMsg(500603, "您已经领取过该优惠券");
+    public static CodeMsg COUPON_GET_LIST_ERROR = new CodeMsg(500603, "获取优惠券列表失败");
 
 
+    /**
+     * 会员模块 5007XX address
+     */
+    public static CodeMsg MEMBER_FOLLOW_BRAND_ERROR = new CodeMsg(500600, "关注失败");
+    public static CodeMsg MEMBER_CANCDL_FOLLOW_ERROR = new CodeMsg(500601, "取消失败");
+    public static CodeMsg MEMBER_COLLECTION_PRODUCT_ERROR = new CodeMsg(500603, "收藏失败");
+    public static CodeMsg MEMBER_CANCDL_COLLECTION_ERROR = new CodeMsg(500604, "取消收藏失败");
+    public static CodeMsg MEMBER_CREATE_HISTORY_ERROR = new CodeMsg(500605, "创建浏览记录失败");
+    public static CodeMsg MEMBER_DELETE_HISTORY_ERROR = new CodeMsg(500606, "删除浏览记录失败");
 
+    public static CodeMsg MEMBER_ADDRESS_ADD_ERROR = new CodeMsg(500610, "添加收货地址失败");
+    public static CodeMsg MEMBER_ADDRESS_DELETE_ERROR = new CodeMsg(500611, "删除收货地址失败");
+    public static CodeMsg MEMBER_ADDRESS_UPDATE_ERROR = new CodeMsg(500612, "更新收货地址失败");
 
     private CodeMsg( ) {
     }

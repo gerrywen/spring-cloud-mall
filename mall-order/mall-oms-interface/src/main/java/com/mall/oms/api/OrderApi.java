@@ -17,7 +17,6 @@ import java.util.List;
  * created: 2019-12-14 08:13
  **/
 @FeignClient(value = "mall-item", fallback = OrderApiHystrix.class, configuration = FeignConfig.class)
-@RequestMapping("order")
 public interface OrderApi {
     /**
      * 创建订单
@@ -25,7 +24,7 @@ public interface OrderApi {
      * @param order
      * @return
      */
-    @PostMapping
+    @PostMapping("order")
     Result<List<Long>> createOrder(@RequestParam("seck") String seck, @RequestBody @Valid Order order);
 
 
@@ -35,7 +34,7 @@ public interface OrderApi {
      * @param status
      * @return
      */
-    @PutMapping("{id}/{status}")
+    @PutMapping("order/{id}/{status}")
     Result<Boolean> updateOrderStatus(@PathVariable("id") Long id, @PathVariable("status") Integer status);
 
 }

@@ -2,7 +2,7 @@ package com.mall.user.service;
 
 import com.mall.admin.model.SmsCouponHistory;
 import com.mall.common.base.response.Result;
-import com.mall.user.dto.CartPromotionItemDTO;
+import com.mall.oms.po.CartPromotionItem;
 import com.mall.user.vo.SmsCouponHistoryDetailVO;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -28,5 +28,5 @@ public interface UmsMemberCouponService {
     /**
      * 根据购物车信息获取可用优惠券
      */
-    List<SmsCouponHistoryDetailVO> listCart(List<CartPromotionItemDTO> cartItemList, Integer type);
+    List<SmsCouponHistoryDetailVO> listCart(List<CartPromotionItem> cartItemList, Integer type);
 }

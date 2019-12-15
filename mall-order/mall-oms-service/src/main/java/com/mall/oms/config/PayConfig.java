@@ -1,7 +1,7 @@
 package com.mall.oms.config;
 
 import com.github.wxpay.sdk.WXPayConfig;
-import com.mall.oms.properties.PayProperties;
+import com.mall.oms.properties.WxPayProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 
@@ -16,7 +16,7 @@ import java.io.InputStream;
 @Configuration
 public class PayConfig implements WXPayConfig {
     @Autowired
-    private PayProperties payProperties;
+    private WxPayProperties payProperties;
 
     @Override
     public String getAppID() {

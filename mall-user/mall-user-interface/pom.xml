@@ -46,6 +46,15 @@
         </dependency>
         <!--权限公共文件-->
 
+
+        <!--订单接口-->
+        <dependency>
+            <groupId>com.mall.oms.interface</groupId>
+            <artifactId>mall-oms-interface</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+        <!--订单接口-->
+
         <!--配置管理依赖-->
         <dependency>
             <groupId>com.mall.config.util</groupId>

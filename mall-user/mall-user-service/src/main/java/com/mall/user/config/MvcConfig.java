@@ -51,6 +51,7 @@ public class MvcConfig implements WebMvcConfigurer {
         excludePath.add("/csrf");
         excludePath.add("/login");
         excludePath.add("/register");
+        excludePath.add("/query");
         excludePath.add("/code");
 
         registry.addInterceptor(loginInterceptor())

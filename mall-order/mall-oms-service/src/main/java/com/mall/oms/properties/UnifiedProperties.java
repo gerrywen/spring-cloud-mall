@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
  * created: 2019-12-14 09:10
  **/
 @Component
-@ConfigurationProperties(prefix = "mall.unified")
+@ConfigurationProperties(prefix = "mall.wxpay.unified")
 @Data
 @RefreshScope
 public class UnifiedProperties {

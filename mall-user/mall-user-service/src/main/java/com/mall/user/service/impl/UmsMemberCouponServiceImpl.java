@@ -6,7 +6,7 @@ import com.mall.admin.model.*;
 import com.mall.auth.entity.UserInfo;
 import com.mall.common.base.response.CodeMsg;
 import com.mall.common.base.response.Result;
-import com.mall.user.dto.CartPromotionItemDTO;
+import com.mall.oms.po.CartPromotionItem;
 import com.mall.user.interceptor.LoginInterceptor;
 import com.mall.user.mapper.CouponHistoryMapper;
 import com.mall.user.service.UmsMemberCouponService;
@@ -111,7 +111,7 @@ public class UmsMemberCouponServiceImpl implements UmsMemberCouponService {
     }
 
     @Override
-    public List<SmsCouponHistoryDetailVO> listCart(List<CartPromotionItemDTO> cartItemList, Integer type) {
+    public List<SmsCouponHistoryDetailVO> listCart(List<CartPromotionItem> cartItemList, Integer type) {
         //获取登录的用户
         UserInfo currentMember = LoginInterceptor.getLoginUser();
         Date now = new Date();
@@ -169,18 +169,18 @@ public class UmsMemberCouponServiceImpl implements UmsMemberCouponService {
         }
     }
 
-    private BigDecimal calcTotalAmount(List<CartPromotionItemDTO> cartItemList) {
+    private BigDecimal calcTotalAmount(List<CartPromotionItem> cartItemList) {
         BigDecimal total = new BigDecimal("0");
-        for (CartPromotionItemDTO item : cartItemList) {
+        for (CartPromotionItem item : cartItemList) {
             BigDecimal realPrice = item.getPrice().subtract(item.getReduceAmount());
             total=total.add(realPrice.multiply(new BigDecimal(item.getQuantity())));
         }
         return total;
     }
 
-    private BigDecimal calcTotalAmountByproductCategoryId(List<CartPromotionItemDTO> cartItemList, List<Long> productCategoryIds) {
+    private BigDecimal calcTotalAmountByproductCategoryId(List<CartPromotionItem> cartItemList, List<Long> productCategoryIds) {
         BigDecimal total = new BigDecimal("0");
-        for (CartPromotionItemDTO item : cartItemList) {
+        for (CartPromotionItem item : cartItemList) {
             if(productCategoryIds.contains(item.getProductCategoryId())){
                 BigDecimal realPrice = item.getPrice().subtract(item.getReduceAmount());
                 total=total.add(realPrice.multiply(new BigDecimal(item.getQuantity())));
@@ -189,9 +189,9 @@ public class UmsMemberCouponServiceImpl implements UmsMemberCouponService {
         return total;
     }
 
-    private BigDecimal calcTotalAmountByProductId(List<CartPromotionItemDTO> cartItemList, List<Long> productIds) {
+    private BigDecimal calcTotalAmountByProductId(List<CartPromotionItem> cartItemList, List<Long> productIds) {
         BigDecimal total = new BigDecimal("0");
-        for (CartPromotionItemDTO item : cartItemList) {
+        for (CartPromotionItem item : cartItemList) {
             if(productIds.contains(item.getProductId())){
                 BigDecimal realPrice = item.getPrice().subtract(item.getReduceAmount());
                 total=total.add(realPrice.multiply(new BigDecimal(item.getQuantity())));

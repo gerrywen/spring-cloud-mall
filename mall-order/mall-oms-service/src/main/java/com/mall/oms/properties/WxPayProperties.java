@@ -1,46 +1,49 @@
 package com.mall.oms.properties;
 
+import lombok.Data;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
 
 /**
  * @author: 98050
  * @create: 2018-10-27 11:38
  **/
-//@ConfigurationProperties(prefix = "mall.pay")
-@Configuration
+@Component
+@ConfigurationProperties(prefix = "mall.wxpay")
+@Data
 @RefreshScope
-public class PayProperties {
+public class WxPayProperties {
 
     /**
      * 公众账号ID
      */
-    @Value("${mall.pay.appId}")
+//    @Value("${mall.wxpay.appId}")
     private String appId;
 
     /**
      * 商户号
      */
-    @Value("${mall.pay.mchId}")
+//    @Value("${mall.wxpay.mchId}")
     private String mchId;
 
     /**
      * 生成签名的密钥
      */
-    @Value("${mall.pay.key}")
+//    @Value("${mall.wxpay.key}")
     private String key;
 
     /**
      * 连接超时时间
      */
-    @Value("${mall.pay.connectTimeoutMs}")
+//    @Value("${mall.wxpay.connectTimeoutMs}")
     private int connectTimeoutMs;
 
     /**
      * 读取超时时间
      */
-    @Value("${mall.pay.connectTimeoutMs}")
+//    @Value("${mall.wxpay.connectTimeoutMs}")
     private int readTimeoutMs;
 
     public String getAppId() {

@@ -24,9 +24,9 @@ import javax.servlet.http.HttpServletRequest;
  * created: 2019-11-25 00:37
  **/
 @RestController
-@Api(value = "UserController", tags = "member-会员等级管理")
+@Api(value = "UmsMemberController", tags = "UmsMember-会员等级管理")
 @RequestMapping("")
-public class UserController {
+public class UmsMemberController {
     @Autowired
     private UmsMemberService memberService;
 
@@ -45,7 +45,7 @@ public class UserController {
      *
      * @param jwtProperties jwt配置文件
      */
-    public UserController(JwtProperties jwtProperties) {
+    public UmsMemberController(JwtProperties jwtProperties) {
         this.tokenHeader = jwtProperties.getTokenHeader();
         this.tokenHead = jwtProperties.getTokenHead();
     }
@@ -113,7 +113,7 @@ public class UserController {
     }
 
     @GetMapping("info")
-    @ApiOperation("获取获取信息")
+    @ApiOperation("获取用户信息")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "Authorization", value = "Bearer token", required = true, dataType = "string", paramType = "header"),
     })
