@@ -11,6 +11,7 @@ import org.springframework.data.redis.connection.RedisConnection;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.data.redis.core.*;
 import org.springframework.data.redis.serializer.RedisSerializer;
+import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
 import java.util.ArrayList;
@@ -23,6 +24,7 @@ import java.util.concurrent.TimeUnit;
  * @author wenguoli
  * @date 2019/9/20 9:18
  */
+@Component
 public class CommonRedisUtils {
     protected static final Logger logger = LogManager.getLogger(CommonRedisUtils.class);
 

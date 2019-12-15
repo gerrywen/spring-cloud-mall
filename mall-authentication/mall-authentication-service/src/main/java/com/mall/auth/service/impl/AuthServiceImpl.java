@@ -1,11 +1,11 @@
 package com.mall.auth.service.impl;
 
+import com.mall.admin.model.UmsMember;
 import com.mall.auth.client.UserClient;
 import com.mall.auth.entity.UserInfo;
 import com.mall.auth.properties.JwtProperties;
 import com.mall.auth.service.AuthService;
 import com.mall.auth.utils.JwtUtils;
-import com.mall.user.pojo.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,7 +28,7 @@ public class AuthServiceImpl implements AuthService {
     public String authentication(String username, String password) {
         try{
             //1.调用微服务查询用户信息
-            User user = this.userClient.queryUser(username,password);
+            UmsMember user = this.userClient.queryUser(username,password);
             //2.查询结果为空，则直接返回null
             if (user == null){
                 return null;

@@ -11,6 +11,14 @@ import org.springframework.transaction.annotation.Transactional;
 public interface UmsMemberService {
 
     /**
+     * 授权登录返回token
+     * @param username
+     * @param password
+     * @return
+     */
+    public String authentication(String username, String password);
+
+    /**
      * 用户验证
      * @param username
      * @param password

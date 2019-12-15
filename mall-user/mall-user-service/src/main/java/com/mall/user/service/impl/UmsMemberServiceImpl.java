@@ -7,6 +7,7 @@ import com.mall.admin.model.UmsMemberExample;
 import com.mall.admin.model.UmsMemberLevel;
 import com.mall.admin.model.UmsMemberLevelExample;
 import com.mall.auth.entity.UserInfo;
+import com.mall.auth.utils.JwtUtils;
 import com.mall.common.base.response.CodeMsg;
 import com.mall.common.base.response.Result;
 import com.mall.common.base.utils.CodecUtils;
@@ -15,6 +16,7 @@ import com.mall.common.redis.constant.RedisKey;
 import com.mall.common.redis.enums.CtimsModelEnum;
 import com.mall.common.redis.utils.CommonRedisUtils;
 import com.mall.user.interceptor.LoginInterceptor;
+import com.mall.user.properties.JwtProperties;
 import com.mall.user.service.UmsMemberService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -37,10 +39,35 @@ public class UmsMemberServiceImpl implements UmsMemberService {
 
     @Autowired
     private UmsMemberMapper memberMapper;
+
     @Autowired
     private UmsMemberLevelMapper memberLevelMapper;
 
+    @Autowired
+    private JwtProperties jwtProperties;
+
+    @Autowired
     private CommonRedisUtils redisUtils;
+
+
+    @Override
+    public String authentication(String username, String password) {
+        try{
+            //1.调用微服务查询用户信息
+            UmsMember user = queryUser(username,password);
+            //2.查询结果为空，则直接返回null
+            if (user == null){
+                return null;
+            }
+            //3.查询结果不为空，则生成token
+            return JwtUtils.generateToken(new UserInfo(user.getId(), user.getUsername()),
+                    jwtProperties.getExpiration(), jwtProperties.getSecret());
+
+        }catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
+    }
 
     @Override
     public UmsMember queryUser(String username, String password) {

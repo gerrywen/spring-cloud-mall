@@ -16,6 +16,7 @@ public class CodeMsg {
     /**
      * 通用的错误码
      */
+    public static CodeMsg BAD_REQUEST = new CodeMsg(400, "Bad Request");
     public static CodeMsg UNAUTHORIZED = new CodeMsg(401, "未授权");
     public static CodeMsg FORBIDDEN = new CodeMsg(403, "Forbidden");
     public static CodeMsg NOT_FOUND = new CodeMsg(404, "Not Found");
