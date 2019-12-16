@@ -2,6 +2,7 @@ package com.mall.oms.service;
 
 import com.mall.admin.model.OmsCartItem;
 import com.mall.oms.po.CartPromotionItem;
+import com.mall.oms.vo.CartProductVO;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -29,5 +30,31 @@ public interface OmsCartItemService {
      * 获取包含促销活动信息的购物车列表
      */
     List<CartPromotionItem> listPromotion(Long memberId);
+
+    /**
+     * 修改某个购物车商品的数量
+     */
+    int updateQuantity(Long id, Long memberId, Integer quantity);
+
+    /**
+     * 批量删除购物车中的商品
+     */
+    int delete(Long memberId,List<Long> ids);
+
+    /**
+     *获取购物车中用于选择商品规格的商品信息
+     */
+    CartProductVO getCartProduct(Long productId);
+
+    /**
+     * 修改购物车中商品的规格
+     */
+    @Transactional
+    int updateAttr(OmsCartItem cartItem);
+
+    /**
+     * 清空购物车
+     */
+    int clear(Long memberId);
 
 }

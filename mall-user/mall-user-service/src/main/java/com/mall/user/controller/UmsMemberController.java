@@ -1,9 +1,11 @@
 package com.mall.user.controller;
 
 import com.mall.admin.model.UmsMember;
+import com.mall.auth.entity.UserInfo;
 import com.mall.auth.vo.UserTokenVO;
 import com.mall.common.base.response.CodeMsg;
 import com.mall.common.base.response.Result;
+import com.mall.user.interceptor.LoginInterceptor;
 import com.mall.user.properties.JwtProperties;
 import com.mall.user.service.UmsMemberService;
 import io.swagger.annotations.Api;
@@ -162,5 +164,16 @@ public class UmsMemberController {
         userTokenVO.setTokenHead(tokenHead);
 
         return Result.success(userTokenVO);
+    }
+
+    @PutMapping("integration")
+    @ApiOperation(value = "更新用户积分")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "Authorization", value = "Bearer token", required = true, dataType = "string", paramType = "header"),
+    })
+    public void updateIntegration(@RequestParam("integration") Integer integration) {
+        //获取用户信息
+        UserInfo userInfo = LoginInterceptor.getLoginUser();
+        memberService.updateIntegration(userInfo.getId(), integration);
     }
 }

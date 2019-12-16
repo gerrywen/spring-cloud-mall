@@ -5,9 +5,11 @@ import com.mall.admin.model.OmsCartItem;
 import com.mall.admin.model.OmsCartItemExample;
 import com.mall.auth.entity.UserInfo;
 import com.mall.oms.interceptor.LoginInterceptor;
+import com.mall.oms.mapper.PortalProductMapper;
 import com.mall.oms.service.OmsCartItemService;
 import com.mall.oms.service.OmsPromotionService;
 import com.mall.oms.po.CartPromotionItem;
+import com.mall.oms.vo.CartProductVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
@@ -27,6 +29,9 @@ import java.util.List;
 public class OmsCartItemServiceImpl implements OmsCartItemService {
     @Autowired
     private OmsCartItemMapper cartItemMapper;
+
+    @Autowired
+    private PortalProductMapper productMapper;
 
     @Autowired
     private OmsPromotionService promotionService;
@@ -66,6 +71,52 @@ public class OmsCartItemServiceImpl implements OmsCartItemService {
             cartPromotionItemList = promotionService.calcCartPromotion(cartItemList);
         }
         return cartPromotionItemList;
+    }
+
+    @Override
+    public int updateQuantity(Long id, Long memberId, Integer quantity) {
+        OmsCartItem cartItem = new OmsCartItem();
+        cartItem.setQuantity(quantity);
+        OmsCartItemExample example = new OmsCartItemExample();
+        example.createCriteria().andDeleteStatusEqualTo(0)
+                .andIdEqualTo(id).andMemberIdEqualTo(memberId);
+        return cartItemMapper.updateByExampleSelective(cartItem, example);
+    }
+
+    @Override
+    public int delete(Long memberId, List<Long> ids) {
+        OmsCartItem record = new OmsCartItem();
+        record.setDeleteStatus(1);
+        OmsCartItemExample example = new OmsCartItemExample();
+        example.createCriteria().andIdIn(ids).andMemberIdEqualTo(memberId);
+        return cartItemMapper.updateByExampleSelective(record, example);
+    }
+
+    @Override
+    public CartProductVO getCartProduct(Long productId) {
+        return productMapper.getCartProduct(productId);
+    }
+
+    @Override
+    public int updateAttr(OmsCartItem cartItem) {
+        //删除原购物车信息
+        OmsCartItem updateCart = new OmsCartItem();
+        updateCart.setId(cartItem.getId());
+        updateCart.setModifyDate(new Date());
+        updateCart.setDeleteStatus(1);
+        cartItemMapper.updateByPrimaryKeySelective(updateCart);
+        cartItem.setId(null);
+        add(cartItem);
+        return 1;
+    }
+
+    @Override
+    public int clear(Long memberId) {
+        OmsCartItem record = new OmsCartItem();
+        record.setDeleteStatus(1);
+        OmsCartItemExample example = new OmsCartItemExample();
+        example.createCriteria().andMemberIdEqualTo(memberId);
+        return cartItemMapper.updateByExampleSelective(record,example);
     }
 
     /**

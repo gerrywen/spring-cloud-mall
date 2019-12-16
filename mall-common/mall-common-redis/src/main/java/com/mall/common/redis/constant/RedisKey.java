@@ -41,6 +41,8 @@ public class RedisKey {
      */
     public static final String ORDER_STRING_PAY_URL = "mall.order.pay.url.";
 
+    public static final String ORDER_KEY_PREFIX_ID = "mall:order:id:";
+
 
     /**
      * 秒杀地址

@@ -51,10 +51,17 @@ public class CodeMsg {
     public static CodeMsg BRAND_NOT_EXIST = new CodeMsg(500300, "品牌不存在");
 
     /**
-     * 订单模块 5004XX 添加商品到购物车
+     * 订单模块 5004XX
      */
     public static CodeMsg CART_ADD_ERROR = new CodeMsg(500400, "添加购物车失败");
+    public static CodeMsg ORDER_USER_NOT_EXIST = new CodeMsg(500401, "下单用户信息错误");
+    public static CodeMsg ORDER_STOCK_NOT_ENOUGH = new CodeMsg(500402, "库存不足，无法下单");
+    public static CodeMsg ORDER_COUPON_NOT_USE = new CodeMsg(500403, "该优惠券不可用");
+    public static CodeMsg ORDER_INTEGRAL_NOT_USE = new CodeMsg(500404, "积分不可用");
+    public static CodeMsg ORDER_NOT_TIME_OUT = new CodeMsg(500404, "暂无超时订单");
+
     public static CodeMsg ORDER_NOT_EXIST = new CodeMsg(500410, "订单不存在");
+
 
     /**
      * 秒杀模块 5005XX
