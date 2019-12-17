@@ -7,7 +7,7 @@ import com.mall.common.base.pojo.PageResult;
 import com.mall.common.base.utils.IdWorker;
 import com.mall.common.redis.utils.CommonRedisUtils;
 import com.mall.item.pojo.Stock;
-import com.mall.oms.client.GoodsClient;
+import com.mall.oms.client.PmsProductClient;
 import com.mall.oms.dto.OrderStatusMessageDTO;
 import com.mall.oms.interceptor.LoginInterceptor;
 import com.mall.oms.mapper.*;
@@ -48,7 +48,7 @@ public class OrderServiceImpl implements OrderService {
     private OrderStatusService orderStatusService;
 
     @Autowired
-    private GoodsClient goodsClient;
+    private PmsProductClient goodsClient;
 
     @Autowired
     private OrderMapper orderMapper;

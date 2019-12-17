@@ -2,8 +2,7 @@ package com.mall.item.api;
 
 import com.mall.common.base.config.FeignConfig;
 import com.mall.common.base.pojo.PageResult;
-import com.mall.item.api.hystrix.CategoryApiHystrix;
-import com.mall.item.api.hystrix.GoodsApiHystrix;
+import com.mall.item.api.hystrix.PmsProductApiHystrix;
 import com.mall.item.bo.SpuBo;
 import com.mall.item.pojo.SeckillGoods;
 import com.mall.item.pojo.Sku;
@@ -12,7 +11,6 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
@@ -23,8 +21,8 @@ import java.util.List;
  * author: gerry
  * created: 2019-12-14 08:02
  **/
-@FeignClient(value = "mall-item", fallback = GoodsApiHystrix.class, configuration = FeignConfig.class)
-public interface GoodsApi {
+@FeignClient(value = "mall-item", fallback = PmsProductApiHystrix.class, configuration = FeignConfig.class)
+public interface PmsProductApi {
 
     /**
      * 分页查询

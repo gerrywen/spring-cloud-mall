@@ -1,7 +1,7 @@
 package com.mall.item.api.hystrix;
 
 import com.mall.common.base.pojo.PageResult;
-import com.mall.item.api.GoodsApi;
+import com.mall.item.api.PmsProductApi;
 import com.mall.item.bo.SpuBo;
 import com.mall.item.pojo.SeckillGoods;
 import com.mall.item.pojo.Sku;
@@ -18,7 +18,7 @@ import java.util.List;
  * created: 2019-12-14 08:06
  **/
 @Component
-public class GoodsApiHystrix implements GoodsApi {
+public class PmsProductApiHystrix implements PmsProductApi {
     @Override
     public PageResult<SpuBo> querySpuByPage(Integer page, Integer rows, String sortBy, Boolean desc, String key, Boolean saleable) {
         return null;

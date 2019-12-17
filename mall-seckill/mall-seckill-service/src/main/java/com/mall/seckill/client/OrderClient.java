@@ -1,6 +1,6 @@
 package com.mall.seckill.client;
 
-import com.mall.oms.api.OrderApi;
+import com.mall.oms.api.OmsOrderApi;
 import com.mall.seckill.config.OrderConfig;
 import org.springframework.cloud.openfeign.FeignClient;
 
@@ -10,5 +10,5 @@ import org.springframework.cloud.openfeign.FeignClient;
  * @Feature: 订单接口
  */
 @FeignClient(value = "order-service",configuration = OrderConfig.class)
-public interface OrderClient extends OrderApi {
+public interface OrderClient extends OmsOrderApi {
 }

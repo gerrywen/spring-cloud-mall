@@ -4,7 +4,7 @@ import com.mall.admin.model.SmsCouponHistory;
 import com.mall.common.base.response.CodeMsg;
 import com.mall.common.base.response.Result;
 import com.mall.oms.po.CartPromotionItem;
-import com.mall.user.client.OmsCartItemClient;
+import com.mall.user.client.OmsOrderClient;
 import com.mall.user.service.UmsMemberCouponService;
 import com.mall.user.vo.SmsCouponHistoryDetailVO;
 import io.swagger.annotations.Api;
@@ -27,7 +27,7 @@ public class UmsMemberCouponController {
     private UmsMemberCouponService memberCouponService;
 
     @Autowired
-    private OmsCartItemClient cartItemClient;
+    private OmsOrderClient cartItemClient;
 
 
     @ApiOperation("领取指定优惠券")

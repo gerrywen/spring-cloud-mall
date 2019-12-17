@@ -71,6 +71,22 @@
         </dependency>
         <!--商品接口-->
 
+        <!--秒杀接口-->
+        <dependency>
+            <groupId>com.mall.seckill.interface</groupId>
+            <artifactId>mall-seckill-interface</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+        <!--秒杀接口-->
+
+        <!--用户接口-->
+        <dependency>
+            <groupId>com.mall.user.interface</groupId>
+            <artifactId>mall-user-interface</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+        <!--用户接口-->
+
         <!-- https://mvnrepository.com/artifact/com.github.wxpay/wxpay-sdk -->
         <dependency>
             <groupId>com.github.wxpay</groupId>

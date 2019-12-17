@@ -166,7 +166,7 @@ public class UmsMemberController {
         return Result.success(userTokenVO);
     }
 
-    @PutMapping("integration")
+    @PutMapping("internal/integration")
     @ApiOperation(value = "更新用户积分")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "Authorization", value = "Bearer token", required = true, dataType = "string", paramType = "header"),

@@ -1,7 +1,11 @@
 package com.mall.user.api.hystrix;
 
 import com.mall.admin.model.UmsMember;
+import com.mall.admin.model.UmsMemberReceiveAddress;
 import com.mall.user.api.UmsMemberApi;
+import com.mall.user.vo.SmsCouponHistoryDetailVO;
+
+import java.util.List;
 
 /**
  * program: spring-cloud-mall->UmsMemberApiHystrix
@@ -17,6 +21,21 @@ public class UmsMemberApiHystrix implements UmsMemberApi {
 
     @Override
     public UmsMember getUserInfo() {
+        return null;
+    }
+
+    @Override
+    public List<SmsCouponHistoryDetailVO> listCart(Integer type) {
+        return null;
+    }
+
+    @Override
+    public List<UmsMemberReceiveAddress> list() {
+        return null;
+    }
+
+    @Override
+    public UmsMemberReceiveAddress getItem(Long id) {
         return null;
     }
 }

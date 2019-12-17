@@ -8,8 +8,6 @@ import com.mall.common.redis.constant.RedisKey;
 import com.mall.common.redis.enums.CtimsModelEnum;
 import com.mall.common.redis.utils.CommonRedisUtils;
 import com.mall.oms.client.UmsMemberClient;
-import com.mall.oms.client.UmsMemberCouponClient;
-import com.mall.oms.client.UmsMemberReceiveAddressClient;
 import com.mall.oms.component.CancelOrderSender;
 import com.mall.oms.dto.OrderParamDTO;
 import com.mall.oms.mapper.PortalOrderItemMapper;
@@ -18,8 +16,10 @@ import com.mall.oms.po.CartPromotionItem;
 import com.mall.oms.po.ConfirmOrderResult;
 import com.mall.oms.service.OmsCartItemService;
 import com.mall.oms.service.OmsPortalOrderService;
+import com.mall.oms.vo.OmsCouponHistoryDetailVO;
 import com.mall.oms.vo.OmsOrderDetailVO;
 import com.mall.user.vo.SmsCouponHistoryDetailVO;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
@@ -39,12 +39,6 @@ public class OmsPortalOrderServiceImpl implements OmsPortalOrderService {
     private UmsMemberClient umsMemberClient;
     @Autowired
     private OmsCartItemService cartItemService;
-
-    @Autowired
-    private UmsMemberReceiveAddressClient memberReceiveAddressService;
-
-    @Autowired
-    private UmsMemberCouponClient memberCouponService;
 
     @Autowired
     private UmsIntegrationConsumeSettingMapper integrationConsumeSettingMapper;
@@ -88,11 +82,18 @@ public class OmsPortalOrderServiceImpl implements OmsPortalOrderService {
         List<CartPromotionItem> cartPromotionItemList = cartItemService.listPromotion(currentMember.getId());
         result.setCartPromotionItemList(cartPromotionItemList);
         //获取用户收货地址列表
-        List<UmsMemberReceiveAddress> memberReceiveAddressList = memberReceiveAddressService.list();
+        List<UmsMemberReceiveAddress> memberReceiveAddressList = umsMemberClient.list();
         result.setMemberReceiveAddressList(memberReceiveAddressList);
         //获取用户可用优惠券列表
-        List<SmsCouponHistoryDetailVO> couponHistoryDetailList = memberCouponService.listCart(1);
-        result.setCouponHistoryDetailList(couponHistoryDetailList);
+        List<SmsCouponHistoryDetailVO> couponHistoryDetailList = umsMemberClient.listCart(1);
+        List<OmsCouponHistoryDetailVO> objects = new ArrayList<>();
+        for (SmsCouponHistoryDetailVO smsCouponHistoryDetailVO : couponHistoryDetailList) {
+            OmsCouponHistoryDetailVO omsCouponHistoryDetailVO = new OmsCouponHistoryDetailVO();
+            BeanUtils.copyProperties(smsCouponHistoryDetailVO, omsCouponHistoryDetailVO);
+            objects.add(omsCouponHistoryDetailVO);
+
+        }
+        result.setCouponHistoryDetailList(objects);
         //获取用户积分
         result.setMemberIntegration(currentMember.getIntegration());
         //获取积分使用规则
@@ -211,7 +212,7 @@ public class OmsPortalOrderServiceImpl implements OmsPortalOrderService {
         //订单类型：0->正常订单；1->秒杀订单
         order.setOrderType(0);
         //收货人信息：姓名、电话、邮编、地址
-        UmsMemberReceiveAddress address = memberReceiveAddressService.getItem(orderParam.getMemberReceiveAddressId());
+        UmsMemberReceiveAddress address = umsMemberClient.getItem(orderParam.getMemberReceiveAddressId());
         order.setReceiverName(address.getName());
         order.setReceiverPhone(address.getPhoneNumber());
         order.setReceiverPostCode(address.getPostCode());
@@ -615,7 +616,7 @@ public class OmsPortalOrderServiceImpl implements OmsPortalOrderService {
      * @param couponId              使用优惠券id
      */
     private SmsCouponHistoryDetailVO getUseCoupon(List<CartPromotionItem> cartPromotionItemList, Long couponId) {
-        List<SmsCouponHistoryDetailVO> couponHistoryDetailList = memberCouponService.listCart(1);
+        List<SmsCouponHistoryDetailVO> couponHistoryDetailList = umsMemberClient.listCart(1);
         for (SmsCouponHistoryDetailVO couponHistoryDetail : couponHistoryDetailList) {
             if (couponHistoryDetail.getCoupon().getId().equals(couponId)) {
                 return couponHistoryDetail;

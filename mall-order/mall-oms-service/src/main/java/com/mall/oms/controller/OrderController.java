@@ -24,7 +24,7 @@ import java.util.List;
  */
 @RestController
 @Api(value = "OrderController", tags = "order-订单服务接口")
-@RequestMapping("cart")
+@RequestMapping("")
 public class OrderController {
 
     @Autowired

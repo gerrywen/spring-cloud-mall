@@ -1,6 +1,6 @@
 package com.mall.user.client;
 
-import com.mall.oms.api.OmsCartItemApi;
+import com.mall.oms.api.OmsOrderApi;
 import org.springframework.cloud.openfeign.FeignClient;
 
 /**
@@ -10,5 +10,5 @@ import org.springframework.cloud.openfeign.FeignClient;
  * created: 2019-12-15 20:52
  **/
 @FeignClient(value = "order-service")
-public interface OmsCartItemClient extends OmsCartItemApi {
+public interface OmsOrderClient extends OmsOrderApi {
 }

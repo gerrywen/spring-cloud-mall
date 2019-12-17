@@ -2,7 +2,7 @@ package com.mall.oms.po;
 
 import com.mall.admin.model.UmsIntegrationConsumeSetting;
 import com.mall.admin.model.UmsMemberReceiveAddress;
-import com.mall.user.vo.SmsCouponHistoryDetailVO;
+import com.mall.oms.vo.OmsCouponHistoryDetailVO;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -17,7 +17,7 @@ public class ConfirmOrderResult {
     //用户收货地址列表
     private List<UmsMemberReceiveAddress> memberReceiveAddressList;
     //用户可用优惠券列表
-    private List<SmsCouponHistoryDetailVO> couponHistoryDetailList;
+    private List<OmsCouponHistoryDetailVO> couponHistoryDetailList;
     //积分使用规则
     private UmsIntegrationConsumeSetting integrationConsumeSetting;
     //会员持有的积分
@@ -41,11 +41,11 @@ public class ConfirmOrderResult {
         this.memberReceiveAddressList = memberReceiveAddressList;
     }
 
-    public List<SmsCouponHistoryDetailVO> getCouponHistoryDetailList() {
+    public List<OmsCouponHistoryDetailVO> getCouponHistoryDetailList() {
         return couponHistoryDetailList;
     }
 
-    public void setCouponHistoryDetailList(List<SmsCouponHistoryDetailVO> couponHistoryDetailList) {
+    public void setCouponHistoryDetailList(List<OmsCouponHistoryDetailVO> couponHistoryDetailList) {
         this.couponHistoryDetailList = couponHistoryDetailList;
     }
 
