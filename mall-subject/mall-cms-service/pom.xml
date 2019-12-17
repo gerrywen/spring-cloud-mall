@@ -55,6 +55,14 @@
         </dependency>
         <!--配置管理依赖-->
 
+        <!--权限公共文件-->
+        <dependency>
+            <groupId>com.mall.authentication.common</groupId>
+            <artifactId>mall-authentication-common</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+        <!--权限公共文件-->
+
     </dependencies>
 
     <build>
