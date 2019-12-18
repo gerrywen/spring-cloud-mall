@@ -1,8 +1,8 @@
 package com.mall.seckill.interceptor;
 
 import com.mall.auth.entity.UserInfo;
+import com.mall.auth.properties.JwtProperties;
 import com.mall.auth.utils.JwtUtils;
-import com.mall.seckill.properties.JwtProperties;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;

@@ -1,6 +1,6 @@
 package com.mall.oms.config;
 
-import com.mall.oms.properties.JwtProperties;
+import com.mall.auth.properties.JwtProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.ApiInfoBuilder;

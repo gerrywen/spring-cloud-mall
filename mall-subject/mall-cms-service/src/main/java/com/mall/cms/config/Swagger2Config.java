@@ -1,6 +1,6 @@
 package com.mall.cms.config;
 
-import com.mall.cms.properties.JwtProperties;
+import com.mall.auth.properties.JwtProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.ApiInfoBuilder;

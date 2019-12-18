@@ -7,6 +7,7 @@ import com.mall.common.base.response.Result;
 import com.mall.common.redis.constant.RedisKey;
 import com.mall.common.redis.enums.CtimsModelEnum;
 import com.mall.common.redis.utils.CommonRedisUtils;
+import com.mall.oms.client.SmsCouponFeignClient;
 import com.mall.oms.client.UmsMemberClient;
 import com.mall.oms.component.CancelOrderSender;
 import com.mall.oms.dto.OrderParamDTO;
@@ -35,8 +36,19 @@ import java.util.*;
  */
 @Service
 public class OmsPortalOrderServiceImpl implements OmsPortalOrderService {
+    /**
+     * 会员
+     */
     @Autowired
     private UmsMemberClient umsMemberClient;
+
+    /**
+     * 营销-优惠券
+     */
+    @Autowired
+    private SmsCouponFeignClient smsCouponFeignClient;
+
+
     @Autowired
     private OmsCartItemService cartItemService;
 
@@ -51,9 +63,6 @@ public class OmsPortalOrderServiceImpl implements OmsPortalOrderService {
 
     @Autowired
     private PortalOrderItemMapper orderItemDao;
-
-    @Autowired
-    private SmsCouponHistoryMapper couponHistoryMapper;
 
     @Autowired
     private PortalOrderMapper portalOrderDao;
@@ -239,7 +248,7 @@ public class OmsPortalOrderServiceImpl implements OmsPortalOrderService {
         orderItemDao.insertList(orderItemList);
         //如使用优惠券更新优惠券使用状态
         if (orderParam.getCouponId() != null) {
-            updateCouponStatus(orderParam.getCouponId(), currentMember.getId(), 1);
+            smsCouponFeignClient.updateCouponStatus(orderParam.getCouponId(), 1);
         }
         //如使用积分需要扣除积分
         if (orderParam.getUseIntegration() != null) {
@@ -295,7 +304,7 @@ public class OmsPortalOrderServiceImpl implements OmsPortalOrderService {
             //解除订单商品库存锁定
             portalOrderDao.releaseSkuStockLock(timeOutOrder.getOrderItemList());
             //修改优惠券使用状态
-            updateCouponStatus(timeOutOrder.getCouponId(), timeOutOrder.getMemberId(), 0);
+            smsCouponFeignClient.updateCouponStatus(timeOutOrder.getCouponId(), 0);
             //返还使用积分
             if (timeOutOrder.getUseIntegration() != null) {
                 umsMemberClient.updateIntegration(currentMember.getIntegration() + timeOutOrder.getUseIntegration());
@@ -331,7 +340,7 @@ public class OmsPortalOrderServiceImpl implements OmsPortalOrderService {
                 portalOrderDao.releaseSkuStockLock(orderItemList);
             }
             //修改优惠券使用状态
-            updateCouponStatus(cancelOrder.getCouponId(), cancelOrder.getMemberId(), 0);
+            smsCouponFeignClient.updateCouponStatus(cancelOrder.getCouponId(), 0);
             //返还使用积分
             if (cancelOrder.getUseIntegration() != null) {
                 umsMemberClient.updateIntegration(currentMember.getIntegration() + cancelOrder.getUseIntegration());
@@ -401,27 +410,6 @@ public class OmsPortalOrderServiceImpl implements OmsPortalOrderService {
         return sum;
     }
 
-    /**
-     * 将优惠券信息更改为指定状态
-     *
-     * @param couponId  优惠券id
-     * @param memberId  会员id
-     * @param useStatus 0->未使用；1->已使用
-     */
-    private void updateCouponStatus(Long couponId, Long memberId, Integer useStatus) {
-        if (couponId == null) return;
-        //查询第一张优惠券
-        SmsCouponHistoryExample example = new SmsCouponHistoryExample();
-        example.createCriteria().andMemberIdEqualTo(memberId)
-                .andCouponIdEqualTo(couponId).andUseStatusEqualTo(useStatus == 0 ? 1 : 0);
-        List<SmsCouponHistory> couponHistoryList = couponHistoryMapper.selectByExample(example);
-        if (!CollectionUtils.isEmpty(couponHistoryList)) {
-            SmsCouponHistory couponHistory = couponHistoryList.get(0);
-            couponHistory.setUseTime(new Date());
-            couponHistory.setUseStatus(useStatus);
-            couponHistoryMapper.updateByPrimaryKeySelective(couponHistory);
-        }
-    }
 
     private void handleRealAmount(List<OmsOrderItem> orderItemList) {
         for (OmsOrderItem orderItem : orderItemList) {

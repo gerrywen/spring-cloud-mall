@@ -3,20 +3,14 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>mall</artifactId>
-        <groupId>com.mall.parent</groupId>
+        <artifactId>mall-common</artifactId>
+        <groupId>com.mall.common</groupId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.mall.common</groupId>
-    <artifactId>mall-common</artifactId>
-    <packaging>pom</packaging>
-    <!--    子工程模块 -->
-    <modules>
-        <module>mall-common-base</module>
-        <module>mall-common-redis</module>
-        <module>mall-common-auth</module>
-    </modules>
+    <groupId>com.mall.common.auth</groupId>
+    <artifactId>mall-common-auth</artifactId>
+
 
 </project>

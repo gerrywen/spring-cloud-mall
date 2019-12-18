@@ -1,4 +1,4 @@
-package com.mall.oms.interceptor;
+package com.mall.sms.interceptor;
 
 import com.mall.auth.entity.UserInfo;
 import com.mall.auth.properties.JwtProperties;

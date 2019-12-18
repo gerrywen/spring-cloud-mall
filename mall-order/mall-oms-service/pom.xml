@@ -87,6 +87,14 @@
         </dependency>
         <!--用户接口-->
 
+        <!--营销接口-->
+        <dependency>
+            <groupId>com.mall.sms.interface</groupId>
+            <artifactId>mall-sms-interface</artifactId>
+            <version>${mall.latest.version}</version>
+        </dependency>
+        <!--营销接口-->
+
         <!-- https://mvnrepository.com/artifact/com.github.wxpay/wxpay-sdk -->
         <dependency>
             <groupId>com.github.wxpay</groupId>

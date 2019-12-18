@@ -2,11 +2,11 @@ package com.mall.user.controller;
 
 import com.mall.admin.model.UmsMember;
 import com.mall.auth.entity.UserInfo;
+import com.mall.auth.properties.JwtProperties;
 import com.mall.auth.vo.UserTokenVO;
 import com.mall.common.base.response.CodeMsg;
 import com.mall.common.base.response.Result;
 import com.mall.user.interceptor.LoginInterceptor;
-import com.mall.user.properties.JwtProperties;
 import com.mall.user.service.UmsMemberService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;

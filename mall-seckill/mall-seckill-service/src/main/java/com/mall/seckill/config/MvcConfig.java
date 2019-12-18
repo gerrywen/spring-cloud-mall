@@ -1,8 +1,8 @@
 package com.mall.seckill.config;
 
+import com.mall.auth.properties.JwtProperties;
 import com.mall.seckill.interceptor.AccessInterceptor;
 import com.mall.seckill.interceptor.LoginInterceptor;
-import com.mall.seckill.properties.JwtProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

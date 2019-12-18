@@ -1,4 +1,4 @@
-package com.mall.user.config;
+package com.mall.seckill.config;
 
 import com.mall.auth.properties.JwtProperties;
 import org.springframework.context.annotation.Bean;
@@ -8,7 +8,11 @@ import springfox.documentation.builders.ParameterBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.schema.ModelRef;
-import springfox.documentation.service.*;
+import springfox.documentation.service.ApiInfo;
+import springfox.documentation.service.ApiKey;
+import springfox.documentation.service.AuthorizationScope;
+import springfox.documentation.service.Parameter;
+import springfox.documentation.service.SecurityReference;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spi.service.contexts.SecurityContext;
 import springfox.documentation.spring.web.plugins.Docket;
@@ -46,7 +50,7 @@ public class Swagger2Config {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.mall.user"))
+                .apis(RequestHandlerSelectors.basePackage("com.mall"))
                 .paths(PathSelectors.any())
                 .build()
                 .securitySchemes(securitySchemes())
@@ -57,8 +61,8 @@ public class Swagger2Config {
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("用户商城系统")
-                .description("用户接口文档")
+                .title("秒杀商城系统")
+                .description("秒杀接口文档")
                 .version("1.0")
                 .build();
     }
