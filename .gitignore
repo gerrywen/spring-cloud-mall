@@ -14,6 +14,7 @@ buildNumber.properties
 /.settings/
 /.project
 *.log
+*.gz
 
 ### STS ###
 .apt_generated
