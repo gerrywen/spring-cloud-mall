@@ -2,11 +2,13 @@ package com.mall.item.api;
 
 import com.mall.common.base.config.FeignConfig;
 import com.mall.common.base.pojo.PageResult;
-import com.mall.item.api.hystrix.PmsProductApiHystrix;
+import com.mall.item.api.hystrix.PmsProductFeignApiHystrix;
 import com.mall.item.bo.SpuBo;
 import com.mall.item.pojo.SeckillGoods;
 import com.mall.item.pojo.Sku;
 import com.mall.item.pojo.SpuDetail;
+import com.mall.item.vo.PmsCartProductVO;
+import com.mall.item.vo.PmsPromotionProductVO;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,8 +23,24 @@ import java.util.List;
  * author: gerry
  * created: 2019-12-14 08:02
  **/
-@FeignClient(value = "mall-item", fallback = PmsProductApiHystrix.class, configuration = FeignConfig.class)
-public interface PmsProductApi {
+@FeignClient(value = "mall-item", fallback = PmsProductFeignApiHystrix.class, configuration = FeignConfig.class)
+public interface PmsProductFeignApi {
+
+    /**
+     * 获取购物车需要的商品信息
+     * @param id
+     * @return
+     */
+    @GetMapping("product/internal/cart/{id}")
+    PmsCartProductVO getCartProduct(@PathVariable("id") Long id);
+
+    /**
+     * 获取促销商品列表
+     * @param ids
+     * @return
+     */
+    @GetMapping("product/internal/promotion")
+    List<PmsPromotionProductVO> getPromotionProductList(@RequestParam("ids") List<Long> ids);
 
     /**
      * 分页查询

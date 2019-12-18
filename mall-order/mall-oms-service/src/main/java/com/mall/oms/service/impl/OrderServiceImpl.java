@@ -7,7 +7,7 @@ import com.mall.common.base.pojo.PageResult;
 import com.mall.common.base.utils.IdWorker;
 import com.mall.common.redis.utils.CommonRedisUtils;
 import com.mall.item.pojo.Stock;
-import com.mall.oms.client.PmsProductClient;
+import com.mall.oms.client.PmsProductFeignClient;
 import com.mall.oms.dto.OrderStatusMessageDTO;
 import com.mall.oms.interceptor.LoginInterceptor;
 import com.mall.oms.mapper.*;
@@ -48,7 +48,7 @@ public class OrderServiceImpl implements OrderService {
     private OrderStatusService orderStatusService;
 
     @Autowired
-    private PmsProductClient goodsClient;
+    private PmsProductFeignClient pmsProductFeignClient;
 
     @Autowired
     private OrderMapper orderMapper;
@@ -176,7 +176,7 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public Boolean updateOrderStatus(Long id, Integer status) {
         UserInfo userInfo = LoginInterceptor.getLoginUser();
-        Long spuId = this.goodsClient.querySkuById(findSkuIdByOrderId(id)).getSpuId();
+        Long spuId = pmsProductFeignClient.querySkuById(findSkuIdByOrderId(id)).getSpuId();
 
         OrderStatus orderStatus = new OrderStatus();
         orderStatus.setOrderId(id);

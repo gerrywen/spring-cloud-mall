@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
  * 前台订单管理Service
  * Created by macro on 2018/8/30.
  */
-public interface OmsPortalOrderService {
+public interface OmsOrderService {
     /**
      * 根据用户购物车信息生成确认单信息
      */

@@ -1,8 +1,8 @@
 package com.mall.oms.service;
 
 import com.mall.admin.model.OmsCartItem;
+import com.mall.item.vo.PmsCartProductVO;
 import com.mall.oms.po.CartPromotionItem;
-import com.mall.oms.vo.CartProductVO;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -44,7 +44,7 @@ public interface OmsCartItemService {
     /**
      *获取购物车中用于选择商品规格的商品信息
      */
-    CartProductVO getCartProduct(Long productId);
+    PmsCartProductVO getCartProduct(Long productId);
 
     /**
      * 修改购物车中商品的规格

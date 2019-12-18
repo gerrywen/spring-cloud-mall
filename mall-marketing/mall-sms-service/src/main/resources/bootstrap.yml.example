@@ -1,7 +1,7 @@
 spring:
   cloud:
     config:
-      name: subject
+      name: market
       profile: dev
       label: master
       uri: http://127.0.0.1:10011

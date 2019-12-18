@@ -8,5 +8,5 @@ import org.springframework.cloud.openfeign.FeignClient;
  * @date 2019/12/18 11:22
  */
 @FeignClient(value = "market-service")
-public interface SmsCouponFeignClient extends SmsCouponFeignApi {
+public interface SmsMarketingFeignClient extends SmsCouponFeignApi {
 }

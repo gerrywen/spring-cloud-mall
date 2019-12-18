@@ -1,4 +1,4 @@
-package com.mall.oms.vo;
+package com.mall.item.vo;
 
 import com.mall.admin.model.PmsProduct;
 import com.mall.admin.model.PmsProductAttribute;
@@ -10,7 +10,7 @@ import java.util.List;
  * 购物车中选择规格的商品信息
  * Created by macro on 2018/8/2.
  */
-public class CartProductVO extends PmsProduct {
+public class PmsCartProductVO extends PmsProduct {
     private List<PmsProductAttribute> productAttributeList;
     private List<PmsSkuStock> skuStockList;
 

@@ -11,8 +11,8 @@ import com.mall.item.pojo.Stock;
 import com.mall.oms.pojo.Order;
 import com.mall.oms.pojo.OrderDetail;
 import com.mall.oms.pojo.SeckillOrder;
-import com.mall.seckill.client.GoodsClient;
-import com.mall.seckill.client.OrderClient;
+import com.mall.seckill.client.PmsProductFeignClient;
+import com.mall.seckill.client.OmsOrderFeignClient;
 import com.mall.seckill.mapper.SeckillMapper;
 import com.mall.seckill.mapper.SeckillOrderMapper;
 import com.mall.seckill.mapper.SkuMapper;
@@ -46,7 +46,7 @@ public class SeckillServiceImpl implements SeckillService {
     private SeckillMapper seckillMapper;
 
     @Autowired
-    private GoodsClient goodsClient;
+    private PmsProductFeignClient goodsClient;
 
     @Autowired
     private StockMapper stockMapper;
@@ -55,7 +55,7 @@ public class SeckillServiceImpl implements SeckillService {
     private SkuMapper skuMapper;
 
     @Autowired
-    private OrderClient orderClient;
+    private OmsOrderFeignClient orderClient;
 
     @Autowired
     private AmqpTemplate amqpTemplate;

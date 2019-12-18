@@ -1,6 +1,6 @@
 package com.mall.seckill.client;
 
-import com.mall.item.api.PmsProductApi;
+import com.mall.item.api.PmsProductFeignApi;
 import org.springframework.cloud.openfeign.FeignClient;
 
 /**
@@ -9,5 +9,5 @@ import org.springframework.cloud.openfeign.FeignClient;
  * Feature:商品FeignClient
  */
 @FeignClient(value = "item-service")
-public interface GoodsClient extends PmsProductApi {
+public interface PmsProductFeignClient extends PmsProductFeignApi {
 }

@@ -3,7 +3,7 @@ package com.mall.oms.controller;
 import com.mall.common.base.response.Result;
 import com.mall.oms.dto.OrderParamDTO;
 import com.mall.oms.po.ConfirmOrderResult;
-import com.mall.oms.service.OmsPortalOrderService;
+import com.mall.oms.service.OmsOrderService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("order")
 public class OmsPortalOrderController {
     @Autowired
-    private OmsPortalOrderService portalOrderService;
+    private OmsOrderService portalOrderService;
 
     @ApiOperation("根据购物车信息生成确认单信息")
     @RequestMapping(value = "/confirm", method = RequestMethod.POST)

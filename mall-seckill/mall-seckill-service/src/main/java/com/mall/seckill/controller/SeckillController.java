@@ -7,7 +7,7 @@ import com.mall.common.redis.enums.CtimsModelEnum;
 import com.mall.common.redis.utils.CommonRedisUtils;
 import com.mall.item.pojo.SeckillGoods;
 import com.mall.seckill.access.AccessLimit;
-import com.mall.seckill.client.GoodsClient;
+import com.mall.seckill.client.PmsProductFeignClient;
 import com.mall.seckill.interceptor.LoginInterceptor;
 import com.mall.seckill.service.SeckillService;
 import com.mall.seckill.vo.SeckillMessage;
@@ -36,7 +36,7 @@ public class SeckillController implements InitializingBean {
     private SeckillService seckillService;
 
     @Autowired
-    private GoodsClient goodsClient;
+    private PmsProductFeignClient goodsClient;
 
     @Autowired
     private CommonRedisUtils redisUtils;

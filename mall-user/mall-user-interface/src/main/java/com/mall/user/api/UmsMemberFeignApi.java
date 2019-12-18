@@ -3,7 +3,7 @@ package com.mall.user.api;
 import com.mall.admin.model.UmsMember;
 import com.mall.admin.model.UmsMemberReceiveAddress;
 import com.mall.common.base.config.FeignConfig;
-import com.mall.user.api.hystrix.UmsMemberApiHystrix;
+import com.mall.user.api.hystrix.UmsMemberFeignApiHystrix;
 import com.mall.user.vo.SmsCouponHistoryDetailVO;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,8 +19,8 @@ import java.util.List;
  * author: gerry
  * created: 2019-12-16 21:28
  **/
-@FeignClient(value = "mall-service", fallback = UmsMemberApiHystrix.class, configuration = FeignConfig.class)
-public interface UmsMemberApi {
+@FeignClient(value = "mall-service", fallback = UmsMemberFeignApiHystrix.class, configuration = FeignConfig.class)
+public interface UmsMemberFeignApi {
     /**
      * 根据会员id修改会员积分
      */

@@ -1,7 +1,7 @@
 package com.mall.oms.api.hystrix;
 
 import com.mall.common.base.response.Result;
-import com.mall.oms.api.OmsOrderApi;
+import com.mall.oms.api.OmsOrderFeignApi;
 import com.mall.oms.po.CartPromotionItem;
 import com.mall.oms.pojo.Order;
 import org.springframework.stereotype.Component;
@@ -16,7 +16,7 @@ import java.util.List;
  * created: 2019-12-14 08:14
  **/
 @Component
-public class OmsOrderApiHystrix implements OmsOrderApi {
+public class OmsOrderFeignApiHystrix implements OmsOrderFeignApi {
     @Override
     public Result<List<Long>> createOrder(String seck, @Valid Order order) {
         return null;

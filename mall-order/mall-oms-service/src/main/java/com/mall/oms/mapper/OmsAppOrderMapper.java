@@ -10,7 +10,7 @@ import java.util.List;
  * 前台订单自定义Dao
  * Created by macro on 2018/9/4.
  */
-public interface PortalOrderMapper {
+public interface OmsAppOrderMapper {
     /**
      * 获取订单及下单商品详情
      */

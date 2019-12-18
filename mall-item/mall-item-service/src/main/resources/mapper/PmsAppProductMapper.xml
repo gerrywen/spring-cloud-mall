@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.mall.oms.mapper.PortalProductMapper">
-    <resultMap id="cartProductMap" type="com.mall.oms.vo.CartProductVO" autoMapping="true">
+<mapper namespace="com.mall.item.mapper.PmsAppProductMapper">
+    <resultMap id="cartProductMap" type="com.mall.item.vo.PmsCartProductVO" autoMapping="true">
         <id column="id" jdbcType="BIGINT" property="id" />
         <collection property="productAttributeList" columnPrefix="attr_" resultMap="com.mall.admin.mapper.PmsProductAttributeMapper.BaseResultMap">
         </collection>
         <collection property="skuStockList" columnPrefix="sku_" resultMap="com.mall.admin.mapper.PmsSkuStockMapper.BaseResultMap">
         </collection>
     </resultMap>
-    <resultMap id="promotionProductMap" type="com.mall.oms.vo.PromotionProductVO" extends="com.mall.admin.mapper.PmsProductMapper.BaseResultMap">
+    <resultMap id="promotionProductMap" type="com.mall.item.vo.PmsPromotionProductVO" extends="com.mall.admin.mapper.PmsProductMapper.BaseResultMap">
         <id column="id" jdbcType="BIGINT" property="id" />
         <collection property="skuStockList" columnPrefix="sku_" resultMap="com.mall.admin.mapper.PmsSkuStockMapper.BaseResultMap">
         </collection>

@@ -1,6 +1,6 @@
 package com.mall.oms.client;
 
-import com.mall.user.api.UmsMemberApi;
+import com.mall.user.api.UmsMemberFeignApi;
 import org.springframework.cloud.openfeign.FeignClient;
 
 /**
@@ -10,5 +10,5 @@ import org.springframework.cloud.openfeign.FeignClient;
  * created: 2019-12-16 21:28
  **/
 @FeignClient(value = "user-service")
-public interface UmsMemberClient extends UmsMemberApi {
+public interface UmsUserFeignClient extends UmsMemberFeignApi {
 }

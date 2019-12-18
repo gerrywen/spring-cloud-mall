@@ -3,7 +3,7 @@ package com.mall.oms.controller;
 import com.mall.common.base.response.CodeMsg;
 import com.mall.common.base.response.Result;
 import com.mall.oms.dto.OmsOrderReturnApplyParamDTO;
-import com.mall.oms.service.OmsPortalOrderReturnApplyService;
+import com.mall.oms.service.OmsOrderReturnApplyService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("return/apply")
 public class OmsPortalOrderReturnApplyController {
     @Autowired
-    private OmsPortalOrderReturnApplyService returnApplyService;
+    private OmsOrderReturnApplyService returnApplyService;
 
     @ApiOperation("申请退货")
     @RequestMapping(value = "/create", method = RequestMethod.POST)

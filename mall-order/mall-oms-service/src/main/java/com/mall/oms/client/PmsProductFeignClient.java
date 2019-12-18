@@ -1,6 +1,7 @@
 package com.mall.oms.client;
 
-import com.mall.item.api.PmsProductApi;
+import com.mall.item.api.PmsProductFeignApi;
+import com.mall.item.api.PmsSkuStockFeignApi;
 import org.springframework.cloud.openfeign.FeignClient;
 
 /**
@@ -9,5 +10,5 @@ import org.springframework.cloud.openfeign.FeignClient;
  * Feature:商品FeignClient
  */
 @FeignClient(value = "item-service")
-public interface PmsProductClient extends PmsProductApi {
+public interface PmsProductFeignClient extends PmsProductFeignApi, PmsSkuStockFeignApi {
 }

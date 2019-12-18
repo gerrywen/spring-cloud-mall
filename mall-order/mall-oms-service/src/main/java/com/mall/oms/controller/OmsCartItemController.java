@@ -4,10 +4,10 @@ import com.mall.admin.model.OmsCartItem;
 import com.mall.auth.entity.UserInfo;
 import com.mall.common.base.response.CodeMsg;
 import com.mall.common.base.response.Result;
+import com.mall.item.vo.PmsCartProductVO;
 import com.mall.oms.interceptor.LoginInterceptor;
 import com.mall.oms.service.OmsCartItemService;
 import com.mall.oms.po.CartPromotionItem;
-import com.mall.oms.vo.CartProductVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -70,8 +70,8 @@ public class OmsCartItemController {
     @ApiOperation("获取购物车中某个商品的规格,用于重选规格")
     @RequestMapping(value = "/getProduct/{productId}", method = RequestMethod.GET)
     @ResponseBody
-    public Result<CartProductVO> getCartProduct(@PathVariable Long productId) {
-        CartProductVO cartProduct = cartItemService.getCartProduct(productId);
+    public Result<PmsCartProductVO> getCartProduct(@PathVariable Long productId) {
+        PmsCartProductVO cartProduct = cartItemService.getCartProduct(productId);
         return Result.success(cartProduct);
     }
 

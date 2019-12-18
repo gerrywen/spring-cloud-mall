@@ -4,12 +4,12 @@ import com.mall.admin.mapper.OmsCartItemMapper;
 import com.mall.admin.model.OmsCartItem;
 import com.mall.admin.model.OmsCartItemExample;
 import com.mall.auth.entity.UserInfo;
+import com.mall.item.vo.PmsCartProductVO;
+import com.mall.oms.client.PmsProductFeignClient;
 import com.mall.oms.interceptor.LoginInterceptor;
-import com.mall.oms.mapper.PortalProductMapper;
 import com.mall.oms.service.OmsCartItemService;
 import com.mall.oms.service.OmsPromotionService;
 import com.mall.oms.po.CartPromotionItem;
-import com.mall.oms.vo.CartProductVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
@@ -27,11 +27,15 @@ import java.util.List;
  **/
 @Service
 public class OmsCartItemServiceImpl implements OmsCartItemService {
+
+    /**
+     * 商品模块
+     */
     @Autowired
-    private OmsCartItemMapper cartItemMapper;
+    private PmsProductFeignClient pmsProductFeignClient;
 
     @Autowired
-    private PortalProductMapper productMapper;
+    private OmsCartItemMapper cartItemMapper;
 
     @Autowired
     private OmsPromotionService promotionService;
@@ -93,8 +97,8 @@ public class OmsCartItemServiceImpl implements OmsCartItemService {
     }
 
     @Override
-    public CartProductVO getCartProduct(Long productId) {
-        return productMapper.getCartProduct(productId);
+    public PmsCartProductVO getCartProduct(Long productId) {
+        return pmsProductFeignClient.getCartProduct(productId);
     }
 
     @Override

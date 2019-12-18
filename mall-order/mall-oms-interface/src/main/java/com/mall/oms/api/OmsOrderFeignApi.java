@@ -2,7 +2,7 @@ package com.mall.oms.api;
 
 import com.mall.common.base.config.FeignConfig;
 import com.mall.common.base.response.Result;
-import com.mall.oms.api.hystrix.OmsOrderApiHystrix;
+import com.mall.oms.api.hystrix.OmsOrderFeignApiHystrix;
 import com.mall.oms.po.CartPromotionItem;
 import com.mall.oms.pojo.Order;
 import org.springframework.cloud.openfeign.FeignClient;
@@ -17,8 +17,8 @@ import java.util.List;
  * author: gerry
  * created: 2019-12-14 08:13
  **/
-@FeignClient(value = "mall-item", fallback = OmsOrderApiHystrix.class, configuration = FeignConfig.class)
-public interface OmsOrderApi {
+@FeignClient(value = "mall-item", fallback = OmsOrderFeignApiHystrix.class, configuration = FeignConfig.class)
+public interface OmsOrderFeignApi {
     /**
      * 创建订单
      * @param seck

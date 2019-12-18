@@ -2,7 +2,7 @@ package com.mall.user.api.hystrix;
 
 import com.mall.admin.model.UmsMember;
 import com.mall.admin.model.UmsMemberReceiveAddress;
-import com.mall.user.api.UmsMemberApi;
+import com.mall.user.api.UmsMemberFeignApi;
 import com.mall.user.vo.SmsCouponHistoryDetailVO;
 
 import java.util.List;
@@ -13,7 +13,7 @@ import java.util.List;
  * author: gerry
  * created: 2019-12-16 21:29
  **/
-public class UmsMemberApiHystrix implements UmsMemberApi {
+public class UmsMemberFeignApiHystrix implements UmsMemberFeignApi {
     @Override
     public void updateIntegration(Integer integration) {
 
