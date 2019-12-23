@@ -1,10 +1,10 @@
 package com.mall.user.service.impl;
 
 import com.mall.admin.mapper.UmsMemberReceiveAddressMapper;
-import com.mall.admin.model.UmsMember;
 import com.mall.admin.model.UmsMemberReceiveAddress;
 import com.mall.admin.model.UmsMemberReceiveAddressExample;
 import com.mall.auth.entity.UserInfo;
+import com.mall.common.base.constant.Constant;
 import com.mall.user.interceptor.LoginInterceptor;
 import com.mall.user.service.UmsMemberReceiveAddressService;
 import com.mall.user.service.UmsMemberService;
@@ -20,8 +20,7 @@ import java.util.List;
  */
 @Service
 public class UmsMemberReceiveAddressServiceImpl implements UmsMemberReceiveAddressService {
-    @Autowired
-    private UmsMemberService memberService;
+
     @Autowired
     private UmsMemberReceiveAddressMapper addressMapper;
     @Override
@@ -29,7 +28,10 @@ public class UmsMemberReceiveAddressServiceImpl implements UmsMemberReceiveAddre
         //获取登录的用户
         UserInfo currentMember = LoginInterceptor.getLoginUser();
         address.setMemberId(currentMember.getId());
-        return addressMapper.insert(address);
+        int insert = addressMapper.insert(address);
+        // 将当前地址设置为默认地址
+        setDefaultAddress(address);
+        return insert;
     }
 
     @Override
@@ -48,7 +50,10 @@ public class UmsMemberReceiveAddressServiceImpl implements UmsMemberReceiveAddre
         UserInfo currentMember = LoginInterceptor.getLoginUser();
         UmsMemberReceiveAddressExample example = new UmsMemberReceiveAddressExample();
         example.createCriteria().andMemberIdEqualTo(currentMember.getId()).andIdEqualTo(id);
-        return addressMapper.updateByExampleSelective(address,example);
+        int i = addressMapper.updateByExampleSelective(address, example);
+        // 将当前地址设置为默认地址
+        setDefaultAddress(address);
+        return i;
     }
 
     @Override
@@ -71,5 +76,22 @@ public class UmsMemberReceiveAddressServiceImpl implements UmsMemberReceiveAddre
             return addressList.get(0);
         }
         return null;
+    }
+
+    /**
+     * 将当前地址设置为默认地址
+     * @param umsMemberReceiveAddress
+     */
+    private void setDefaultAddress(UmsMemberReceiveAddress umsMemberReceiveAddress) {
+        if (umsMemberReceiveAddress.getDefaultStatus().equals(Constant.ADDRESS_DEFAULT_STATUS_YES)) {
+            //如果将本地址设置为默认地址，那么该用户下的其他地址都应该是非默认地址
+            List<UmsMemberReceiveAddress> addressList = list();
+            addressList.forEach(addressTemp -> {
+                if (addressTemp.getDefaultStatus().equals(Constant.ADDRESS_DEFAULT_STATUS_YES)){
+                    addressTemp.setDefaultStatus(Constant.ADDRESS_DEFAULT_STATUS_NO);
+                    this.addressMapper.updateByPrimaryKeySelective(addressTemp);
+                }
+            });
+        }
     }
 }
