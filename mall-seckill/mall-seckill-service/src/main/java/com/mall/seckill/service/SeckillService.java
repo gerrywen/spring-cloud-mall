@@ -1,7 +1,7 @@
 package com.mall.seckill.service;
 
 import com.mall.item.pojo.SeckillGoods;
-import com.mall.seckill.vo.SeckillMessage;
+import com.mall.seckill.po.SeckillMessage;
 
 /**
  * program: spring-cloud-mall->SeckillService

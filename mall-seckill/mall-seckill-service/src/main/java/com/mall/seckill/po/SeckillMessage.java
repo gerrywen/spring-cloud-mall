@@ -1,4 +1,4 @@
-package com.mall.seckill.vo;
+package com.mall.seckill.po;
 
 import com.mall.auth.entity.UserInfo;
 import com.mall.item.pojo.SeckillGoods;

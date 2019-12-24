@@ -72,6 +72,14 @@
         </dependency>
         <!--商品接口-->
 
+        <!--订单接口-->
+        <dependency>
+            <groupId>com.mall.oms.interface</groupId>
+            <artifactId>mall-oms-interface</artifactId>
+            <version>${mall.latest.version}</version>
+        </dependency>
+        <!--订单接口-->
+
         <!-- https://mvnrepository.com/artifact/com.github.wxpay/wxpay-sdk -->
         <dependency>
             <groupId>com.github.wxpay</groupId>

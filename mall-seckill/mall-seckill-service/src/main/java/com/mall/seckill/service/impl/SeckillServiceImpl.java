@@ -18,7 +18,7 @@ import com.mall.seckill.mapper.SeckillOrderMapper;
 import com.mall.seckill.mapper.SkuMapper;
 import com.mall.seckill.mapper.StockMapper;
 import com.mall.seckill.service.SeckillService;
-import com.mall.seckill.vo.SeckillMessage;
+import com.mall.seckill.po.SeckillMessage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.amqp.core.AmqpTemplate;

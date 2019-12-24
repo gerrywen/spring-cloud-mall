@@ -14,30 +14,6 @@
     <dependencies>
 
 
-        <!--权限公共接口-->
-        <dependency>
-            <groupId>com.mall.authentication.common</groupId>
-            <artifactId>mall-authentication-common</artifactId>
-            <version>${mall.latest.version}</version>
-        </dependency>
-        <!--权限公共接口-->
-
-        <!--商品接口-->
-        <dependency>
-            <groupId>com.mall.item.interface</groupId>
-            <artifactId>mall-item-interface</artifactId>
-            <version>${mall.latest.version}</version>
-        </dependency>
-        <!--商品接口-->
-
-        <!--订单接口-->
-        <dependency>
-            <groupId>com.mall.oms.interface</groupId>
-            <artifactId>mall-oms-interface</artifactId>
-            <version>${mall.latest.version}</version>
-        </dependency>
-        <!--订单接口-->
-
         <dependency>
             <groupId>javax.persistence</groupId>
             <artifactId>persistence-api</artifactId>

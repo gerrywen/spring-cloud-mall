@@ -10,7 +10,7 @@ import com.mall.seckill.access.AccessLimit;
 import com.mall.seckill.client.PmsProductFeignClient;
 import com.mall.seckill.interceptor.LoginInterceptor;
 import com.mall.seckill.service.SeckillService;
-import com.mall.seckill.vo.SeckillMessage;
+import com.mall.seckill.po.SeckillMessage;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
