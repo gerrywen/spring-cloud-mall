@@ -10,5 +10,5 @@ import org.springframework.cloud.openfeign.FeignClient;
  * Feature:商品FeignClient
  */
 @FeignClient(value = "item-service")
-public interface PmsProductFeignClient extends PmsProductFeignApi, PmsSkuStockFeignApi {
+public interface PmsProductFeignClient extends PmsProductFeignApi {
 }

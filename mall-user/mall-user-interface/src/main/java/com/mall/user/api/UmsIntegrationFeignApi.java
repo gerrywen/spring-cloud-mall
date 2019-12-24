@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
  * author: gerry
  * created: 2019-12-23 22:00
  **/
-@FeignClient(value = "mall-service", fallback = UmsIntegrationFeignApiHystrix.class, configuration = FeignConfig.class)
+@FeignClient(value = "mall-integration", fallback = UmsIntegrationFeignApiHystrix.class, configuration = FeignConfig.class)
 public interface UmsIntegrationFeignApi {
 
     @GetMapping("integration/setting/internal/info")

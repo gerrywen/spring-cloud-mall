@@ -7,9 +7,7 @@ import com.mall.common.base.response.Result;
 import com.mall.common.redis.constant.RedisKey;
 import com.mall.common.redis.enums.CtimsModelEnum;
 import com.mall.common.redis.utils.CommonRedisUtils;
-import com.mall.oms.client.PmsProductFeignClient;
-import com.mall.oms.client.SmsMarketingFeignClient;
-import com.mall.oms.client.UmsUserFeignClient;
+import com.mall.oms.client.*;
 import com.mall.oms.component.CancelOrderSender;
 import com.mall.oms.dto.OrderParamDTO;
 import com.mall.oms.mapper.OmsAppOrderItemMapper;
@@ -26,6 +24,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
+import javax.annotation.Resource;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.SimpleDateFormat;
@@ -40,19 +39,22 @@ public class OmsOrderServiceImpl implements OmsOrderService {
     /**
      * 用户模块
      */
-    @Autowired
+    @Resource
     private UmsUserFeignClient umsUserFeignClient;
+
+    @Resource
+    private UmsIntegrationFeignClient umsIntegrationFeignClient;
 
     /**
      * 商品模块
      */
-    @Autowired
-    private PmsProductFeignClient pmsProductFeignClient;
+    @Resource
+    private PmsSkuStockFeignClient pmsSkuStockFeignClient;
 
     /**
      * 营销模块
      */
-    @Autowired
+    @Resource
     private SmsMarketingFeignClient smsMarketingFeignClient;
 
     /**
@@ -121,7 +123,7 @@ public class OmsOrderServiceImpl implements OmsOrderService {
         //获取用户积分
         result.setMemberIntegration(currentMember.getIntegration());
         //获取积分使用规则
-        UmsIntegrationConsumeSetting integrationConsumeSetting = umsUserFeignClient.getInfo();
+        UmsIntegrationConsumeSetting integrationConsumeSetting = umsIntegrationFeignClient.getInfo();
         result.setIntegrationConsumeSetting(integrationConsumeSetting);
         //计算总金额、活动优惠、应付金额
         ConfirmOrderResult.CalcAmount calcAmount = calcCartAmount(cartPromotionItemList);
@@ -521,7 +523,7 @@ public class OmsOrderServiceImpl implements OmsOrderService {
         }
         //根据积分使用规则判断是否可用
         //是否可与优惠券共用
-        UmsIntegrationConsumeSetting integrationConsumeSetting = umsUserFeignClient.getInfo();
+        UmsIntegrationConsumeSetting integrationConsumeSetting = umsIntegrationFeignClient.getInfo();
         if (hasCoupon && integrationConsumeSetting.getCouponStatus().equals(0)) {
             //不可与优惠券共用
             return zeroAmount;
@@ -645,7 +647,7 @@ public class OmsOrderServiceImpl implements OmsOrderService {
     private void lockStock(List<CartPromotionItem> cartPromotionItemList) {
         for (CartPromotionItem cartPromotionItem : cartPromotionItemList) {
             // 锁住库存
-            pmsProductFeignClient.lockStock(cartPromotionItem.getProductSkuId(), cartPromotionItem.getQuantity());
+            pmsSkuStockFeignClient.lockStock(cartPromotionItem.getProductSkuId(), cartPromotionItem.getQuantity());
         }
     }
 
