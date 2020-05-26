@@ -50,6 +50,22 @@
             <version>1.0.0-SNAPSHOT</version>
         </dependency>
         <!--swagger cloud 配置-->
+
+        <!--商品接口-->
+        <dependency>
+            <groupId>com.mall.item.interface</groupId>
+            <artifactId>mall-item-interface</artifactId>
+            <version>${mall.latest.version}</version>
+        </dependency>
+        <!--商品接口-->
+
+        <!--权限公共文件-->
+        <dependency>
+            <groupId>com.mall.authentication.common</groupId>
+            <artifactId>mall-authentication-common</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
+        </dependency>
+        <!--权限公共文件-->
     </dependencies>
 
 </project>

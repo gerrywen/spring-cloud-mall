@@ -32,10 +32,10 @@
         <!--集中管理配置依赖-->
 
         <!--添加安全认证-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-security</artifactId>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.boot</groupId>-->
+<!--            <artifactId>spring-boot-starter-security</artifactId>-->
+<!--        </dependency>-->
         <!--添加安全认证-->
 
         <!--配置管理依赖-->
