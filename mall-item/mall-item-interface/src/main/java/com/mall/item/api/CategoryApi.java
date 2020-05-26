@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * author: gerry
  * created: 2019-12-14 08:00
  **/
-@FeignClient(value = "mall-item", fallback = CategoryApiHystrix.class, configuration = FeignConfig.class)
+@FeignClient(value = "mall-item-service", fallback = CategoryApiHystrix.class, configuration = FeignConfig.class)
 @RequestMapping("category")
 public interface CategoryApi {
 }

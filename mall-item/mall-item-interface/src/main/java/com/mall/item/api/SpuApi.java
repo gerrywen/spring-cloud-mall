@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  * author: gerry
  * created: 2019-12-14 20:37
  **/
-@FeignClient(value = "mall-item", fallback = SpuApiHystrix.class, configuration = FeignConfig.class)
+@FeignClient(value = "mall-item-service", fallback = SpuApiHystrix.class, configuration = FeignConfig.class)
 public interface SpuApi {
     /**
      * 分页查询

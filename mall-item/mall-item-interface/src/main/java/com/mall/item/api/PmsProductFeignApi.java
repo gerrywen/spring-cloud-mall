@@ -23,7 +23,7 @@ import java.util.List;
  * author: gerry
  * created: 2019-12-14 08:02
  **/
-@FeignClient(value = "mall-item", fallback = PmsProductFeignApiHystrix.class, configuration = FeignConfig.class)
+@FeignClient(value = "mall-item-service", fallback = PmsProductFeignApiHystrix.class, configuration = FeignConfig.class)
 public interface PmsProductFeignApi {
 
     /**

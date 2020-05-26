@@ -16,7 +16,7 @@ import java.util.List;
  * author: gerry
  * created: 2019-11-24 23:11
  **/
-@FeignClient(value = "mall-item", fallback = BrandApiHystrix.class, configuration = FeignConfig.class)
+@FeignClient(value = "mall-item-service", fallback = BrandApiHystrix.class, configuration = FeignConfig.class)
 public interface BrandApi {
     /**
      * 根据品牌id集合，查询品牌信息

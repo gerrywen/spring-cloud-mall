@@ -17,7 +17,7 @@ import java.util.List;
  * author: gerry
  * created: 2019-12-14 08:13
  **/
-@FeignClient(value = "mall-item", fallback = OmsOrderFeignApiHystrix.class, configuration = FeignConfig.class)
+@FeignClient(value = "mall-item-service", fallback = OmsOrderFeignApiHystrix.class, configuration = FeignConfig.class)
 public interface OmsOrderFeignApi {
     /**
      * 创建订单

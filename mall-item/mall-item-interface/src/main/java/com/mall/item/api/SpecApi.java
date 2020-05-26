@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * author: gerry
  * created: 2019-12-14 20:36
  **/
-@FeignClient(value = "mall-item", fallback = SpecApiHystrix.class, configuration = FeignConfig.class)
+@FeignClient(value = "mall-item-service", fallback = SpecApiHystrix.class, configuration = FeignConfig.class)
 public interface SpecApi {
     /**
      * 查询商品分类对应的规格参数模板

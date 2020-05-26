@@ -9,6 +9,6 @@ import org.springframework.cloud.openfeign.FeignClient;
  * Time: 2018-12-11 20:50
  * Feature:商品FeignClient
  */
-@FeignClient(value = "item-service")
+@FeignClient(value = "mall-item-service")
 public interface PmsProductFeignClient extends PmsProductFeignApi {
 }
