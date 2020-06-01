@@ -38,6 +38,7 @@ buildNumber.properties
 /nbdist/
 /.nb-gradle/
 /build/
+/package/
 
 ### VS Code ###
 .vscode/
