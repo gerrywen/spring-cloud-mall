@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  * author: gerry
  * created: 2019-12-18 22:23
  **/
-@FeignClient(value = "mall-item-service", fallback = PmsSkuStockFeignApiHystrix.class, configuration = FeignConfig.class)
+//@FeignClient(value = "mall-item-service", fallback = PmsSkuStockFeignApiHystrix.class, configuration = FeignConfig.class)
 public interface PmsSkuStockFeignApi {
 
     @PutMapping("sku_stock/internal/lock")

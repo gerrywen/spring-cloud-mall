@@ -10,6 +10,6 @@ import org.springframework.cloud.openfeign.FeignClient;
  * author: gerry
  * created: 2019-12-16 21:28
  **/
-@FeignClient(value = "user-service")
+@FeignClient(value = "mall-user-service")
 public interface UmsUserFeignClient extends UmsMemberFeignApi {
 }

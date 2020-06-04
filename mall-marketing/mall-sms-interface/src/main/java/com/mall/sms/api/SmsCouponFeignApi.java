@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  * @author wenguoli
  * @date 2019/12/18 11:13
  */
-@FeignClient(value = "mall-marketing", fallback = SmsCouponFeignApiHystrix.class, configuration = FeignConfig.class)
+//@FeignClient(value = "mall-market-service", fallback = SmsCouponFeignApiHystrix.class, configuration = FeignConfig.class)
 public interface SmsCouponFeignApi {
     /**
      * 将优惠券信息更改为指定状态

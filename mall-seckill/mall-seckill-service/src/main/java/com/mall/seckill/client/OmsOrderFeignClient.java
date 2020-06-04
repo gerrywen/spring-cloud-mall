@@ -9,6 +9,6 @@ import org.springframework.cloud.openfeign.FeignClient;
  * @Time: 2018-11-12 15:19
  * @Feature: 订单接口
  */
-@FeignClient(value = "order-service",configuration = OrderConfig.class)
+@FeignClient(value = "mall-order-service",configuration = OrderConfig.class)
 public interface OmsOrderFeignClient extends OmsOrderFeignApi {
 }

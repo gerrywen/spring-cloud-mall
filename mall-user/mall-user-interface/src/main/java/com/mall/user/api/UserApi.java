@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  * author: gerry
  * created: 2019-11-25 00:05
  **/
-@FeignClient(value = "mall-user", fallback = UserApiHystrix.class, configuration = FeignConfig.class)
+@FeignClient(value = "mall-user-service", fallback = UserApiHystrix.class, configuration = FeignConfig.class)
 public interface UserApi {
     /**
      * 用户验证

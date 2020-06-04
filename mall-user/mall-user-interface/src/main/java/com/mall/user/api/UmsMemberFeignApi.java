@@ -19,7 +19,7 @@ import java.util.List;
  * author: gerry
  * created: 2019-12-16 21:28
  **/
-@FeignClient(value = "mall-service", fallback = UmsMemberFeignApiHystrix.class, configuration = FeignConfig.class)
+//@FeignClient(value = "mall-service", fallback = UmsMemberFeignApiHystrix.class, configuration = FeignConfig.class)
 public interface UmsMemberFeignApi {
     /**
      * 根据会员id修改会员积分

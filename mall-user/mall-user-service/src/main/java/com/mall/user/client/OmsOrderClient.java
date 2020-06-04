@@ -9,6 +9,6 @@ import org.springframework.cloud.openfeign.FeignClient;
  * author: gerry
  * created: 2019-12-15 20:52
  **/
-@FeignClient(value = "order-service")
+@FeignClient(value = "mall-order-service")
 public interface OmsOrderClient extends OmsOrderFeignApi {
 }
