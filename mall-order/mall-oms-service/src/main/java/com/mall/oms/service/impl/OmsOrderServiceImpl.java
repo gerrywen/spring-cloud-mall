@@ -40,10 +40,8 @@ public class OmsOrderServiceImpl implements OmsOrderService {
      * 用户模块
      */
     @Resource
-    private UmsUserFeignClient umsUserFeignClient;
+    private UserClient umsUserFeignClient;
 
-    @Resource
-    private UmsIntegrationFeignClient umsIntegrationFeignClient;
 
     /**
      * 商品模块
@@ -123,7 +121,7 @@ public class OmsOrderServiceImpl implements OmsOrderService {
         //获取用户积分
         result.setMemberIntegration(currentMember.getIntegration());
         //获取积分使用规则
-        UmsIntegrationConsumeSetting integrationConsumeSetting = umsIntegrationFeignClient.getInfo();
+        UmsIntegrationConsumeSetting integrationConsumeSetting = umsUserFeignClient.getInfo();
         result.setIntegrationConsumeSetting(integrationConsumeSetting);
         //计算总金额、活动优惠、应付金额
         ConfirmOrderResult.CalcAmount calcAmount = calcCartAmount(cartPromotionItemList);
@@ -523,7 +521,7 @@ public class OmsOrderServiceImpl implements OmsOrderService {
         }
         //根据积分使用规则判断是否可用
         //是否可与优惠券共用
-        UmsIntegrationConsumeSetting integrationConsumeSetting = umsIntegrationFeignClient.getInfo();
+        UmsIntegrationConsumeSetting integrationConsumeSetting = umsUserFeignClient.getInfo();
         if (hasCoupon && integrationConsumeSetting.getCouponStatus().equals(0)) {
             //不可与优惠券共用
             return zeroAmount;

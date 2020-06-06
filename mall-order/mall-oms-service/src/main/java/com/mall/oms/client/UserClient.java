@@ -1,4 +1,4 @@
-package com.mall.auth.client;
+package com.mall.oms.client;
 
 import com.mall.common.base.config.FeignConfig;
 import com.mall.user.api.UserApi;
