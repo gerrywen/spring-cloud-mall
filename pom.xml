@@ -66,7 +66,7 @@
         <jjwt.version>0.9.1</jjwt.version>
         <java.jwt.version>3.8.2</java.jwt.version>
         <fastjson.version>1.2.62</fastjson.version>
-        <spring.webmvc.version>5.1.8.RELEASE</spring.webmvc.version>
+        <spring.webmvc.version>5.3.18</spring.webmvc.version>
         <redis.version>2.2.0.RELEASE</redis.version>
         <hutool.version>4.5.7</hutool.version>
         <logstash.logback.version>5.3</logstash.logback.version>
