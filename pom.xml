@@ -65,7 +65,7 @@
         <joda.time.version>2.10.5</joda.time.version>
         <jjwt.version>0.9.1</jjwt.version>
         <java.jwt.version>3.8.2</java.jwt.version>
-        <fastjson.version>1.2.62</fastjson.version>
+        <fastjson.version>1.2.83</fastjson.version>
         <spring.webmvc.version>5.1.8.RELEASE</spring.webmvc.version>
         <redis.version>2.2.0.RELEASE</redis.version>
         <hutool.version>4.5.7</hutool.version>
